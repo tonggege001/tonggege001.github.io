@@ -2,7 +2,7 @@
 title: 阿通的小屋 # 你的博客名字，可以定义修订
 header-img: "img/green.jpg"
 tagline: "cn"  
-description: "这里是阿通的小屋~"  # 一句话描述你的博客
+description: "这里是阿通的小屋"  # 一句话描述你的博客
 baseurl: "https://tonggege001.github.io/"
 url: "https://tonggege001.github.io/"  # 此处填写你的博客地址 
 
@@ -21,7 +21,7 @@ twitter_username:
 github_username: tonggege001
 facebook_username: 
 weibo_username: 
-zhihu_username: 快乐的tgg
+zhihu_username: tong-shuai-37-29
 
 # Build settings  
 # use Github Flavored Markdown !important  
@@ -31,6 +31,7 @@ highlighter: rouge
 permalink: pretty
 paginate: 8
 exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
+
 
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 timezone: Asia/Shanghai
