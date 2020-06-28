@@ -61,6 +61,7 @@ int EndPos(string & s, int b){
     }
     return -1;
 }
+
 ```
 现在就需要对上面给出的三个推导式分情况讨论。
 
