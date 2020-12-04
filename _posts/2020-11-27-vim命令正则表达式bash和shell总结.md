@@ -58,7 +58,7 @@ type -f command
 HOME: 主文件夹  
 PATH: 命令执行路径  
 HITSIZE：历史命令记录条数最大值设置  
-LANG：语系数据，中文一般是zh_CN.UTF-8或者zh_CN.gb2312  
+LANG：语系数据，中文一般是zh_CN.UTF-8或者zh_CN.gb2312  （全局默认语系设置：/etc/sysconfig/i18n）
 RANDOM：随机数变量，$RANDOM 可以获得一个随机数（0-32767之间）  如：echo $RANDOM  
 
 bash自定义变量  
@@ -78,6 +78,46 @@ MACHTYPE：全称
 
 
 ```
+
+变量键盘读取、数组与声明  
+  
+读取键盘输入的变量值存储到variable中： read [-pt] variable  
+  
+  -p: 后面可以接受提示符  
+  -t: 后面可以接等待的“秒数”
+
+声明变量类型：
+declare/typeset
+
+declare -aixr  variable  
+  -a: 将variable变量定义为数组(array)类型  
+  -i：将variable变量定义为整数类型  
+  -x：将variable变成环境变量，用法和export一样  
+  +x：取消将其变成环境变量
+  -r：将变量设置成为readonly类型，该变量不可被更改内容，也不能重设。  
+
+数组设置：
+array：
+```shell
+declare -a Arr  
+Arr[1]=5  
+echo ${Arr[1]}
+```
+
+限制用户使用资源：ulimit  
+ulimit [-SHacdfltu] [配额]  
+  -H：严格地设置，必定不能超过这个设置地数值  
+  -S：警告设置，可以超过这个设置值，但是若超过则有警告信息  
+  a：后面不接任何参数，列出所有限制地额度  
+  -c：当某些进程发生错误时，系统可能会将该进程再内存中地信息写成文件（排错用），这种文件就被称为内核文件，该参数用来限制内核文件大小  
+  -f：此shell可以创建文件的最大容量，单位是kb  
+  -d：系统可以使用的最大段（segment）  
+  -l：可用于锁定的内存量  
+  -t：可使用的最大CPU时间（单位为秒）  
+  -u：单一用户可以使用的最大进程数
+
+
+
 
 
 
