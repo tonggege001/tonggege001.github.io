@@ -134,6 +134,10 @@ echo ${PATH%/*bin:}
 |变量设置方式|str没有设置|str为空字符串|str已设置并且非空字符串|
 |:-:|:-:|:-:|:-:|
 |var=${str-expr}|var=expr|var=|var=$str|
+|var=${str:-expr}|var=expr|var=expr|var=$str|
+|var=${str+expr}|var=|var=expr|var=expr|
+|var=${str:+expr}|var=|var=|var=expr|
+|var=${str=expr}||||
 
 
 
