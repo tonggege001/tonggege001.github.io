@@ -77,15 +77,20 @@ $$ df = tr((\frac{\partial f}{\partial X})^{T}dX) $$
 
 $ f=\boldsymbol{a}^{T}exp(\boldsymbol{Xb}) $ ，求 $ \frac{\partial f}{\partial \boldsymbol{X}} $ 。其中 $ \boldsymbol{a} $ 是 $ m \times 1 $ 列向量， $ \boldsymbol{X} $ 是 $ m \times n $ 矩阵， $ \boldsymbol{b} $ 是 $ n \times 1 $ 列向量，exp表示逐元素求指数，f是标量。  
 
-解：先使用矩阵乘法、逐元素函数法则求微分： 
-$$ df = \boldsymbol{a}^{T}(exp(\boldsymbol{Xb})\odot(d\boldsymbol{Xb})) $$  
+解：先使用矩阵乘法、逐元素函数法则求微分:  
+
+$$ df = \boldsymbol{a}^{T}(exp(\boldsymbol{Xb})\odot(d\boldsymbol{Xb})) $$ 
 
 再套上迹并做交换：  
 
 $$ df = tr(\boldsymbol{a}^{T}(exp(\boldsymbol{Xb})\odot (d\boldsymbol{Xb}))) $$ 
+
 $$ df = tr((\boldsymbol{a} \odot exp(\boldsymbol{Xb}))^{T}d\boldsymbol{Xb}) $$ 
-$$ df = tr(\boldsymbol{b}(\boldsymbol{a} \odot exp(\boldsymbol{Xb}))^{T} d\boldsymbol{X})$$  
+
+$$ df = tr(\boldsymbol{b}(\boldsymbol{a} \odot exp(\boldsymbol{Xb}))^{T} d\boldsymbol{X}) $$  
+
 $$ df = tr(((\boldsymbol{a} \odot exp(\boldsymbol{Xb}))\boldsymbol{b}^{T})^{T}d\boldsymbol{X}) $$  
+
 
 对照导数与微分的联系，  $ df = tr(\frac{\partial f}{\partial \boldsymbol{X}}d\boldsymbol{X}) $ ，得到：  
 
