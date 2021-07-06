@@ -46,7 +46,7 @@ https://revealjs.com/installation/
 
 ## 用markdown写slide
 ### html  页面内嵌入markdown  
-为了用Markdown创建slide，需要在section标签里添加"data-markdown"属性并且需要将内容用<textarea data-template>包裹起来，如下例子：  
+为了用Markdown创建slide，需要在section标签里添加"data-markdown"属性并且需要将内容用\<textarea data-template\>包裹起来，如下例子：  
 ```html
 <section data-markdown>
   <textarea data-template>
@@ -182,7 +182,7 @@ Reveal.initialize({
 })
 ```
 
-注意：嵌入的HTML <video>/<audio>和YouTube/Vimeo iframes会自动暂停当离开这个slide。当然可以对该元素增加data-ignore属性取消这个默认。
+注意：嵌入的HTML \<video\>/\<audio\>和YouTube/Vimeo iframes会自动暂停当离开这个slide。当然可以对该元素增加data-ignore属性取消这个默认。
 
 ### lazy load  
 ```html
@@ -206,7 +206,7 @@ Reveal.initialize({
 </section>
 ```
 
-给代码增加行数：在<code>标签里增加data-line-numbers，如果要高亮，则指定行号即可。例子：  
+给代码增加行数：在\<code\>标签里增加data-line-numbers，如果要高亮，则指定行号即可。例子：  
 ```html
 <pre><code data-line-numbers="3,8-10">
 <table>
@@ -247,7 +247,7 @@ Reveal.initialize({
 </code></pre>
 ```  
 
-如果代码含有<>两个字符会被解析成heml，那么可以使用($lt; $gt;)避开，或者在代码里增加<script type="text/template">会自动处理：  
+如果代码含有<>两个字符会被解析成heml，那么可以使用($lt; $gt;)避开，或者在代码里增加\<script type="text/template"\>会自动处理：  
 ```html
 <pre><code><script type="text/template">
 sealed class Either<out A, out B> {
@@ -274,6 +274,7 @@ sealed class Either<out A, out B> {
 </script>
 ```  
 使用公式的例子：  
+```html
 <section>
   <h2>The Lorenz Equations</h2>
   \[\begin{aligned}
@@ -282,14 +283,14 @@ sealed class Either<out A, out B> {
   \dot{z} &amp; = -\beta z + xy
   \end{aligned} \]
 </section>  
-
+```
 在markdown中使用公式，必须先用反引号将公式括起来，比如：  
 ```markdown
 `$$ J(\theta_0,\theta_1) = \sum_{i=0} $$`
 ```
 
 ## Fragment  
-Fragment被用来在slides上高亮或者逐渐展示子元素，默认的fragment样式是开始不可见然后并淡入。这个样式可以通过增加不同的类来替换。其他样式见(网址)[https://revealjs.com/fragments/]
+Fragment被用来在slides上高亮或者逐渐展示子元素，默认的fragment样式是开始不可见然后并淡入。这个样式可以通过增加不同的类来替换。其他样式见[网址](https://revealjs.com/fragments/)
 ```html
 <p class="fragment">Fade in</p>
 <p class="fragment fade-out">Fade out</p>
@@ -314,7 +315,7 @@ Fragment被用来在slides上高亮或者逐渐展示子元素，默认的fragme
 当指定data-frame-index后，可以指定html渲染的顺序（但是相对位置不会改变）
 
 ## 内部超链接跳转  
-可以通过创建超链接在sildes内进行跳转，首先需要对每个section赋值一个id，然后通过<a href="#/id">进行跳转，一个例子：  
+可以通过创建超链接在sildes内进行跳转，首先需要对每个section赋值一个id，然后通过\<a href="#/id"\>进行跳转，一个例子：  
 
 ```html
 <section>
