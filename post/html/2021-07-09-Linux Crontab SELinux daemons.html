@@ -1,0 +1,203 @@
+<!DOCTYPE html><html><head>
+      <title>2021-07-09-Linux Crontab SElinux daemons</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      pre{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;padding:1em;margin:.5em 0;overflow:auto;line-height:1.5;tab-size:4;hyphens:none;color:#2b3f6a;background-color:#eee9dd !important;border:#ddd3bb;border-radius:3px}pre[class*="language-"]{padding:1em}code[class*="language-"] .token.comment,pre[class*="language-"] .token.comment,code[class*="language-"] .token.prolog,pre[class*="language-"] .token.prolog,code[class*="language-"] .token.doctype,pre[class*="language-"] .token.doctype,code[class*="language-"] .token.cdata,pre[class*="language-"] .token.cdata{color:#9ca3b0;font-style:italic}code[class*="language-"] .token.punctuation,pre[class*="language-"] .token.punctuation{color:#9ca3b0}code[class*="language-"] .namespace,pre[class*="language-"] .namespace{opacity:.7}code[class*="language-"] .token.constant,pre[class*="language-"] .token.constant{color:#c16161}code[class*="language-"] .token.boolean,pre[class*="language-"] .token.boolean,code[class*="language-"] .token.number,pre[class*="language-"] .token.number,code[class*="language-"] .token.function-name,pre[class*="language-"] .token.function-name{color:#c16161}code[class*="language-"] .token.tag,pre[class*="language-"] .token.tag{color:#ac4343}code[class*="language-"] .token.symbol,pre[class*="language-"] .token.symbol{color:#8f932b}code[class*="language-"] .token.selector,pre[class*="language-"] .token.selector{color:#d08e25}code[class*="language-"] .token.attr-name,pre[class*="language-"] .token.attr-name{color:#d08e25}code[class*="language-"] .token.string,pre[class*="language-"] .token.string{background-color:rgba(255,204,0,0.03);color:rgba(106,68,28,0.77)}code[class*="language-"] .token.char,pre[class*="language-"] .token.char{color:#8f932b}code[class*="language-"] .token.url,pre[class*="language-"] .token.url{color:#d08e25}code[class*="language-"] .token.atrule,pre[class*="language-"] .token.atrule,code[class*="language-"] .token.attr-value,pre[class*="language-"] .token.attr-value,code[class*="language-"] .token.keyword,pre[class*="language-"] .token.keyword{color:#8f932b}code[class*="language-"] .token.function,pre[class*="language-"] .token.function{color:#d08e25}code[class*="language-"] .token.class-name,pre[class*="language-"] .token.class-name{color:#2b3f6a}code[class*="language-"] .token.variable,pre[class*="language-"] .token.variable{color:#5e78e1}code[class*="language-"] .token.regex,pre[class*="language-"] .token.regex,code[class*="language-"] .token.important,pre[class*="language-"] .token.important{color:#379566}code[class*="language-"] .token.important,pre[class*="language-"] .token.important,code[class*="language-"] .token.bold,pre[class*="language-"] .token.bold{font-weight:bold}code[class*="language-"] .token.italic,pre[class*="language-"] .token.italic{font-style:italic}code[class*="language-"] .token.entity,pre[class*="language-"] .token.entity{cursor:help}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:rgba(153,122,102,0.08);background:linear-gradient(to right, rgba(153,122,102,0.1) 70%, rgba(153,122,102,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:rgba(153,122,102,0.4);color:#f5f2f0;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px white}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}body{font-size:16px;background-color:#f3f2ee;font-family:"PT Serif",'Times New Roman',Times;color:#1f0909;line-height:1.5em}body ol,body ul{list-style:none}body blockquote,body q{quotes:none}body blockquote:before,body blockquote:after,body q:before,body q:after{content:'';content:none}body table{border-collapse:collapse;border-spacing:0}body h1,body h2,body h3,body h4,body h5,body h6{font-weight:bold}body h1{font-size:1.875em;line-height:1.6em;margin-top:2em}body h2,body h3{font-size:1.3125em;line-height:1.15;margin-top:2.285714em;margin-bottom:1.15em}body h3{font-weight:normal}body h4{font-size:1.125em;margin-top:2.67em}body h5,body h6{font-size:1em}body h1{border-bottom:1px solid;margin-bottom:1.875em;padding-bottom:.8125em}body a{text-decoration:none;color:#065588}body a:hover,body a:active{text-decoration:underline}body p,body blockquote,body .md-fences{margin-bottom:1.5em}body h1,body h2,body h3,body h4,body h5,body h6{margin-bottom:1.5em}body blockquote{font-style:italic;border-left:5px solid;margin-left:2em;padding-left:1em}body ul,body ol{margin:0 0 1.5em 1.5em}body ol li{list-style-type:decimal;list-style-position:outside}body ul li{list-style-type:disc;list-style-position:outside}body li>p{margin-top:0;margin-bottom:0}body .md-meta,body .md-before,body .md-after{color:#999}body table{margin-bottom:1.5em;font-size:1em}body thead th,body tfoot th{padding:.25em .25em .25em .4em;text-transform:uppercase}body th{text-align:left}body td{vertical-align:top;padding:.25em .25em .25em .4em}body code,body .md-fences{color:inherit;background-color:#dadada;padding-left:1ch;padding-right:1ch}body pre code{background-color:inherit}body .md-fences{margin-left:2em;margin-bottom:3em}body .md-fences .CodeMirror.CodeMirror-wrap{top:-0.8em}body pre,body code,body tt{font-size:.875em;line-height:1.714285em}body h1{line-height:1.3em;font-weight:normal;margin-bottom:.5em}body p+ul,body p+ol{margin-top:-1em}body h3+ul,body h4+ul,body h5+ul,body h6+ul,body h3+ol,body h4+ol,body h5+ol,body h6+ol{margin-top:.5em}body li>ul,body li>ol{margin-top:inherit}body h2,body h3{margin-bottom:.75em}body hr{border-top:none;border-right:none;border-bottom:1px solid;border-left:none}body h1{border-color:#c5c5c5}body blockquote{border-color:#bababa;color:#656565;background-color:#e6e4dc}body thead.md-table-edit{background-color:transparent}body thead{background-color:#dadada}body tr:nth-child(even){background:#e8e7e7}body hr{border-color:#c5c5c5}body .task-list{padding-left:1rem}body .task-list-item{list-style-type:none;margin-left:-1.8em}body .task-list-item .task-list-item-checkbox{margin-right:.8em}body .task-list-item input:before{content:'\221A';display:inline-block;width:1.25rem;height:1.5rem;vertical-align:middle;text-align:center;color:#ddd;background-color:#F3F2EE}body .task-list-item input:checked:before,body .task-list-item input[checked]:before{color:inherit}body img{max-width:100%}body kbd{color:#1f0909}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h2 class="mume-header" id="1-crontab">1. Crontab</h2>
+
+<h3 class="mume-header" id="at%E5%91%BD%E4%BB%A4">at&#x547D;&#x4EE4;</h3>
+
+<p>&#x5728;&#x67D0;&#x4E00;&#x4E2A;&#x65F6;&#x95F4;&#x70B9;&#x53EA;&#x6267;&#x884C;&#x4E00;&#x6B21;&#x7684;&#x547D;&#x4EE4;&#x3002;</p>
+<h3 class="mume-header" id="crontab%E5%91%BD%E4%BB%A4">crontab&#x547D;&#x4EE4;</h3>
+
+<p>&#x5FAA;&#x73AF;&#x5728;&#x67D0;&#x4E2A;&#x65F6;&#x95F4;&#x70B9;&#x6267;&#x884C;&#xFF0C;&#x5206;&#x4E3A;&#x7528;&#x6237;Crontab&#x548C;&#x7CFB;&#x7EDF;crontab&#xFF0C;&#x7528;&#x6237;crontab -u username&#xFF0C;&#x7CFB;&#x7EDF;crontab&#x9700;&#x8981;&#x7F16;&#x8F91;/etc/crontab&#xFF0C;&#x540C;&#x65F6;crontab.weekly&#x76EE;&#x5F55;&#x4E0B;&#x5B58;&#x653E;&#x6BCF;&#x5468;&#x9700;&#x8981;&#x6267;&#x884C;&#x7684;&#x811A;&#x672C;&#x3002;</p>
+<h3 class="mume-header" id="anacron">anacron</h3>
+
+<p>&#x5904;&#x7406;&#x975E;24&#x5C0F;&#x65F6;&#x542F;&#x52A8;&#x7684;Linux&#xFF0C;&#x7528;&#x6765;&#x8865;&#x5145;&#x6267;&#x884C;&#x5173;&#x673A;&#x8FD9;&#x6BB5;&#x65F6;&#x95F4;&#x9700;&#x8981;&#x6267;&#x884C;&#x7684;&#x547D;&#x4EE4;&#xFF0C;&#x4E00;&#x822C;&#x7528;&#x9ED8;&#x8BA4;&#x53C2;&#x6570;&#x5373;&#x53EF;&#x3002;</p>
+<h2 class="mume-header" id="2-%E8%BF%9B%E7%A8%8B%E6%93%8D%E4%BD%9C">2. &#x8FDB;&#x7A0B;&#x64CD;&#x4F5C;</h2>
+
+<p>&amp;: &#x8BA9;&#x8FD9;&#x4E2A;&#x8FDB;&#x7A0B;&#x653E;&#x7F6E;&#x5728;&#x540E;&#x53F0;&#x6267;&#x884C;&#xFF0C;&#x5728;&#x8FD9;&#x4E00;&#x4E2A;&#x7EC8;&#x7AEF;&#x8FD8;&#x53EF;&#x4EE5;&#x7EE7;&#x7EED;&#x63A5;&#x53D7;&#x5176;&#x4ED6;&#x547D;&#x4EE4;&#x3002;&#x82E5;&#x7EC8;&#x7AEF;&#x5173;&#x95ED;&#x5219;&#x540E;&#x53F0;&#x8FDB;&#x7A0B;&#x4E5F;&#x4F1A;&#x5173;&#x95ED;&#xFF0C;&#x6240;&#x4EE5;&#x4E00;&#x822C;&#x642D;&#x914D;nohup&#x3002;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">cp</span> file1 file2 <span class="token operator">&amp;</span>
+</pre><p>ctrl-z&#xFF1A;&#x6682;&#x505C;&#x8FDB;&#x7A0B;</p>
+<p>&#x5217;&#x51FA;&#x76EE;&#x524D;&#x7684;&#x540E;&#x53F0;&#x5DE5;&#x4F5C;&#x72B6;&#x6001;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">jobs</span> <span class="token punctuation">[</span>-lrs<span class="token punctuation">]</span>  
+-l: &#x5217;&#x51FA;&#x540E;&#x53F0;job number&#x7684;&#x8FDB;&#x7A0B;&#xFF08;run&#x6216;&#x8005;&#x6682;&#x505C;&#x7684;&#xFF09;&#xFF0C;&#x540C;&#x65F6;&#x5217;&#x51FA;PID  
+-r: &#x4EC5;&#x5217;&#x51FA;&#x6B63;&#x5728;&#x540E;&#x53F0;run&#x7684;&#x5DE5;&#x4F5C;  
+-s: &#x4EC5;&#x5217;&#x51FA;&#x6B63;&#x5728;&#x540E;&#x53F0;&#x4E2D;&#x6682;&#x505C;&#x7684;&#x5DE5;&#x4F5C;  
+</pre><p>&#x5C06;&#x540E;&#x53F0;&#x5DE5;&#x4F5C;&#x62FF;&#x5230;&#x524D;&#x53F0;&#x6765;&#x5904;&#x7406;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">fg</span> %jobumber  
+
+<span class="token operator">&gt;</span> <span class="token function">jobs</span>  
+<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>- <span class="token number">10314</span> Stopped <span class="token function">vim</span> ~/.bashrc  
+<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>+ <span class="token number">10833</span> Stopped <span class="token function">find</span> / -print  
+
+<span class="token operator">&gt;</span> <span class="token function">fg</span>        <span class="token comment"># &#x9ED8;&#x8BA4;&#x53D6;&#x51FA;+&#x7684;&#x90A3;&#x4E2A;&#x5DE5;&#x4F5C;&#xFF0C;&#x8868;&#x793A;&#x521A;&#x6DFB;&#x52A0;&#x5230;&#x540E;&#x53F0;&#x8FDB;&#x7A0B;  </span>
+<span class="token operator">&gt;</span> <span class="token function">fg</span> %1  
+</pre><p>&#x8BA9;&#x5DE5;&#x4F5C;&#x5728;&#x540E;&#x53F0;&#x4E0B;&#x7684;&#x72B6;&#x6001;&#x53D8;&#x6210;&#x8FD0;&#x884C;&#x4E2D;: bg<br>
+&#x56E0;&#x4E3A;[ctrl]+z&#x8BA9;&#x8FDB;&#x7A0B;&#x5728;&#x540E;&#x53F0;&#x53D8;&#x6210;&#x6682;&#x505C;&#x72B6;&#x6001;&#xFF0C;&#x6B64;&#x65F6;&#x53EF;&#x4EE5;&#x7528;bg&#x547D;&#x4EE4;&#x8BA9;&#x8FDB;&#x7A0B;&#x5728;&#x540E;&#x53F0;&#x53D8;&#x6210;Run&#x72B6;&#x6001;&#x3002;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">bg</span> %jobnumber  
+<span class="token comment"># &#x6216;&#x8005;&#x76F4;&#x63A5;bg&#xFF0C;&#x9ED8;&#x8BA4;&#x9009;&#x62E9;+&#x90A3;&#x4E2A;&#x8FDB;&#x7A0B;  </span>
+</pre><p>&#x7BA1;&#x7406;&#x540E;&#x53F0;&#x5F53;&#x4E2D;&#x7684;&#x5DE5;&#x4F5C;&#xFF1A;kill<br>
+&#x5217;&#x51FA;&#x540E;&#x53F0;&#x80FD;&#x7528;&#x7684;&#x4FE1;&#x53F7;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">kill</span> -l  
+</pre><p>&#x53D1;&#x9001;&#x4FE1;&#x53F7;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">kill</span> -signal %jobnumber&#xFF08;&#x76F4;&#x63A5;&#x63A5;&#x6570;&#x5B57;&#x8868;&#x793A;pid&#xFF09;  
+<span class="token comment"># signal: &#x4FE1;&#x53F7;&#x5E8F;&#x53F7;  </span>
+<span class="token comment"># -1&#xFF1A;&#x91CD;&#x65B0;&#x8BFB;&#x53D6;&#x4E00;&#x6B21;&#x53C2;&#x6570;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x7C7B;&#x4F3C;&#x4E8E;reload  </span>
+<span class="token comment"># -2&#xFF1A;&#x4EE3;&#x8868;&#x4E0E;&#x7531;&#x952E;&#x76D8;&#x8F93;&#x5165;ctrl-c&#x540C;&#x6837;&#x7684;&#x64CD;&#x4F5C;  </span>
+<span class="token comment"># -9&#xFF1A;&#x7ACB;&#x523B;&#x5F3A;&#x5236;&#x5220;&#x9664;&#x4E00;&#x4E2A;&#x5DE5;&#x4F5C;  </span>
+<span class="token comment"># -15&#xFF1A;&#x4EE5;&#x6B63;&#x5E38;&#x7684;&#x7A0B;&#x5E8F;&#x65B9;&#x5F0F;&#x7EC8;&#x6B62;&#x4E00;&#x9879;&#x5DE5;&#x4F5C;  </span>
+<span class="token comment"># -SIGTERM&#xFF1A;&#x4E0E;-15&#x662F;&#x4E00;&#x6837;&#x7684;</span>
+</pre><p>-9&#x548C;-15&#x533A;&#x522B;&#xFF1A;&#x5982;&#x679C;&#x7528;vi&#x6253;&#x5F00;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x5982;&#x679C;&#x662F;-15&#x9000;&#x51FA;&#x5219;&#x4E0D;&#x4F1A;&#x7531;.swap&#x6587;&#x4EF6;&#xFF0C;&#x5982;&#x679C;&#x662F;-9&#x5F02;&#x5E38;&#x9000;&#x51FA;&#xFF0C;&#x5219;&#x7531;.swap&#x4E34;&#x65F6;&#x6587;&#x4EF6;&#x3002;</p>
+<h3 class="mume-header" id="1723-%E8%84%B1%E6%9C%BA%E7%AE%A1%E7%90%86">17.2.3 &#x8131;&#x673A;&#x7BA1;&#x7406;</h3>
+
+<p>&#x5F53;&#x5173;&#x95ED;SSH&#x8FDE;&#x63A5;&#x540E;&#xFF0C;&#x524D;&#x53F0;&#x548C;&#x540E;&#x53F0;&#x7684;&#x8FDB;&#x7A0B;&#x90FD;&#x4F1A;&#x88AB;&#x5173;&#x95ED;&#xFF0C;&#x800C;nohup&#x8BA9;&#x8FDB;&#x7A0B;&#x8131;&#x673A;&#x7BA1;&#x7406;&#xFF0C;&#x914D;&#x5408;&amp;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x540E;&#x53F0;&#x8131;&#x673A;&#x7BA1;&#x7406;&#x3002;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">nohup</span> xxxx <span class="token operator">&amp;</span>
+</pre><h3 class="mume-header" id="1731-%E8%BF%9B%E7%A8%8B%E6%9F%A5%E7%9C%8B">17.3.1 &#x8FDB;&#x7A0B;&#x67E5;&#x770B;</h3>
+
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token comment"># &#x67E5;&#x770B;&#x7528;&#x6237;&#x7684;&#x8FDB;&#x7A0B;&#x4FE1;&#x606F;  </span>
+<span class="token function">ps</span> -l  
+<span class="token comment"># &#x67E5;&#x770B;&#x6240;&#x6709;&#x7684;&#x8FDB;&#x7A0B;&#x4FE1;&#x606F;  </span>
+<span class="token function">ps</span> -aux  
+</pre><p>&#x5404;&#x4E2A;&#x5B57;&#x6BB5;&#x663E;&#x793A;&#x7684;&#x767E;&#x5206;&#x6BD4;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">&#x6807;&#x8BC6;&#x7B26;</th>
+<th style="text-align:center">&#x4F5C;&#x7528;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">USER</td>
+<td style="text-align:center">&#x8BE5;&#x8FDB;&#x7A0B;&#x5C5E;&#x4E8E;&#x54EA;&#x4E2A;&#x7528;&#x6237;&#x8D26;&#x53F7;</td>
+</tr>
+<tr>
+<td style="text-align:center">PID</td>
+<td style="text-align:center">&#x8FDB;&#x7A0B;&#x7684;PID</td>
+</tr>
+<tr>
+<td style="text-align:center">%CPU</td>
+<td style="text-align:center">&#x8BE5;&#x8FDB;&#x7A0B;&#x4F7F;&#x7528;&#x6389;&#x7684;CPU&#x8D44;&#x6E90;&#x767E;&#x5206;&#x6BD4;</td>
+</tr>
+<tr>
+<td style="text-align:center">%MEM</td>
+<td style="text-align:center">&#x8BE5;&#x8FDB;&#x7A0B;&#x6240;&#x5360;&#x7528;&#x7684;<strong>&#x7269;&#x7406;&#x5185;&#x5B58;</strong>&#x767E;&#x5206;&#x6BD4;</td>
+</tr>
+<tr>
+<td style="text-align:center">VSZ</td>
+<td style="text-align:center">&#x8BE5;&#x8FDB;&#x7A0B;&#x4F7F;&#x7528;&#x6389;&#x7684;&#x865A;&#x62DF;&#x5185;&#x5B58;&#x91CF;(KB)</td>
+</tr>
+<tr>
+<td style="text-align:center">RSS</td>
+<td style="text-align:center">&#x8BE5;&#x8FDB;&#x7A0B;&#x5360;&#x7528;&#x7684;&#x56FA;&#x5B9A;&#x7684;&#x5185;&#x5B58;&#x91CF;</td>
+</tr>
+<tr>
+<td style="text-align:center">TTY</td>
+<td style="text-align:center">&#x8BE5;&#x8FDB;&#x7A0B;&#x662F;&#x5728;&#x54EA;&#x4E2A;&#x7EC8;&#x7AEF;&#x673A;&#x4E0A;&#x8FD0;&#x884C;&#xFF0C;&#x82E5;&#x4E0E;&#x7EC8;&#x7AEF;&#x673A;&#x65E0;&#x5173;&#x5219;&#x663E;&#x793A;?</td>
+</tr>
+<tr>
+<td style="text-align:center">&#x53E6;&#x5916;</td>
+<td style="text-align:center">tty1~tty6&#x662F;&#x672C;&#x673A;&#x4E0A;&#x9762;&#x7684;&#x767B;&#x5F55;&#x8005;&#x7A0B;&#x5E8F;, pts/0&#x662F;&#x7F51;&#x7EDC;&#x8FDE;&#x63A5;&#x8FDB;&#x4E3B;&#x673A;&#x7684;&#x8FDB;&#x7A0B;</td>
+</tr>
+<tr>
+<td style="text-align:center">START</td>
+<td style="text-align:center">&#x8BE5;&#x8FDB;&#x7A0B;&#x88AB;&#x89E6;&#x53D1;&#x542F;&#x52A8;&#x7684;&#x65F6;&#x95F4;</td>
+</tr>
+<tr>
+<td style="text-align:center">STAT</td>
+<td style="text-align:center">&#x8BE5;&#x8FDB;&#x7A0B;&#x76EE;&#x524D;&#x7684;&#x72B6;&#x6001;(R:runing, S:sleep, D: &#x4E0D;&#x53EF;&#x88AB;&#x5524;&#x9192;&#x7684;&#x7761;&#x7720;&#x72B6;&#x6001;)</td>
+</tr>
+<tr>
+<td style="text-align:center">T:&#x505C;&#x6B62;&#x72B6;&#x6001;</td>
+<td style="text-align:center">&#x53EF;&#x80FD;&#x662F;&#x5DE5;&#x4F5C;&#x63A7;&#x5236;&#xFF08;&#x540E;&#x53F0;&#x6682;&#x505C;&#x6216;&#x8005;&#x9664;&#x9519;&#xFF09;, Z:zombie&#xFF1A;&#x50F5;&#x5C38;&#x72B6;&#x6001;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x52A8;&#x6001;&#x67E5;&#x770B;&#x65F6;&#x95F4;&#x6BB5;&#x5185;&#x5404;&#x4E2A;&#x53C2;&#x6570;&#x7684;&#x53D8;&#x5316;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token comment"># &#x6309;&#x79D2;&#x6570;&#x66F4;&#x65B0;</span>
+<span class="token function">top</span> <span class="token punctuation">[</span>-d &#x79D2;&#x6570;<span class="token punctuation">]</span>  
+
+<span class="token comment"># &#x5728;&#x66F4;&#x65B0;&#x754C;&#x9762;&#x6309;&#x4E0B;M&#x5C31;&#x53EF;&#x4EE5;&#x6309;&#x7167;&#x5185;&#x5B58;&#x5360;&#x6BD4;&#x6392;&#x5E8F;&#xFF0C;&#x6309;&#x4E0B;P&#x6309;&#x7167;CPU&#x5360;&#x6BD4;&#x6392;&#x5E8F;&#xFF0C;&#x6309;&#x4E0B;Q&#x79BB;&#x5F00;  </span>
+
+<span class="token comment"># &#x53EA;&#x67E5;&#x770B;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;  </span>
+<span class="token function">top</span> -d <span class="token number">2</span> -p PID  
+</pre><p>pstree: &#x67E5;&#x770B;&#x8FDB;&#x7A0B;&#x7684;&#x7236;&#x5B50;&#x5173;&#x7CFB;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token comment"># &#x5217;&#x51FA;&#x76EE;&#x524D;&#x7CFB;&#x7EDF;&#x4E0A;&#x9762;&#x6240;&#x6709;&#x7684;&#x8FDB;&#x7A0B;&#x6811;&#x7684;&#x76F8;&#x5173;&#x6027;   </span>
+pstree -A  
+
+<span class="token comment"># &#x540C;&#x65F6;&#x663E;&#x793A;&#x51FA;PID&#x548C;users  </span>
+pstree -Aup
+</pre><p>&#x53D1;&#x9001;&#x4FE1;&#x53F7;&#xFF1A;<br>
+kill -signal PID&#xFF08;&#x6216;&#x8005;%jobnumber&#x4E5F;&#x53EF;&#x4EE5;&#xFF09;<br>
+&#x5E38;&#x7528;&#x4FE1;&#x53F7;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">&#x4EE3;&#x53F7;</th>
+<th style="text-align:center">&#x540D;&#x79F0;</th>
+<th style="text-align:center">&#x5185;&#x5BB9;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">SIGHUP</td>
+<td style="text-align:center">&#x542F;&#x52A8;&#x88AB;&#x7EC8;&#x6B62;&#x7684;&#x8FDB;&#x7A0B;&#xFF0C;&#x53EF;&#x8BA9;&#x8BE5;PID&#x91CD;&#x65B0;&#x8BFB;&#x53D6;&#x81EA;&#x5DF1;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x7C7B;&#x4F3C;&#x91CD;&#x65B0;&#x542F;&#x52A8;</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">SIGINT</td>
+<td style="text-align:center">&#x76F8;&#x5F53;&#x4E8E;&#x7528;&#x952E;&#x76D8;&#x8F93;&#x5165;[ctrl]+c&#x6765;&#x4E2D;&#x65AD;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x7684;&#x8FDB;&#x884C;</td>
+</tr>
+<tr>
+<td style="text-align:center">9</td>
+<td style="text-align:center">SIGKILL</td>
+<td style="text-align:center">&#x5F3A;&#x5236;&#x4E2D;&#x65AD;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#xFF0C;&#x5C1A;&#x672A;&#x5B8C;&#x6210;&#x7684;&#x90E8;&#x5206;&#x53EF;&#x80FD;&#x4F1A;&#x6709;&#x534A;&#x4EA7;&#x54C1;&#x4EA7;&#x751F;&#xFF0C;&#x6BD4;&#x5982;.swap&#x6587;&#x4EF6;</td>
+</tr>
+<tr>
+<td style="text-align:center">15</td>
+<td style="text-align:center">SIGTERM</td>
+<td style="text-align:center">&#x4EE5;&#x6B63;&#x5E38;&#x7684;&#x7ED3;&#x675F;&#x8FDB;&#x7A0B;&#x6765;&#x7EC8;&#x6B62;&#xFF0C;&#x5982;&#x679C;&#x8FDB;&#x7A0B;&#x5DF2;&#x7ECF;&#x53D1;&#x751F;&#x95EE;&#x9898;&#xFF0C;&#x5219;&#x8F93;&#x5165;signal&#x6CA1;&#x6709;&#x7528;&#x7684;</td>
+</tr>
+<tr>
+<td style="text-align:center">17</td>
+<td style="text-align:center">SIGSTOP</td>
+<td style="text-align:center">&#x76F8;&#x5F53;&#x4E8E;[ctrl]+z&#x6765;&#x6682;&#x505C;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x7684;&#x8FDB;&#x884C;</td>
+</tr>
+</tbody>
+</table>
+<p>killall -signal command</p>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>

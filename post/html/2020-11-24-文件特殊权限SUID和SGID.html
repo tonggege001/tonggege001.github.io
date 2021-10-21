@@ -1,0 +1,278 @@
+<!DOCTYPE html><html><head>
+      <title>2020-11-24-&#x6587;&#x4EF6;&#x7279;&#x6B8A;&#x6743;&#x9650;SUID&#x3001;SGID&#x548C;SBIT</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      pre{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;padding:1em;margin:.5em 0;overflow:auto;line-height:1.5;tab-size:4;hyphens:none;color:#2b3f6a;background-color:#eee9dd !important;border:#ddd3bb;border-radius:3px}pre[class*="language-"]{padding:1em}code[class*="language-"] .token.comment,pre[class*="language-"] .token.comment,code[class*="language-"] .token.prolog,pre[class*="language-"] .token.prolog,code[class*="language-"] .token.doctype,pre[class*="language-"] .token.doctype,code[class*="language-"] .token.cdata,pre[class*="language-"] .token.cdata{color:#9ca3b0;font-style:italic}code[class*="language-"] .token.punctuation,pre[class*="language-"] .token.punctuation{color:#9ca3b0}code[class*="language-"] .namespace,pre[class*="language-"] .namespace{opacity:.7}code[class*="language-"] .token.constant,pre[class*="language-"] .token.constant{color:#c16161}code[class*="language-"] .token.boolean,pre[class*="language-"] .token.boolean,code[class*="language-"] .token.number,pre[class*="language-"] .token.number,code[class*="language-"] .token.function-name,pre[class*="language-"] .token.function-name{color:#c16161}code[class*="language-"] .token.tag,pre[class*="language-"] .token.tag{color:#ac4343}code[class*="language-"] .token.symbol,pre[class*="language-"] .token.symbol{color:#8f932b}code[class*="language-"] .token.selector,pre[class*="language-"] .token.selector{color:#d08e25}code[class*="language-"] .token.attr-name,pre[class*="language-"] .token.attr-name{color:#d08e25}code[class*="language-"] .token.string,pre[class*="language-"] .token.string{background-color:rgba(255,204,0,0.03);color:rgba(106,68,28,0.77)}code[class*="language-"] .token.char,pre[class*="language-"] .token.char{color:#8f932b}code[class*="language-"] .token.url,pre[class*="language-"] .token.url{color:#d08e25}code[class*="language-"] .token.atrule,pre[class*="language-"] .token.atrule,code[class*="language-"] .token.attr-value,pre[class*="language-"] .token.attr-value,code[class*="language-"] .token.keyword,pre[class*="language-"] .token.keyword{color:#8f932b}code[class*="language-"] .token.function,pre[class*="language-"] .token.function{color:#d08e25}code[class*="language-"] .token.class-name,pre[class*="language-"] .token.class-name{color:#2b3f6a}code[class*="language-"] .token.variable,pre[class*="language-"] .token.variable{color:#5e78e1}code[class*="language-"] .token.regex,pre[class*="language-"] .token.regex,code[class*="language-"] .token.important,pre[class*="language-"] .token.important{color:#379566}code[class*="language-"] .token.important,pre[class*="language-"] .token.important,code[class*="language-"] .token.bold,pre[class*="language-"] .token.bold{font-weight:bold}code[class*="language-"] .token.italic,pre[class*="language-"] .token.italic{font-style:italic}code[class*="language-"] .token.entity,pre[class*="language-"] .token.entity{cursor:help}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:rgba(153,122,102,0.08);background:linear-gradient(to right, rgba(153,122,102,0.1) 70%, rgba(153,122,102,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:rgba(153,122,102,0.4);color:#f5f2f0;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px white}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}body{font-size:16px;background-color:#f3f2ee;font-family:"PT Serif",'Times New Roman',Times;color:#1f0909;line-height:1.5em}body ol,body ul{list-style:none}body blockquote,body q{quotes:none}body blockquote:before,body blockquote:after,body q:before,body q:after{content:'';content:none}body table{border-collapse:collapse;border-spacing:0}body h1,body h2,body h3,body h4,body h5,body h6{font-weight:bold}body h1{font-size:1.875em;line-height:1.6em;margin-top:2em}body h2,body h3{font-size:1.3125em;line-height:1.15;margin-top:2.285714em;margin-bottom:1.15em}body h3{font-weight:normal}body h4{font-size:1.125em;margin-top:2.67em}body h5,body h6{font-size:1em}body h1{border-bottom:1px solid;margin-bottom:1.875em;padding-bottom:.8125em}body a{text-decoration:none;color:#065588}body a:hover,body a:active{text-decoration:underline}body p,body blockquote,body .md-fences{margin-bottom:1.5em}body h1,body h2,body h3,body h4,body h5,body h6{margin-bottom:1.5em}body blockquote{font-style:italic;border-left:5px solid;margin-left:2em;padding-left:1em}body ul,body ol{margin:0 0 1.5em 1.5em}body ol li{list-style-type:decimal;list-style-position:outside}body ul li{list-style-type:disc;list-style-position:outside}body li>p{margin-top:0;margin-bottom:0}body .md-meta,body .md-before,body .md-after{color:#999}body table{margin-bottom:1.5em;font-size:1em}body thead th,body tfoot th{padding:.25em .25em .25em .4em;text-transform:uppercase}body th{text-align:left}body td{vertical-align:top;padding:.25em .25em .25em .4em}body code,body .md-fences{color:inherit;background-color:#dadada;padding-left:1ch;padding-right:1ch}body pre code{background-color:inherit}body .md-fences{margin-left:2em;margin-bottom:3em}body .md-fences .CodeMirror.CodeMirror-wrap{top:-0.8em}body pre,body code,body tt{font-size:.875em;line-height:1.714285em}body h1{line-height:1.3em;font-weight:normal;margin-bottom:.5em}body p+ul,body p+ol{margin-top:-1em}body h3+ul,body h4+ul,body h5+ul,body h6+ul,body h3+ol,body h4+ol,body h5+ol,body h6+ol{margin-top:.5em}body li>ul,body li>ol{margin-top:inherit}body h2,body h3{margin-bottom:.75em}body hr{border-top:none;border-right:none;border-bottom:1px solid;border-left:none}body h1{border-color:#c5c5c5}body blockquote{border-color:#bababa;color:#656565;background-color:#e6e4dc}body thead.md-table-edit{background-color:transparent}body thead{background-color:#dadada}body tr:nth-child(even){background:#e8e7e7}body hr{border-color:#c5c5c5}body .task-list{padding-left:1rem}body .task-list-item{list-style-type:none;margin-left:-1.8em}body .task-list-item .task-list-item-checkbox{margin-right:.8em}body .task-list-item input:before{content:'\221A';display:inline-block;width:1.25rem;height:1.5rem;vertical-align:middle;text-align:center;color:#ddd;background-color:#F3F2EE}body .task-list-item input:checked:before,body .task-list-item input[checked]:before{color:inherit}body img{max-width:100%}body kbd{color:#1f0909}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="%E5%89%8D%E8%A8%80">&#x524D;&#x8A00;</h1>
+
+<p>&#x672C;&#x6587;&#x7AE0;&#x662F;&#x8F6C;&#x8F7D;&#x7684;&#xFF0C;<a href="https://www.cnblogs.com/fhefh/archive/2011/09/20/2182155.html">&#x539F;&#x6587;&#x5730;&#x5740;</a></p>
+<p>&#x7531;&#x4E8E;&#x7528;&#x6237;&#x5728;UNIX&#x4E0B;&#x7ECF;&#x5E38;&#x4F1A;&#x9047;&#x5230;SUID&#x3001;SGID&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x800C;&#x4E14;SUID&#x548C;SGID&#x6D89;&#x53CA;&#x5230;&#x7CFB;&#x7EDF;&#x5B89;&#x5168;&#xFF0C;&#x6240;&#x4EE5;&#x7528;&#x6237;&#x4E5F;&#x6BD4;&#x8F83;&#x5173;&#x5FC3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x3002;&#x5173;&#x4E8E;SUID&#x3001;SGID&#x7684;&#x95EE;&#x9898;&#x4E5F;&#x7ECF;&#x5E38;&#x6709;&#x4EBA;&#x63D0;&#x95EE;&#xFF0C;&#x4F46;&#x56DE;&#x7B54;&#x7684;&#x4EBA;&#x4E00;&#x822C;&#x7B54;&#x5F97;&#x4E0D;&#x591F;&#x8BE6;&#x7EC6;&#xFF0C;&#x52A0;&#x4E0A;&#x66FE;&#x7ECF;&#x56DE;&#x7B54;&#x8FC7;&#x4E24;&#x4E2A;&#x7F51;&#x53CB;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x8FD8;&#x67E5;&#x4E86;&#x4E00;&#x4E9B;&#x8D44;&#x6599;&#xFF0C;&#x51B3;&#x5B9A;&#x6574;&#x7406;&#x6210;&#x672C;&#x6587;&#xFF0C;&#x4EE5;&#x4F9B;&#x5927;&#x5BB6;&#x53C2;&#x8003;&#x3002;&#x9650;&#x4E8E;&#x672C;&#x4EBA;&#x7684;&#x6C34;&#x5E73;&#x95EE;&#x9898;&#xFF0C;&#x6587;&#x7AE0;&#x4E2D;&#x5982;&#x679C;&#x6709;&#x4E0D;&#x5F53;&#x4E4B;&#x5904;&#xFF0C;&#x8BF7;&#x5E7F;&#x5927;&#x7F51;&#x53CB;&#x6307;&#x6B63;&#x3002;</p>
+<h1 class="mume-header" id="%E4%B8%80-unix%E4%B8%8B%E5%85%B3%E4%BA%8E%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E7%9A%84%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95%E5%92%8C%E8%A7%A3%E6%9E%90">&#x4E00;&#x3001;UNIX&#x4E0B;&#x5173;&#x4E8E;&#x6587;&#x4EF6;&#x6743;&#x9650;&#x7684;&#x8868;&#x793A;&#x65B9;&#x6CD5;&#x548C;&#x89E3;&#x6790;</h1>
+
+<ul>
+<li>SUID &#x662F; Set User ID</li>
+<li>SGID &#x662F; Set Group ID</li>
+</ul>
+<p>UNIX&#x4E0B;&#x53EF;&#x4EE5;&#x7528;ls -l&#x547D;&#x4EE4;&#x6765;&#x770B;&#x5230;&#x6587;&#x4EF6;&#x7684;&#x6743;&#x9650;&#x3002;&#x7528;ls&#x547D;&#x4EE4;&#x6240;&#x5F97;&#x5230;&#x7684;&#x8868;&#x793A;&#x6CD5;&#x7684;&#x683C;&#x5F0F;&#x662F;&#x7C7B;&#x4F3C;&#x8FD9;&#x6837;&#x7684;&#xFF1A;-rwxr-xr-x &#x3002;&#x4E0B;&#x9762;&#x89E3;&#x6790;&#x4E00;&#x4E0B;&#x683C;&#x5F0F;&#x6240;&#x8868;&#x793A;&#x7684;&#x610F;&#x601D;&#x3002;&#x8FD9;&#x79CD;&#x8868;&#x793A;&#x65B9;&#x6CD5;&#x4E00;&#x5171;&#x6709;&#x5341;&#x4F4D;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token number">9</span> <span class="token number">8</span> <span class="token number">7</span> <span class="token number">6</span> <span class="token number">5</span> <span class="token number">4</span> <span class="token number">3</span> <span class="token number">2</span> <span class="token number">1</span> <span class="token number">0</span>
+
+- r w x r - x r - x
+</pre><p>&#x7B2C;9&#x4F4D;&#x8868;&#x793A;&#x6587;&#x4EF6;&#x7C7B;&#x578B;,&#x53EF;&#x4EE5;&#x4E3A;p&#x3001;d&#x3001;l&#x3001;s&#x3001;c&#x3001;b&#x548C;-&#xFF1A;</p>
+<ul>
+<li>
+<p>p&#x8868;&#x793A;&#x547D;&#x540D;&#x7BA1;&#x9053;&#x6587;&#x4EF6;</p>
+</li>
+<li>
+<p>d&#x8868;&#x793A;&#x76EE;&#x5F55;&#x6587;&#x4EF6;</p>
+</li>
+<li>
+<p>l&#x8868;&#x793A;&#x7B26;&#x53F7;&#x8FDE;&#x63A5;&#x6587;&#x4EF6;</p>
+</li>
+<li>
+<p>-&#x8868;&#x793A;&#x666E;&#x901A;&#x6587;&#x4EF6;</p>
+</li>
+<li>
+<p>s&#x8868;&#x793A;socket&#x6587;&#x4EF6;</p>
+</li>
+<li>
+<p>c&#x8868;&#x793A;&#x5B57;&#x7B26;&#x8BBE;&#x5907;&#x6587;&#x4EF6;</p>
+</li>
+<li>
+<p>b&#x8868;&#x793A;&#x5757;&#x8BBE;&#x5907;&#x6587;&#x4EF6;</p>
+</li>
+</ul>
+<p>&#x7B2C;8-6&#x4F4D;&#x3001;5-3&#x4F4D;&#x3001;2-0&#x4F4D;&#x5206;&#x522B;&#x8868;&#x793A;&#x6587;&#x4EF6;&#x6240;&#x6709;&#x8005;&#x7684;&#x6743;&#x9650;&#xFF0C;&#x540C;&#x7EC4;&#x7528;&#x6237;&#x7684;&#x6743;&#x9650;&#xFF0C;&#x5176;&#x4ED6;&#x7528;&#x6237;&#x7684;&#x6743;&#x9650;&#xFF0C;&#x5176;&#x5F62;&#x5F0F;&#x4E3A;rwx&#xFF1A;</p>
+<ul>
+<li>
+<p>r&#x8868;&#x793A;&#x53EF;&#x8BFB;&#xFF0C;&#x53EF;&#x4EE5;&#x8BFB;&#x51FA;&#x6587;&#x4EF6;&#x7684;&#x5185;&#x5BB9;</p>
+</li>
+<li>
+<p>w&#x8868;&#x793A;&#x53EF;&#x5199;&#xFF0C;&#x53EF;&#x4EE5;&#x4FEE;&#x6539;&#x6587;&#x4EF6;&#x7684;&#x5185;&#x5BB9;</p>
+</li>
+<li>
+<p>x&#x8868;&#x793A;&#x53EF;&#x6267;&#x884C;&#xFF0C;&#x53EF;&#x8FD0;&#x884C;&#x8FD9;&#x4E2A;&#x7A0B;&#x5E8F;</p>
+</li>
+</ul>
+<p>&#x6CA1;&#x6709;&#x6743;&#x9650;&#x7684;&#x4F4D;&#x7F6E;&#x7528; - &#x8868;&#x793A;</p>
+<p>&#x4F8B;&#x5B50;&#xFF1A;</p>
+<p>ls -l myfile&#x663E;&#x793A;&#x4E3A;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell">-rwxr-x--- <span class="token number">1</span> foo staff <span class="token number">7734</span> Apr 05 <span class="token number">17</span>:07 myfile
+</pre><p>&#x8868;&#x793A;&#x6587;&#x4EF6;myfile&#x662F;&#x666E;&#x901A;&#x6587;&#x4EF6;&#xFF0C;&#x6587;&#x4EF6;&#x7684;&#x6240;&#x6709;&#x8005;&#x662F;foo&#x7528;&#x6237;&#xFF0C;&#x800C;foo&#x7528;&#x6237;&#x5C5E;&#x4E8E;staff&#x7EC4;&#xFF0C;&#x6587;&#x4EF6;&#x53EA;&#x6709;1&#x4E2A;&#x786C;&#x8FDE;&#x63A5;&#xFF0C;&#x957F;&#x5EA6;&#x662F;7734&#x4E2A;&#x5B57;&#x8282;&#xFF0C;&#x6700;&#x540E;&#x4FEE;&#x6539;&#x65F6;&#x95F4;4&#x6708;5&#x65E5;17:07&#x3002;</p>
+<p>&#x6240;&#x6709;&#x8005;foo&#x5BF9;&#x6587;&#x4EF6;&#x6709;&#x8BFB;&#x5199;&#x6267;&#x884C;&#x6743;&#x9650;&#xFF0C;staff&#x7EC4;&#x7684;&#x6210;&#x5458;&#x5BF9;&#x6587;&#x4EF6;&#x6709;&#x8BFB;&#x548C;&#x6267;&#x884C;&#x6743;&#x9650;&#xFF0C;&#x5176;&#x4ED6;&#x7684;&#x7528;&#x6237;&#x5BF9;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x6CA1;&#x6709;&#x6743;&#x9650;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x88AB;&#x8BBE;&#x7F6E;&#x4E86;SUID&#x6216;SGID&#x4F4D;&#xFF0C;&#x4F1A;&#x5206;&#x522B;&#x8868;&#x73B0;&#x5728;&#x6240;&#x6709;&#x8005;&#x6216;&#x540C;&#x7EC4;&#x7528;&#x6237;&#x7684;&#x6743;&#x9650;&#x7684;&#x53EF;&#x6267;&#x884C;&#x4F4D;&#x4E0A;&#x3002;&#x4F8B;&#x5982;&#xFF1A;</p>
+<ol>
+<li>
+<p>-rwsr-xr-x &#x8868;&#x793A;SUID&#x548C;&#x6240;&#x6709;&#x8005;&#x6743;&#x9650;&#x4E2D;&#x53EF;&#x6267;&#x884C;&#x4F4D;&#x88AB;&#x8BBE;&#x7F6E;</p>
+</li>
+<li>
+<p>-rwSr--r-- &#x8868;&#x793A;SUID&#x88AB;&#x8BBE;&#x7F6E;&#xFF0C;&#x4F46;&#x6240;&#x6709;&#x8005;&#x6743;&#x9650;&#x4E2D;&#x53EF;&#x6267;&#x884C;&#x4F4D;&#x6CA1;&#x6709;&#x88AB;&#x8BBE;&#x7F6E;</p>
+</li>
+<li>
+<p>-rwxr-sr-x &#x8868;&#x793A;SGID&#x548C;&#x540C;&#x7EC4;&#x7528;&#x6237;&#x6743;&#x9650;&#x4E2D;&#x53EF;&#x6267;&#x884C;&#x4F4D;&#x88AB;&#x8BBE;&#x7F6E;</p>
+</li>
+<li>
+<p>-rw-r-Sr-- &#x8868;&#x793A;SGID&#x88AB;&#x8BBE;&#x7F6E;&#xFF0C;&#x4F46;&#x540C;&#x7EC4;&#x7528;&#x6237;&#x6743;&#x9650;&#x4E2D;&#x53EF;&#x6267;&#x884C;&#x4F4D;&#x6CA1;&#x6709;&#x88AB;&#x8BBE;&#x7F6E;</p>
+</li>
+</ol>
+<p>&#x5176;&#x5B9E;&#x5728;UNIX&#x7684;&#x5B9E;&#x73B0;&#x4E2D;&#xFF0C;&#x6587;&#x4EF6;&#x6743;&#x9650;&#x7528;12&#x4E2A;&#x4E8C;&#x8FDB;&#x5236;&#x4F4D;&#x8868;&#x793A;&#xFF0C;&#x5982;&#x679C;&#x8BE5;&#x4F4D;&#x7F6E;&#x4E0A;&#x7684;&#x503C;&#x662F;</p>
+<p>1&#xFF0C;&#x8868;&#x793A;&#x6709;&#x76F8;&#x5E94;&#x7684;&#x6743;&#x9650;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token number">11</span> <span class="token number">10</span> <span class="token number">9</span> <span class="token number">8</span> <span class="token number">7</span> <span class="token number">6</span> <span class="token number">5</span> <span class="token number">4</span> <span class="token number">3</span> <span class="token number">2</span> <span class="token number">1</span> <span class="token number">0</span>
+
+S G T r w x r w x r w x
+</pre><p>&#x7B2C;11&#x4F4D;&#x4E3A;SUID&#x4F4D;&#xFF0C;&#x7B2C;10&#x4F4D;&#x4E3A;SGID&#x4F4D;&#xFF0C;&#x7B2C;9&#x4F4D;&#x4E3A;sticky&#x4F4D;&#xFF0C;&#x7B2C;8-0&#x4F4D;&#x5BF9;&#x5E94;&#x4E8E;&#x4E0A;&#x9762;&#x7684;&#x4E09;&#x7EC4;rwx&#x4F4D;&#x3002;</p>
+<p>11 10 9 8 7 6 5 4 3 2 1 0</p>
+<p>&#x4E0A;&#x9762;&#x7684;-rwsr-xr-x&#x7684;&#x503C;&#x4E3A;&#xFF1A; 1 0 0 1 1 1 1 0 1 1 0 1</p>
+<p>-rw-r-Sr--&#x7684;&#x503C;&#x4E3A;&#xFF1A; 0 1 0 1 1 0 1 0 0 1 0 0</p>
+<p>&#x7ED9;&#x6587;&#x4EF6;&#x52A0;SUID&#x548C;SUID&#x7684;&#x547D;&#x4EE4;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">chmod</span> u+s filename  <span class="token comment"># &#x8BBE;&#x7F6E;SUID&#x4F4D;</span>
+
+<span class="token function">chmod</span> u-s filename  <span class="token comment"># &#x53BB;&#x6389;SUID&#x8BBE;&#x7F6E;</span>
+
+<span class="token function">chmod</span> g+s filename <span class="token comment"># &#x8BBE;&#x7F6E;SGID&#x4F4D;</span>
+
+<span class="token function">chmod</span> g-s filename <span class="token comment"># &#x53BB;&#x6389;SGID&#x8BBE;&#x7F6E;</span>
+</pre><p>&#x53E6;&#x5916;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#x662F;chmod&#x547D;&#x4EE4;&#x7528;&#x516B;&#x8FDB;&#x5236;&#x8868;&#x793A;&#x65B9;&#x6CD5;&#x7684;&#x8BBE;&#x7F6E;&#x3002;&#x5982;&#x679C;&#x660E;&#x767D;&#x4E86;&#x524D;&#x9762;&#x7684;12&#x4F4D;&#x6743;&#x9650;&#x8868;&#x793A;&#x6CD5;&#x4E5F;&#x5F88;&#x7B80;&#x5355;&#x3002;</p>
+<h1 class="mume-header" id="%E4%BA%8C-suid-sgid%E5%92%8Csbit%E7%9A%84%E8%AF%A6%E7%BB%86%E8%A7%A3%E6%9E%90">&#x4E8C;&#x3001;SUID&#x3001;SGID&#x548C;SBIT&#x7684;&#x8BE6;&#x7EC6;&#x89E3;&#x6790;</h1>
+
+<p>SBIT&#xFF1A;</p>
+<ol>
+<li>&#x5F53;&#x7528;&#x6237;&#x5BF9;&#x6B64;<strong>&#x76EE;&#x5F55;</strong>&#x5177;&#x6709;w,x&#x6743;&#x9650;&#xFF0C;&#x5F53;&#x7528;&#x6237;&#x5728;&#x8BE5;&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA;&#x6587;&#x4EF6;&#x6216;&#x76EE;&#x5F55;&#x65F6;&#x4EC5;&#x6709;&#x81EA;&#x5DF1;&#x548C;root&#x624D;&#x6709;&#x6743;&#x529B;&#x5220;&#x9664;&#x8BE5;&#x6587;&#x4EF6;&#x3002;<br>
+&#x6362;&#x53E5;&#x8BDD;&#x8BF4;&#xFF0C;&#x5F53;&#x7532;&#x7528;&#x6237;&#x5BF9;&#x4E8E;A&#x76EE;&#x5F55;&#x5177;&#x6709;&#x7528;&#x6237;&#x7EC4;&#x6216;&#x5176;&#x4ED6;&#x4EBA;&#x7684;&#x8EAB;&#x4EFD;&#xFF0C;&#x5E76;&#x4E14;&#x62E5;&#x6709;&#x8BE5;&#x76EE;&#x5F55;w&#x7684;&#x6743;&#x9650;&#xFF0C;&#x8FD9;&#x8868;&#x793A;&#x7532;&#x7528;&#x6237;&#x5BF9;&#x8BE5;&#x76EE;&#x5F55;&#x4EFB;&#x4F55;&#x4EBA;&#x521B;&#x5EFA;&#x7684;&#x6587;&#x4EF6;&#x90FD;&#x5177;&#x6709;&#x5220;&#x9664;&#x3001;&#x91CD;&#x547D;&#x540D;&#x3001;&#x79FB;&#x52A8;&#x7B49;&#x64CD;&#x4F5C;&#xFF0C;&#x800C;&#x52A0;&#x4E0A;&#x4E86;SBIT&#x6743;&#x9650;&#xFF0C;&#x5219;&#x8BE5;&#x7528;&#x6237;&#x5728;A&#x76EE;&#x5F55;&#x53EA;&#x80FD;&#x5BF9;&#x81EA;&#x5DF1;&#x521B;&#x5EFA;&#x7684;&#x6587;&#x4EF6;&#x8FDB;&#x884C;&#x5220;&#x9664;&#x3001;&#x91CD;&#x547D;&#x540D;&#x3001;&#x79FB;&#x52A8;&#x7B49;&#x64CD;&#x4F5C;&#x3002;</li>
+</ol>
+<p>&#x7531;&#x4E8E;SUID&#x548C;SGID&#x662F;&#x5728;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#xFF08;&#x7A0B;&#x5E8F;&#x7684;&#x53EF;&#x6267;&#x884C;&#x4F4D;&#x88AB;&#x8BBE;&#x7F6E;&#xFF09;&#x65F6;&#x8D77;&#x4F5C;&#x7528;&#xFF0C;&#x800C;&#x53EF;&#x6267;&#x884C;&#x4F4D;&#x53EA;&#x5BF9;&#x666E;&#x901A;&#x6587;&#x4EF6;&#x548C;&#x76EE;&#x5F55;&#x6587;&#x4EF6;&#x6709;&#x610F;&#x4E49;&#xFF0C;&#x6240;&#x4EE5;&#x8BBE;&#x7F6E;&#x5176;&#x4ED6;&#x79CD;&#x7C7B;&#x6587;&#x4EF6;&#x7684;SUID&#x548C;SGID&#x4F4D;&#x662F;&#x6CA1;&#x6709;&#x591A;&#x5927;&#x610F;&#x4E49;&#x7684;&#x3002;</p>
+<p>&#x9996;&#x5148;&#x8BB2;&#x666E;&#x901A;&#x6587;&#x4EF6;&#x7684;SUID&#x548C;SGID&#x7684;&#x4F5C;&#x7528;&#x3002;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<p>&#x5982;&#x679C;&#x666E;&#x901A;&#x6587;&#x4EF6;myfile&#x662F;&#x5C5E;&#x4E8E;foo&#x7528;&#x6237;&#x7684;&#xFF0C;&#x662F;&#x53EF;&#x6267;&#x884C;&#x7684;&#xFF0C;&#x73B0;&#x5728;&#x6CA1;&#x8BBE;SUID&#x4F4D;&#xFF0C;ls&#x547D;&#x4EE4;&#x663E;&#x793A;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell">-rwxr-xr-x <span class="token number">1</span> foo staff <span class="token number">7734</span> Apr 05 <span class="token number">17</span>:07 myfile
+</pre><p>&#x4EFB;&#x4F55;&#x7528;&#x6237;&#x90FD;&#x53EF;&#x4EE5;&#x6267;&#x884C;&#x8FD9;&#x4E2A;&#x7A0B;&#x5E8F;&#x3002;UNIX&#x7684;&#x5185;&#x6838;&#x662F;&#x6839;&#x636E;&#x4EC0;&#x4E48;&#x6765;&#x786E;&#x5B9A;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x5BF9;&#x8D44;&#x6E90;&#x7684;&#x8BBF;&#x95EE;&#x6743;&#x9650;&#x7684;&#x5462;&#xFF1F;&#x662F;&#x8FD9;&#x4E2A;&#x8FDB;&#x7A0B;&#x7684;&#x8FD0;&#x884C;&#x7528;&#x6237;&#x7684;&#xFF08;&#x6709;&#x6548;&#xFF09;ID&#xFF0C;&#x5305;&#x62EC;user id&#x548C;group id&#x3002;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x7528;id&#x547D;&#x4EE4;&#x6765;&#x67E5;&#x5230;&#x81EA;&#x5DF1;&#x7684;&#x6216;&#x5176;&#x4ED6;&#x7528;&#x6237;&#x7684;user id&#x548C;group id&#x3002;</p>
+<p>&#x9664;&#x4E86;&#x4E00;&#x822C;&#x7684;user id &#x548C;group id&#x5916;&#xFF0C;&#x8FD8;&#x6709;&#x4E24;&#x4E2A;&#x79F0;&#x4E4B;&#x4E3A;effective &#x7684;id&#xFF0C;&#x5C31;&#x662F;&#x6709;&#x6548;id&#xFF0C;&#x4E0A;&#x9762;&#x7684;&#x56DB;&#x4E2A;id&#x8868;&#x793A;&#x4E3A;&#xFF1A;uid&#xFF0C;gid&#xFF0C;euid&#xFF0C;egid&#x3002;&#x5185;&#x6838;&#x4E3B;&#x8981;&#x662F;&#x6839;&#x636E;euid&#x548C;egid&#x6765;&#x786E;&#x5B9A;&#x8FDB;&#x7A0B;&#x5BF9;&#x8D44;&#x6E90;&#x7684;&#x8BBF;&#x95EE;&#x6743;&#x9650;&#x3002;</p>
+<p><strong>&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x5982;&#x679C;&#x6CA1;&#x6709;SUID&#x6216;SGID&#x4F4D;&#xFF0C;&#x5219;euid=uid egid=gid&#xFF0C;&#x5206;&#x522B;&#x662F;&#x8FD0;&#x884C;&#x8FD9;&#x4E2A;&#x7A0B;&#x5E8F;&#x7684;&#x7528;&#x6237;&#x7684;uid&#x548C;gid&#x3002;&#x4F8B;&#x5982;kevin&#x7528;&#x6237;&#x7684;uid&#x548C;gid&#x5206;&#x522B;&#x4E3A;204&#x548C;202&#xFF0C;foo&#x7528;&#x6237;&#x7684;uid&#x548C;gid&#x4E3A;200&#xFF0C;201&#xFF0C;kevin&#x8FD0;&#x884C;myfile&#x7A0B;&#x5E8F;&#x5F62;&#x6210;&#x7684;&#x8FDB;&#x7A0B;&#x7684;euid=uid=204&#xFF0C;egid=gid=202&#xFF0C;&#x5185;&#x6838;&#x6839;&#x636E;&#x8FD9;&#x4E9B;&#x503C;&#x6765;&#x5224;&#x65AD;&#x8FDB;&#x7A0B;&#x5BF9;&#x8D44;&#x6E90;&#x8BBF;&#x95EE;&#x7684;&#x9650;&#x5236;&#xFF0C;&#x5176;&#x5B9E;&#x5C31;&#x662F;kevin&#x7528;&#x6237;&#x5BF9;&#x8D44;&#x6E90;&#x8BBF;&#x95EE;&#x7684;&#x6743;&#x9650;&#xFF0C;&#x548C;foo&#x6CA1;&#x5173;&#x7CFB;&#x3002;</strong></p>
+<p>&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x7A0B;&#x5E8F;&#x8BBE;&#x7F6E;&#x4E86;SUID&#xFF0C;&#x5219;euid&#x548C;egid&#x53D8;&#x6210;&#x88AB;&#x8FD0;&#x884C;&#x7684;&#x7A0B;&#x5E8F;&#x7684;&#x6240;&#x6709;&#x8005;&#x7684;uid&#x548C;gid&#xFF0C;&#x4F8B;&#x5982;kevin&#x7528;&#x6237;&#x8FD0;&#x884C;myfile&#xFF0C;euid=200&#xFF0C;egid=201&#xFF0C;uid=204&#xFF0C;gid=202&#xFF0C;&#x5219;&#x8FD9;&#x4E2A;&#x8FDB;&#x7A0B;&#x5177;&#x6709;&#x5B83;&#x7684;&#x5C5E;&#x4E3B;foo&#x7684;&#x8D44;&#x6E90;&#x8BBF;&#x95EE;&#x6743;&#x9650;&#x3002;</p>
+<p>SUID&#x7684;&#x4F5C;&#x7528;&#x5C31;&#x662F;&#x8FD9;&#x6837;&#xFF1A;&#x8BA9;&#x672C;&#x6765;&#x6CA1;&#x6709;&#x76F8;&#x5E94;&#x6743;&#x9650;&#x7684;&#x7528;&#x6237;&#x8FD0;&#x884C;&#x8FD9;&#x4E2A;&#x7A0B;&#x5E8F;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x4ED6;&#x6CA1;&#x6709;&#x6743;&#x9650;&#x8BBF;&#x95EE;&#x7684;&#x8D44;&#x6E90;&#x3002;passwd&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x5F88;&#x9C9C;&#x660E;&#x7684;&#x4F8B;&#x5B50;&#x3002;</p>
+<p>SUID&#x7684;&#x4F18;&#x5148;&#x7EA7;&#x6BD4;SGID&#x9AD8;&#xFF0C;&#x5F53;&#x4E00;&#x4E2A;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x8BBE;&#x7F6E;&#x4E86;SUID&#xFF0C;&#x5219;SGID&#x4F1A;&#x81EA;&#x52A8;&#x53D8;&#x6210;&#x76F8;&#x5E94;&#x7684;egid&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x8BA8;&#x8BBA;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<p>UNIX&#x7CFB;&#x7EDF;&#x6709;&#x4E00;&#x4E2A;/dev/kmem&#x7684;&#x8BBE;&#x5907;&#x6587;&#x4EF6;&#xFF0C;&#x662F;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x8BBE;&#x5907;&#x6587;&#x4EF6;&#xFF0C;&#x91CC;&#x9762;&#x5B58;&#x50A8;&#x4E86;&#x6838;&#x5FC3;&#x7A0B;&#x5E8F;&#x8981;&#x8BBF;&#x95EE;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x5305;&#x62EC;&#x7528;&#x6237;&#x7684;&#x53E3;&#x4EE4;&#x3002;&#x6240;&#x4EE5;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x4E0D;&#x80FD;&#x7ED9;&#x4E00;&#x822C;&#x7684;&#x7528;&#x6237;&#x8BFB;&#x5199;&#xFF0C;&#x6743;&#x9650;&#x8BBE;&#x4E3A;&#xFF1A;cr--r----- 1 root system 2, 1 May 25 1998 kmem</p>
+<p>&#x4F46;ps&#x7B49;&#x7A0B;&#x5E8F;&#x8981;&#x8BFB;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x800C;ps&#x7684;&#x6743;&#x9650;&#x8BBE;&#x7F6E;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell">-r-xr-sr-x <span class="token number">1</span> bin system <span class="token number">59346</span> Apr 05 <span class="token number">1998</span> <span class="token function">ps</span>
+</pre><p>&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x8BBE;&#x7F6E;&#x4E86;SGID&#x7684;&#x7A0B;&#x5E8F;&#xFF0C;&#x800C;ps&#x7684;&#x7528;&#x6237;&#x662F;bin&#xFF0C;&#x4E0D;&#x662F;root&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x80FD;&#x8BBE;&#x7F6E;SUID&#x6765;&#x8BBF;&#x95EE;kmem&#xFF0C;&#x4F46;&#x5927;&#x5BB6;&#x6CE8;&#x610F;&#x4E86;&#xFF0C;bin&#x548C;root&#x90FD;&#x5C5E;&#x4E8E;system&#x7EC4;&#xFF0C;&#x800C;&#x4E14;ps&#x8BBE;&#x7F6E;&#x4E86;SGID&#xFF0C;&#x4E00;&#x822C;&#x7528;&#x6237;&#x6267;&#x884C;ps&#xFF0C;&#x5C31;&#x4F1A;&#x83B7;&#x5F97;system&#x7EC4;&#x7528;&#x6237;&#x7684;&#x6743;&#x9650;&#xFF0C;&#x800C;&#x6587;&#x4EF6;kmem&#x7684;&#x540C;&#x7EC4;&#x7528;&#x6237;&#x7684;&#x6743;&#x9650;&#x662F;&#x53EF;&#x8BFB;&#xFF0C;&#x6240;&#x4EE5;&#x4E00;&#x822C;&#x7528;&#x6237;&#x6267;&#x884C;ps&#x5C31;&#x6CA1;&#x95EE;&#x9898;&#x4E86;&#x3002;&#x4F46;&#x6709;&#x4E9B;&#x4EBA;&#x8BF4;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#x4E0D;&#x628A;ps&#x7A0B;&#x5E8F;&#x8BBE;&#x7F6E;&#x4E3A;root&#x7528;&#x6237;&#x7684;&#x7A0B;&#x5E8F;&#xFF0C;&#x7136;&#x540E;&#x8BBE;&#x7F6E;SUID&#x4F4D;&#xFF0C;&#x4E0D;&#x4E5F;&#x884C;&#x5417;&#xFF1F;&#x8FD9;&#x7684;&#x786E;&#x53EF;&#x4EE5;&#x89E3;&#x51B3;&#x95EE;&#x9898;&#xFF0C;&#x4F46;&#x5B9E;&#x9645;&#x4E2D;&#x4E3A;&#x4EC0;&#x4E48;&#x4E0D;&#x8FD9;&#x6837;&#x505A;&#x5462;&#xFF1F;&#x56E0;&#x4E3A;SGID&#x7684;&#x98CE;&#x9669;&#x6BD4;SUID&#x5C0F;&#x5F97;&#x591A;&#xFF0C;&#x6240;&#x4EE5;&#x51FA;&#x4E8E;&#x7CFB;&#x7EDF;&#x5B89;&#x5168;&#x7684;&#x8003;&#x8651;&#xFF0C;&#x5E94;&#x8BE5;&#x5C3D;&#x91CF;&#x7528;SGID&#x4EE3;&#x66FF;SUID&#x7684;&#x7A0B;&#x5E8F;&#xFF0C;&#x5982;&#x679C;&#x53EF;&#x80FD;&#x7684;&#x8BDD;&#x3002;&#x4E0B;&#x9762;&#x6765;&#x8BF4;&#x660E;&#x4E00;&#x4E0B;SGID&#x5BF9;&#x76EE;&#x5F55;&#x7684;&#x5F71;&#x54CD;&#x3002;SUID&#x5BF9;&#x76EE;&#x5F55;&#x6CA1;&#x6709;&#x5F71;&#x54CD;&#x3002;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x76EE;&#x5F55;&#x8BBE;&#x7F6E;&#x4E86;SGID&#x4F4D;&#xFF0C;&#x90A3;&#x4E48;&#x5982;&#x679C;&#x4EFB;&#x4F55;&#x4E00;&#x4E2A;&#x7528;&#x6237;&#x5BF9;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x6709;&#x5199;&#x6743;&#x9650;&#x7684;&#x8BDD;&#xFF0C;&#x4ED6;&#x5728;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x6240;&#x5EFA;&#x7ACB;&#x7684;&#x6587;&#x4EF6;&#x7684;&#x7EC4;&#x90FD;&#x4F1A;&#x81EA;&#x52A8;&#x8F6C;&#x4E3A;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x7684;&#x5C5E;&#x4E3B;&#x6240;&#x5728;&#x7684;&#x7EC4;&#xFF0C;&#x800C;&#x6587;&#x4EF6;&#x6240;&#x6709;&#x8005;&#x4E0D;&#x53D8;&#xFF0C;&#x8FD8;&#x662F;&#x5C5E;&#x4E8E;&#x5EFA;&#x7ACB;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x7684;&#x7528;&#x6237;&#x3002;</p>
+<h1 class="mume-header" id="%E4%B8%89-%E5%85%B3%E4%BA%8Esuid%E5%92%8Csgid%E7%9A%84%E7%BC%96%E7%A8%8B">&#x4E09;&#x3001;&#x5173;&#x4E8E;SUID&#x548C;SGID&#x7684;&#x7F16;&#x7A0B;</h1>
+
+<p>&#x548C;SUID&#x548C;SGID&#x7F16;&#x7A0B;&#x6BD4;&#x8F83;&#x5BC6;&#x5207;&#x76F8;&#x5173;&#x7684;&#x6709;&#x4EE5;&#x4E0B;&#x7684;&#x5934;&#x6587;&#x4EF6;&#x548C;&#x51FD;&#x6570;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="C" class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span></span>
+
+<span class="token class-name">uid_t</span> <span class="token function">getuid</span><span class="token punctuation">(</span><span class="token keyword keyword-void">void</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token class-name">uid_t</span> <span class="token function">geteuid</span><span class="token punctuation">(</span><span class="token keyword keyword-void">void</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token class-name">gid_t</span> <span class="token function">getgid</span> <span class="token punctuation">(</span><span class="token keyword keyword-void">void</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token class-name">gid_t</span> <span class="token function">getegid</span> <span class="token punctuation">(</span><span class="token keyword keyword-void">void</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-int">int</span> <span class="token function">setuid</span> <span class="token punctuation">(</span><span class="token class-name">uid_t</span> UID<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-int">int</span> <span class="token function">setruid</span> <span class="token punctuation">(</span><span class="token class-name">uid_t</span> RUID<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-int">int</span> <span class="token function">seteuid</span> <span class="token punctuation">(</span><span class="token class-name">uid_t</span> EUID<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-int">int</span> <span class="token function">setreuid</span> <span class="token punctuation">(</span><span class="token class-name">uid_t</span> RUID<span class="token punctuation">,</span><span class="token class-name">uid_t</span> EUID<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-int">int</span> <span class="token function">setgid</span> <span class="token punctuation">(</span><span class="token class-name">gid_t</span> GID<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-int">int</span> <span class="token function">setrgid</span> <span class="token punctuation">(</span><span class="token class-name">gid_t</span> RGID<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-int">int</span> <span class="token function">setegid</span> <span class="token punctuation">(</span><span class="token class-name">git_t</span> EGID<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-int">int</span> <span class="token function">setregid</span> <span class="token punctuation">(</span><span class="token class-name">gid_t</span> RGID<span class="token punctuation">,</span> <span class="token class-name">gid_t</span> EGID<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre><p>&#x5177;&#x4F53;&#x8FD9;&#x4E9B;&#x51FD;&#x6570;&#x7684;&#x8BF4;&#x660E;&#x5728;&#x8FD9;&#x91CC;&#x5C31;&#x4E0D;&#x8BE6;&#x7EC6;&#x5217;&#x51FA;&#x6765;&#x4E86;,&#x8981;&#x7528;&#x5230;&#x7684;&#x53EF;&#x4EE5;&#x7528;man&#x67E5;&#x3002;</p>
+<p>SUID/SGID :</p>
+<p>&#x5047;&#x5982;&#x4F60;&#x6709;&#x6587;&#x4EF6;a.txt</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token comment">#ls -l a.txt</span>
+
+-rwxrwxrwx
+
+<span class="token comment">#chmod 4777 a.txt</span>
+
+-rwsrwxrwx <span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">&gt;</span>&#x6CE8;&#x610F;s&#x4F4D;&#x7F6E;
+
+<span class="token comment">#chmod 2777 a.txt</span>
+
+-rwxrwsrwx <span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">&gt;</span>&#x6CE8;&#x610F;s&#x4F4D;&#x7F6E;
+
+<span class="token comment">#chmod 7777 a.txt</span>
+
+-rwsrwxswt <span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">&gt;</span>&#x51FA;&#x73B0;&#x4E86;t,t&#x7684;&#x4F5C;&#x7528;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x5C3D;&#x91CF;&#x4FDD;&#x5B58;a.txt,&#x8282;&#x7701;&#x7CFB;&#x7EDF;&#x518D;&#x52A0;&#x8F7D;&#x7684;&#x65F6;&#x95F4;.
+</pre><p>&#x73B0;&#x5728;&#x518D;&#x770B;&#x524D;&#x9762;&#x8BBE;&#x7F6E; SUID/SGID&#x4F5C;&#x7528;:</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token comment">#cd /sbin</span>
+
+<span class="token comment">#./lsusb</span>
+
+<span class="token punctuation">..</span>.
+
+<span class="token comment">#su aaa(&#x666E;&#x901A;&#x7528;&#x6237;)</span>
+
+$./lsusb
+
+<span class="token punctuation">..</span>.
+</pre><p>&#x662F;&#x4E0D;&#x662F;&#x73B0;&#x5728;&#x663E;&#x793A;&#x51FA;&#x9519;&#xFF1F;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token variable">$su</span>
+
+<span class="token comment">#chmod 4755 lsusb</span>
+
+<span class="token comment">#su aaa</span>
+
+$./lsusb
+
+<span class="token punctuation">..</span>. 
+</pre><p>&#x73B0;&#x5728;&#x660E;&#x767D;&#x4E86;&#x5417;&#xFF1F;&#x672C;&#x6765;&#x662F;&#x53EA;&#x6709;root&#x7528;&#x6237;&#x624D;&#x80FD;&#x6267;&#x884C;&#x7684;&#x547D;&#x4EE4;&#xFF0C;&#x52A0;&#x4E86;SUID&#x540E;,&#x666E;&#x901A;&#x7528;&#x6237;&#x5C31;&#x53EF;&#x4EE5;&#x50CF;root&#x4E00;&#x6837;&#x7684;&#x7528;&#xFF0C;&#x6743;&#x9650;&#x63D0;&#x5347;&#x4E86;&#x3002;&#x4E0A;&#x9762;&#x662F;&#x5BF9;&#x4E8E;&#x6587;&#x4EF6;&#x6765;&#x8BF4;&#x7684;&#xFF0C;&#x5BF9;&#x4E8E;&#x76EE;&#x5F55;&#x4E5F;&#x5DEE;&#x4E0D;&#x591A;&#xFF01;</p>
+<p>&#x76EE;&#x5F55;&#x7684;S&#x5C5E;&#x6027;&#x4F7F;&#x5F97;&#x5728;&#x8BE5;&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA;&#x7684;&#x4EFB;&#x4F55;&#x6587;&#x4EF6;&#x53CA;&#x5B50;&#x76EE;&#x5F55;&#x5C5E;&#x4E8E;&#x8BE5;&#x76EE;&#x5F55;&#x6240;&#x62E5;&#x6709;&#x7684;&#x7EC4;&#xFF0C;&#x76EE;&#x5F55;&#x7684;T&#x5C5E;&#x6027;&#x4F7F;&#x5F97;&#x8BE5;&#x76EE;&#x5F55;&#x7684;&#x6240;&#x6709;&#x8005;&#x53CA;root&#x624D;&#x80FD;&#x5220;&#x9664;&#x8BE5;&#x76EE;&#x5F55;&#x3002;&#x8FD8;&#x6709;&#x5BF9;&#x4E8E;s&#x4E0E;S&#xFF0C;&#x8BBE;&#x7F6E;SUID/SGID&#x9700;&#x8981;&#x6709;&#x8FD0;&#x884C;&#x6743;&#x9650;&#xFF0C;&#x5426;&#x5219;&#x7528;ls -l&#x540E;&#x5C31;&#x4F1A;&#x770B;&#x5230;S,&#x8BC1;&#x660E;&#x4F60;&#x6240;&#x8BBE;&#x7F6E;&#x7684;SUID/SGID&#x6CA1;&#x6709;&#x8D77;&#x4F5C;&#x7528;&#x3002;</p>
+<p>Why we need suid,how do we use suid?</p>
+<ul>
+<li>
+<p>r -- &#x8BFB;&#x8BBF;&#x95EE;</p>
+</li>
+<li>
+<p>w -- &#x5199;&#x8BBF;&#x95EE;</p>
+</li>
+<li>
+<p>x -- &#x6267;&#x884C;&#x8BB8;&#x53EF;</p>
+</li>
+<li>
+<p>s -- SUID/SGID</p>
+</li>
+<li>
+<p>t -- sticky&#x4F4D;</p>
+</li>
+</ul>
+<p>&#x90A3;&#x4E48; suid/sgid&#x662F;&#x505A;&#x4EC0;&#x4E48;&#x7684;&#xFF1F; &#x4E3A;&#x4EC0;&#x4E48;&#x4F1A;&#x6709;suid&#x4F4D;&#x5462;&#xFF1F;</p>
+<p>&#x8981;&#x60F3;&#x660E;&#x767D;&#x8FD9;&#x4E2A;&#xFF0C;&#x5148;&#x8BA9;&#x6211;&#x4EEC;&#x770B;&#x4E2A;&#x95EE;&#x9898;&#xFF1A;&#x5982;&#x679C;&#x8BA9;&#x6BCF;&#x4E2A;&#x7528;&#x6237;&#x66F4;&#x6539;&#x81EA;&#x5DF1;&#x7684;&#x5BC6;&#x7801;&#xFF1F;</p>
+<p>&#x7528;&#x6237;&#x4FEE;&#x6539;&#x5BC6;&#x7801;&#xFF0C;&#x662F;&#x901A;&#x8FC7;&#x8FD0;&#x884C;&#x547D;&#x4EE4;passwd&#x6765;&#x5B9E;&#x73B0;&#x7684;&#x3002;&#x6700;&#x7EC8;&#x5FC5;&#x987B;&#x8981;&#x4FEE;&#x6539;/etc/passwd&#x6587;&#x4EF6;&#xFF0C;&#x800C;passwd&#x7684;&#x6587;&#x4EF6;&#x7684;&#x5C5E;&#x6027;&#x662F;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token comment">#ls -l /etc/passwd</span>
+
+-rw-r--r-- <span class="token number">1</span> root root <span class="token number">2520</span> Jul <span class="token number">12</span> <span class="token number">18</span>:25 <span class="token function">passwd</span>
+</pre><p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;passwd&#x6587;&#x4EF6;&#x53EA;&#x6709;&#x5BF9;&#x4E8E;root&#x7528;&#x6237;&#x662F;&#x53EF;&#x5199;&#x7684;&#xFF0C;&#x800C;&#x5BF9;&#x4E8E;&#x6240;&#x6709;&#x7684;&#x4ED6;&#x7528;&#x6237;&#x6765;&#x8BF4;&#x90FD;&#x662F;&#x6CA1;&#x6709;&#x5199;&#x6743;&#x9650;&#x7684;&#x3002; &#x90A3;&#x4E48;&#x4E00;&#x4E2A;&#x666E;&#x901A;&#x7684;&#x7528;&#x6237;&#x5982;&#x4F55;&#x80FD;&#x591F;&#x901A;&#x8FC7;&#x8FD0;&#x884C;passwd&#x547D;&#x4EE4;&#x4FEE;&#x6539;&#x8FD9;&#x4E2A;passwd&#x6587;&#x4EF6;&#x5462;&#xFF1F;</p>
+<p>&#x4E3A;&#x4E86;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;SUID/SGID&#x4FBF;&#x5E94;&#x8FD0;&#x800C;&#x751F;&#x3002;&#x800C;&#x4E14;AT&amp;T&#x5BF9;&#x5B83;&#x7533;&#x8BF7;&#x4E86;&#x4E13;&#x5229;&#x3002; &#x5475;&#x5475;&#x3002;</p>
+<p>SUID&#x548C;SGID&#x662F;&#x5982;&#x4F55;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x5462;&#xFF1F;</p>
+<p>&#x9996;&#x5148;&#xFF0C;&#x6211;&#x4EEC;&#x8981;&#x77E5;&#x9053;&#x4E00;&#x70B9;&#xFF1A;&#x8FDB;&#x7A0B;&#x5728;&#x8FD0;&#x884C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6709;&#x4E00;&#x4E9B;&#x5C5E;&#x6027;&#xFF0C;&#x5176;&#x4E2D;&#x5305;&#x62EC; &#x5B9E;&#x9645;&#x7528;&#x6237;ID,&#x5B9E;&#x9645;&#x7EC4;ID,&#x6709;&#x6548;&#x7528;&#x6237;ID,&#x6709;&#x6548;&#x7EC4;ID&#x7B49;&#x3002; &#x5B9E;&#x9645;&#x7528;&#x6237;ID&#x548C;&#x5B9E;&#x9645;&#x7EC4;ID&#x6807;&#x8BC6;&#x6211;&#x4EEC;&#x662F;&#x8C01;&#xFF0C;&#x8C01;&#x5728;&#x8FD0;&#x884C;&#x8FD9;&#x4E2A;&#x7A0B;&#x5E8F;,&#x4E00;&#x822C;&#x8FD9;2&#x4E2A;&#x5B57;&#x6BB5;&#x5728;&#x767B;&#x9646;&#x65F6;&#x51B3;&#x5B9A;&#xFF0C;&#x5728;&#x4E00;&#x4E2A;&#x767B;&#x9646;&#x4F1A;&#x8BDD;&#x671F;&#x95F4;&#xFF0C; &#x8FD9;&#x4E9B;&#x503C;&#x57FA;&#x672C;&#x4E0A;&#x4E0D;&#x6539;&#x53D8;&#x3002;</p>
+<p>&#x800C;&#x6709;&#x6548;&#x7528;&#x6237;ID&#x548C;&#x6709;&#x6548;&#x7EC4;ID&#x5219;&#x51B3;&#x5B9A;&#x4E86;&#x8FDB;&#x7A0B;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x7684;&#x6743;&#x9650;&#x3002;&#x5185;&#x6838;&#x5728;&#x51B3;&#x5B9A;&#x8FDB;&#x7A0B;&#x662F;&#x5426;&#x6709;&#x6587;&#x4EF6;&#x5B58;&#x53D6;&#x6743;&#x9650;&#x65F6;&#xFF0C;&#x662F;&#x91C7;&#x7528;&#x4E86;&#x8FDB;&#x7A0B;&#x7684;&#x6709;&#x6548;&#x7528;&#x6237;ID&#x6765;&#x8FDB;&#x884C;&#x5224;&#x65AD;&#x7684;&#x3002;</p>
+<p>&#x77E5;&#x9053;&#x4E86;&#x8FD9;&#x70B9;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x770B;SUID&#x7684;&#x89E3;&#x51B3;&#x9014;&#x5F84;&#xFF1A;</p>
+<p>&#x5F53;&#x4E00;&#x4E2A;&#x7A0B;&#x5E8F;&#x8BBE;&#x7F6E;&#x4E86;&#x4E3A;SUID&#x4F4D;&#x65F6;&#xFF0C;&#x5185;&#x6838;&#x5C31;&#x77E5;&#x9053;&#x4E86;&#x8FD0;&#x884C;&#x8FD9;&#x4E2A;&#x7A0B;&#x5E8F;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5E94;&#x8BE5;&#x8BA4;&#x4E3A;&#x662F;&#x6587;&#x4EF6;&#x7684;&#x6240;&#x6709;&#x8005;&#x5728;&#x8FD0;&#x884C;&#x8FD9;&#x4E2A;&#x7A0B;&#x5E8F;&#x3002;&#x5373;&#x8BE5;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6709;&#x6548;&#x7528;&#x6237;ID&#x662F;&#x8BE5;&#x7A0B;&#x5E8F;&#x7684;&#x6240;&#x6709;&#x8005;&#x3002;&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token punctuation">[</span>root@sgrid5 bin<span class="token punctuation">]</span><span class="token comment"># ls -l passwd</span>
+
+-r-s--s--x <span class="token number">1</span> root root <span class="token number">16336</span> Feb <span class="token number">14</span> <span class="token number">2003</span> <span class="token function">passwd</span>
+</pre><p>&#x867D;&#x7136;&#x4F60;&#x4EE5;test&#x767B;&#x9646;&#x7CFB;&#x7EDF;&#xFF0C;&#x4F46;&#x662F;&#x5F53;&#x4F60;&#x8F93;&#x5165;passwd&#x547D;&#x4EE4;&#x6765;&#x66F4;&#x6539;&#x5BC6;&#x7801;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x7531;&#x4E8E;passwd&#x8BBE;&#x7F6E;&#x4E86;SUID&#x4F4D;&#xFF0C;&#x56E0;&#x6B64;&#x867D;&#x7136;&#x8FDB;&#x7A0B;&#x7684;&#x5B9E;&#x9645;&#x7528;&#x6237;ID&#x662F;test&#x5BF9;&#x5E94;&#x7684;ID&#xFF0C;&#x4F46;&#x662F;&#x8FDB;&#x7A0B;&#x7684;&#x6709;&#x6548;&#x7528;&#x6237;ID&#x5219;&#x662F;passwd&#x6587;&#x4EF6;&#x7684;&#x6240;&#x6709;&#x8005;root&#x7684;ID,&#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x4FEE;&#x6539;/etc/passwd&#x6587;&#x4EF6;&#x3002;</p>
+<p>&#x8BA9;&#x6211;&#x4EEC;&#x770B;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#x3002;</p>
+<p>ping&#x547D;&#x4EE4;&#x5E94;&#x7528;&#x5E7F;&#x6CDB;&#xFF0C;&#x53EF;&#x4EE5;&#x6D4B;&#x8BD5;&#x7F51;&#x7EDC;&#x662F;&#x5426;&#x8FDE;&#x63A5;&#x6B63;&#x5E38;&#x3002;ping&#x5728;&#x8FD0;&#x884C;&#x4E2D;&#x662F;&#x91C7;&#x7528;&#x4E86;ICMP&#x534F;&#x8BAE;&#xFF0C;&#x9700;&#x8981;&#x53D1;&#x9001;ICMP&#x62A5;&#x6587;&#x3002;&#x4F46;&#x662F;&#x53EA;&#x6709;root&#x7528;&#x6237;&#x624D;&#x80FD;&#x5EFA;&#x7ACB;ICMP&#x62A5;&#x6587;&#xFF0C;&#x5982;&#x4F55;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x5462;&#xFF1F;&#x540C;&#x6837;&#xFF0C;&#x4E5F;&#x662F;&#x901A;&#x8FC7;SUID&#x4F4D;&#x6765;&#x89E3;&#x51B3;&#x3002;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token punctuation">[</span>root@sgrid5 bin<span class="token punctuation">]</span><span class="token comment"># ls -l /bin/ping</span>
+
+-rwsr-sr-x <span class="token number">1</span> root root <span class="token number">28628</span> Jan <span class="token number">25</span> <span class="token number">2003</span> /bin/ping
+</pre><p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6D4B;&#x8BD5;&#x4E00;&#x4E0B;&#xFF0C;&#x5982;&#x679C;&#x53BB;&#x6389;ping&#x7684;SUID&#x4F4D;&#xFF0C;&#x518D;&#x7528;&#x666E;&#x901A;&#x7528;&#x6237;&#x53BB;&#x8FD0;&#x884C;&#x547D;&#x4EE4;&#xFF0C;&#x770B;&#x4F1A;&#x600E;&#x4E48;&#x6837;&#x3002;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token punctuation">[</span>root@sgrid5 bin<span class="token punctuation">]</span><span class="token comment">#chmod u-s /bin/ping</span>
+
+<span class="token punctuation">[</span>root@sgrid5 bin<span class="token punctuation">]</span><span class="token comment"># ls -l ping</span>
+
+-rwxr-xr-x <span class="token number">1</span> root root <span class="token number">28628</span> Jan <span class="token number">25</span> <span class="token number">2003</span> <span class="token function">ping</span>
+
+<span class="token punctuation">[</span>root@sgrid5 bin<span class="token punctuation">]</span><span class="token comment">#su test</span>
+
+<span class="token punctuation">[</span>test@sgrid5 bin<span class="token punctuation">]</span>$ <span class="token function">ping</span> byhh.net
+
+ping: icmp <span class="token function">open</span> socket: Operation not permitted
+</pre><p>SUID&#x867D;&#x7136;&#x5F88;&#x597D;&#x4E86;&#x89E3;&#x51B3;&#x4E86;&#x4E00;&#x4E9B;&#x95EE;&#x9898;&#xFF0C;&#x4F46;&#x662F;&#x540C;&#x65F6;&#x4E5F;&#x4F1A;&#x5E26;&#x6765;&#x4E00;&#x4E9B;&#x5B89;&#x5168;&#x9690;&#x60A3;&#x3002;</p>
+<p>&#x56E0;&#x4E3A;&#x8BBE;&#x7F6E;&#x4E86; SUID &#x4F4D;&#x7684;&#x7A0B;&#x5E8F;&#x5982;&#x679C;&#x88AB;&#x653B;&#x51FB;(&#x901A;&#x8FC7;&#x7F13;&#x51B2;&#x533A;&#x6EA2;&#x51FA;&#x7B49;&#x65B9;&#x9762;),&#x90A3;&#x4E48;hacker&#x5C31;&#x53EF;&#x4EE5;&#x62FF;&#x5230;root&#x6743;&#x9650;&#x3002;</p>
+<p>&#x56E0;&#x6B64;&#x5728;&#x5B89;&#x5168;&#x65B9;&#x9762;&#x7279;&#x522B;&#x8981;&#x6CE8;&#x610F;&#x90A3;&#x4E9B;&#x8BBE;&#x7F6E;&#x4E86;SUID&#x7684;&#x7A0B;&#x5E8F;&#x3002;</p>
+<p>&#x901A;&#x8FC7;&#x4EE5;&#x4E0B;&#x7684;&#x547D;&#x4EE4;&#x53EF;&#x4EE5;&#x627E;&#x5230;&#x7CFB;&#x7EDF;&#x4E0A;&#x6240;&#x6709;&#x7684;&#x8BBE;&#x7F6E;&#x4E86;suid&#x7684;&#x6587;&#x4EF6;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token punctuation">[</span>root@sgrid5 /<span class="token punctuation">]</span><span class="token comment"># find / -perm -04000 -type f -ls</span>
+</pre><p>&#x5BF9;&#x4E8E;&#x8FD9;&#x91CC;&#x4E3A;&#x4EC0;&#x4E48;&#x662F;4000&#xFF0C;&#x5927;&#x5BB6;&#x53EF;&#x4EE5;&#x770B;&#x4E00;&#x4E0B;&#x524D;&#x9762;&#x7684;st_mode&#x7684;&#x5404;bit&#x7684;&#x610F;&#x4E49;&#x5C31;&#x660E;&#x767D;&#x4E86;&#x3002;</p>
+<p>&#x5728;&#x8FD9;&#x4E9B;&#x8BBE;&#x7F6E;&#x4E86;suid&#x7684;&#x7A0B;&#x5E8F;&#x91CC;&#xFF0C;&#x5982;&#x679C;&#x7528;&#x4E0D;&#x4E0A;&#x7684;&#xFF0C;&#x5C31;&#x6700;&#x597D;&#x53D6;&#x6D88;&#x8BE5;&#x7A0B;&#x5E8F;&#x7684;suid&#x4F4D;&#x3002;</p>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>

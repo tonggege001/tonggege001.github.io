@@ -1,0 +1,317 @@
+<!DOCTYPE html><html><head>
+      <title>2021-09-21-Flutter&#x5B66;&#x4E60;</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      pre{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;padding:1em;margin:.5em 0;overflow:auto;line-height:1.5;tab-size:4;hyphens:none;color:#2b3f6a;background-color:#eee9dd !important;border:#ddd3bb;border-radius:3px}pre[class*="language-"]{padding:1em}code[class*="language-"] .token.comment,pre[class*="language-"] .token.comment,code[class*="language-"] .token.prolog,pre[class*="language-"] .token.prolog,code[class*="language-"] .token.doctype,pre[class*="language-"] .token.doctype,code[class*="language-"] .token.cdata,pre[class*="language-"] .token.cdata{color:#9ca3b0;font-style:italic}code[class*="language-"] .token.punctuation,pre[class*="language-"] .token.punctuation{color:#9ca3b0}code[class*="language-"] .namespace,pre[class*="language-"] .namespace{opacity:.7}code[class*="language-"] .token.constant,pre[class*="language-"] .token.constant{color:#c16161}code[class*="language-"] .token.boolean,pre[class*="language-"] .token.boolean,code[class*="language-"] .token.number,pre[class*="language-"] .token.number,code[class*="language-"] .token.function-name,pre[class*="language-"] .token.function-name{color:#c16161}code[class*="language-"] .token.tag,pre[class*="language-"] .token.tag{color:#ac4343}code[class*="language-"] .token.symbol,pre[class*="language-"] .token.symbol{color:#8f932b}code[class*="language-"] .token.selector,pre[class*="language-"] .token.selector{color:#d08e25}code[class*="language-"] .token.attr-name,pre[class*="language-"] .token.attr-name{color:#d08e25}code[class*="language-"] .token.string,pre[class*="language-"] .token.string{background-color:rgba(255,204,0,0.03);color:rgba(106,68,28,0.77)}code[class*="language-"] .token.char,pre[class*="language-"] .token.char{color:#8f932b}code[class*="language-"] .token.url,pre[class*="language-"] .token.url{color:#d08e25}code[class*="language-"] .token.atrule,pre[class*="language-"] .token.atrule,code[class*="language-"] .token.attr-value,pre[class*="language-"] .token.attr-value,code[class*="language-"] .token.keyword,pre[class*="language-"] .token.keyword{color:#8f932b}code[class*="language-"] .token.function,pre[class*="language-"] .token.function{color:#d08e25}code[class*="language-"] .token.class-name,pre[class*="language-"] .token.class-name{color:#2b3f6a}code[class*="language-"] .token.variable,pre[class*="language-"] .token.variable{color:#5e78e1}code[class*="language-"] .token.regex,pre[class*="language-"] .token.regex,code[class*="language-"] .token.important,pre[class*="language-"] .token.important{color:#379566}code[class*="language-"] .token.important,pre[class*="language-"] .token.important,code[class*="language-"] .token.bold,pre[class*="language-"] .token.bold{font-weight:bold}code[class*="language-"] .token.italic,pre[class*="language-"] .token.italic{font-style:italic}code[class*="language-"] .token.entity,pre[class*="language-"] .token.entity{cursor:help}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:rgba(153,122,102,0.08);background:linear-gradient(to right, rgba(153,122,102,0.1) 70%, rgba(153,122,102,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:rgba(153,122,102,0.4);color:#f5f2f0;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px white}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}body{font-size:16px;background-color:#f3f2ee;font-family:"PT Serif",'Times New Roman',Times;color:#1f0909;line-height:1.5em}body ol,body ul{list-style:none}body blockquote,body q{quotes:none}body blockquote:before,body blockquote:after,body q:before,body q:after{content:'';content:none}body table{border-collapse:collapse;border-spacing:0}body h1,body h2,body h3,body h4,body h5,body h6{font-weight:bold}body h1{font-size:1.875em;line-height:1.6em;margin-top:2em}body h2,body h3{font-size:1.3125em;line-height:1.15;margin-top:2.285714em;margin-bottom:1.15em}body h3{font-weight:normal}body h4{font-size:1.125em;margin-top:2.67em}body h5,body h6{font-size:1em}body h1{border-bottom:1px solid;margin-bottom:1.875em;padding-bottom:.8125em}body a{text-decoration:none;color:#065588}body a:hover,body a:active{text-decoration:underline}body p,body blockquote,body .md-fences{margin-bottom:1.5em}body h1,body h2,body h3,body h4,body h5,body h6{margin-bottom:1.5em}body blockquote{font-style:italic;border-left:5px solid;margin-left:2em;padding-left:1em}body ul,body ol{margin:0 0 1.5em 1.5em}body ol li{list-style-type:decimal;list-style-position:outside}body ul li{list-style-type:disc;list-style-position:outside}body li>p{margin-top:0;margin-bottom:0}body .md-meta,body .md-before,body .md-after{color:#999}body table{margin-bottom:1.5em;font-size:1em}body thead th,body tfoot th{padding:.25em .25em .25em .4em;text-transform:uppercase}body th{text-align:left}body td{vertical-align:top;padding:.25em .25em .25em .4em}body code,body .md-fences{color:inherit;background-color:#dadada;padding-left:1ch;padding-right:1ch}body pre code{background-color:inherit}body .md-fences{margin-left:2em;margin-bottom:3em}body .md-fences .CodeMirror.CodeMirror-wrap{top:-0.8em}body pre,body code,body tt{font-size:.875em;line-height:1.714285em}body h1{line-height:1.3em;font-weight:normal;margin-bottom:.5em}body p+ul,body p+ol{margin-top:-1em}body h3+ul,body h4+ul,body h5+ul,body h6+ul,body h3+ol,body h4+ol,body h5+ol,body h6+ol{margin-top:.5em}body li>ul,body li>ol{margin-top:inherit}body h2,body h3{margin-bottom:.75em}body hr{border-top:none;border-right:none;border-bottom:1px solid;border-left:none}body h1{border-color:#c5c5c5}body blockquote{border-color:#bababa;color:#656565;background-color:#e6e4dc}body thead.md-table-edit{background-color:transparent}body thead{background-color:#dadada}body tr:nth-child(even){background:#e8e7e7}body hr{border-color:#c5c5c5}body .task-list{padding-left:1rem}body .task-list-item{list-style-type:none;margin-left:-1.8em}body .task-list-item .task-list-item-checkbox{margin-right:.8em}body .task-list-item input:before{content:'\221A';display:inline-block;width:1.25rem;height:1.5rem;vertical-align:middle;text-align:center;color:#ddd;background-color:#F3F2EE}body .task-list-item input:checked:before,body .task-list-item input[checked]:before{color:inherit}body img{max-width:100%}body kbd{color:#1f0909}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h2 class="mume-header" id="flutter-widget">Flutter Widget</h2>
+
+<p>&#x6709;&#x72B6;&#x6001;Widget&#xFF1A;&#x754C;&#x9762;&#x4E0A;&#x7684;&#x6570;&#x636E;&#x662F;&#x52A8;&#x6001;&#x53D8;&#x5316;&#x7684;&#x3002;<br>
+&#x65E0;&#x72B6;&#x6001;Widget&#xFF1A;&#x6570;&#x636E;&#x90FD;&#x5199;&#x6B7B;&#xFF0C;&#x4E0D;&#x4F1A;&#x53D8;&#x5316;</p>
+<p>&#x4E00;&#x4E2A;&#x6700;&#x5C0F;demo</p>
+<pre data-role="codeBlock" data-info="dart" class="language-dart"><span class="token string">&apos;package:flutter/material.dart&apos;</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-void">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">runApp</span><span class="token punctuation">(</span><span class="token keyword keyword-const">const</span> <span class="token class-name">MyApp</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-class">class</span> <span class="token class-name">MyApp</span> <span class="token keyword keyword-extends">extends</span> <span class="token class-name">StatelessWidget</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-const">const</span> <span class="token class-name">MyApp</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token class-name">Key</span><span class="token operator">?</span> key<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">:</span> <span class="token keyword keyword-super">super</span><span class="token punctuation">(</span>key<span class="token punctuation">:</span> key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// This widget is the root of your application.</span>
+  <span class="token metadata symbol">@override</span>
+  <span class="token class-name">Widget</span> <span class="token function">build</span><span class="token punctuation">(</span><span class="token class-name">BuildContext</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-return">return</span> <span class="token keyword keyword-const">const</span> <span class="token class-name">MaterialApp</span><span class="token punctuation">(</span>
+      debugShowCheckedModeBanner<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      home<span class="token punctuation">:</span> <span class="token class-name">HomePage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-class">class</span> <span class="token class-name">HomePage</span> <span class="token keyword keyword-extends">extends</span> <span class="token class-name">StatelessWidget</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-const">const</span> <span class="token class-name">HomePage</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token class-name">Key</span><span class="token operator">?</span> key<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">:</span> <span class="token keyword keyword-super">super</span><span class="token punctuation">(</span>key<span class="token punctuation">:</span> key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token class-name">Widget</span> <span class="token function">build</span><span class="token punctuation">(</span><span class="token class-name">BuildContext</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-return">return</span> <span class="token class-name">Scaffold</span><span class="token punctuation">(</span>
+      appBar<span class="token punctuation">:</span> <span class="token class-name">AppBar</span><span class="token punctuation">(</span>
+        title<span class="token punctuation">:</span> <span class="token keyword keyword-const">const</span> <span class="token class-name">Text</span><span class="token punctuation">(</span><span class="token string">&quot;Tonggege&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        elevation<span class="token punctuation">:</span> <span class="token number">10.0</span><span class="token punctuation">,</span>
+        centerTitle<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token punctuation">)</span><span class="token punctuation">,</span>
+      body<span class="token punctuation">:</span> <span class="token keyword keyword-const">const</span> <span class="token class-name">CountPage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>          <span class="token comment">// App&#x4E0B;&#x9762;&#x663E;&#x793A;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x662F;&#x4E2A;Widget</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-class">class</span> <span class="token class-name">CountPage</span> <span class="token keyword keyword-extends">extends</span> <span class="token class-name">StatefulWidget</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-const">const</span> <span class="token class-name">CountPage</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token class-name">Key</span><span class="token operator">?</span> key<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">:</span> <span class="token keyword keyword-super">super</span><span class="token punctuation">(</span>key<span class="token punctuation">:</span> key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token metadata symbol">@override</span>
+  _CountPageState <span class="token function">createState</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token function">_CountPageState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-class">class</span> _CountPageState <span class="token keyword keyword-extends">extends</span> <span class="token class-name">State</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">CountPage</span><span class="token punctuation">&gt;</span></span> <span class="token punctuation">{</span>        <span class="token comment">// &#x8FD9;&#x91CC;&#x9762;&#x5B58;&#x653E;&#x72B6;&#x6001;</span>
+  int count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+  <span class="token class-name">Widget</span> <span class="token function">build</span><span class="token punctuation">(</span><span class="token class-name">BuildContext</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-return">return</span> <span class="token class-name">Column</span><span class="token punctuation">(</span>
+      children<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        <span class="token class-name">Text</span><span class="token punctuation">(</span><span class="token string">&quot;$count&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token class-name">RaisedButton</span><span class="token punctuation">(</span>onPressed<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+          <span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            count<span class="token operator">++</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        child<span class="token punctuation">:</span> <span class="token keyword keyword-const">const</span> <span class="token class-name">Text</span><span class="token punctuation">(</span><span class="token string">&quot;&#x70B9;&#x51FB;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token punctuation">)</span>
+      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre><h2 class="mume-header" id="%E6%96%87%E6%9C%AC-%E6%8C%89%E9%92%AE-%E5%9B%BE%E7%89%87">&#x6587;&#x672C;&#x3001;&#x6309;&#x94AE;&#x3001;&#x56FE;&#x7247;</h2>
+
+<pre data-role="codeBlock" data-info="dart" class="language-dart"><span class="token keyword keyword-import">import</span> <span class="token string">&apos;package:flutter/material.dart&apos;</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-class">class</span> <span class="token class-name">TextDemo</span> <span class="token keyword keyword-extends">extends</span> <span class="token class-name">StatelessWidget</span> <span class="token punctuation">{</span>
+  <span class="token class-name">Widget</span> <span class="token function">build</span><span class="token punctuation">(</span><span class="token class-name">BuildContext</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">/*
+    return Text(
+      &quot;&#x6587;&#x672C;&quot; * 20,
+      maxLines: 1,                            // &#x8BBE;&#x7F6E;&#x6700;&#x5927;&#x884C;
+      overflow: TextOverflow.ellipsis,        // &#x5F53;&#x6700;&#x5927;&#x884C;&#x8D85;&#x8FC7;&#x65F6;&#x7528;...&#x4EE3;&#x66FF;
+    );
+     */</span>
+
+    <span class="token keyword keyword-return">return</span> <span class="token class-name">Container</span><span class="token punctuation">(</span>                         <span class="token comment">// &#x7C7B;&#x4F3C;&#x4E8E;&#x4E00;&#x4E2A;div&#xFF0C;&#x5B83;&#x7684;&#x5B69;&#x5B50;&#x662F;&#x6587;&#x672C;</span>
+      width<span class="token punctuation">:</span> double<span class="token punctuation">.</span>infinity<span class="token punctuation">,</span>
+      color<span class="token punctuation">:</span> <span class="token class-name">Colors</span><span class="token punctuation">.</span>green<span class="token punctuation">,</span>                    <span class="token comment">// &#x8BBE;&#x7F6E;&#x80CC;&#x666F;&#x8272;</span>
+      child<span class="token punctuation">:</span> <span class="token class-name">Text</span><span class="token punctuation">(</span>
+        <span class="token string">&quot;&#x6587;&#x672C;&quot;</span> <span class="token operator">*</span> <span class="token number">20</span><span class="token punctuation">,</span>
+        maxLines<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+        overflow<span class="token punctuation">:</span> <span class="token class-name">TextOverflow</span><span class="token punctuation">.</span>ellipsis<span class="token punctuation">,</span>
+        textDirection<span class="token punctuation">:</span> <span class="token class-name">TextDirection</span><span class="token punctuation">.</span>rtl<span class="token punctuation">,</span>     <span class="token comment">// &#x8BBE;&#x7F6E;&#x6587;&#x672C;&#x65B9;&#x5411;</span>
+        textAlign<span class="token punctuation">:</span> <span class="token class-name">TextAlign</span><span class="token punctuation">.</span>center<span class="token punctuation">,</span>          <span class="token comment">// &#x8BBE;&#x7F6E;&#x6587;&#x672C;&#x5BF9;&#x9F50;&#x65B9;&#x5F0F;</span>
+        style<span class="token punctuation">:</span> <span class="token keyword keyword-const">const</span> <span class="token class-name">TextStyle</span><span class="token punctuation">(</span>
+          color<span class="token punctuation">:</span> <span class="token class-name">Colors</span><span class="token punctuation">.</span>white<span class="token punctuation">,</span>
+          fontSize<span class="token punctuation">:</span> <span class="token number">32</span><span class="token punctuation">,</span>
+        <span class="token punctuation">)</span><span class="token punctuation">,</span>                                    <span class="token comment">// &#x6587;&#x5B57;&#x7684;&#x5C5E;&#x6027;</span>
+
+      <span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-class">class</span> <span class="token class-name">ButtonDemo</span> <span class="token keyword keyword-extends">extends</span> <span class="token class-name">StatelessWidget</span> <span class="token punctuation">{</span>
+  <span class="token class-name">Widget</span> <span class="token function">build</span><span class="token punctuation">(</span><span class="token class-name">BuildContext</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-return">return</span> <span class="token class-name">Column</span><span class="token punctuation">(</span>
+      children<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        <span class="token class-name">RaisedButton</span><span class="token punctuation">(</span>                         <span class="token comment">// &#x6F02;&#x6D6E;&#x6309;&#x94AE;</span>
+          onPressed<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+          child<span class="token punctuation">:</span> <span class="token class-name">Text</span><span class="token punctuation">(</span><span class="token string">&quot;&#x6F02;&#x6D6E;&#x6309;&#x94AE;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>              <span class="token comment">// &#x53EF;&#x4EE5;&#x662F;&#x6587;&#x672C;&#x6216;&#x8005;&#x56FE;&#x7247;&#x7B49;&#x7B49;</span>
+        <span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token class-name">FlatButton</span><span class="token punctuation">(</span>
+          onPressed<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+          child<span class="token punctuation">:</span> <span class="token keyword keyword-const">const</span> <span class="token class-name">Text</span><span class="token punctuation">(</span><span class="token string">&quot;&#x6241;&#x5E73;&#x6309;&#x94AE;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token class-name">FlatButton</span><span class="token punctuation">.</span><span class="token function">icon</span><span class="token punctuation">(</span>
+          onPressed<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+          icon<span class="token punctuation">:</span> <span class="token class-name">Icon</span><span class="token punctuation">(</span><span class="token class-name">Icons</span><span class="token punctuation">.</span>add<span class="token punctuation">)</span><span class="token punctuation">,</span>
+          label<span class="token punctuation">:</span> <span class="token class-name">Text</span><span class="token punctuation">(</span><span class="token string">&quot;data&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+          color<span class="token punctuation">:</span> <span class="token class-name">Colors</span><span class="token punctuation">.</span>green<span class="token punctuation">,</span>
+          textColor<span class="token punctuation">:</span> <span class="token class-name">Colors</span><span class="token punctuation">.</span>blue<span class="token punctuation">,</span>
+        <span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token class-name">IconButton</span><span class="token punctuation">(</span>
+          onPressed<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+          icon<span class="token punctuation">:</span> <span class="token class-name">Icon</span><span class="token punctuation">(</span><span class="token class-name">Icons</span><span class="token punctuation">.</span>home<span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token punctuation">)</span>
+      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-class">class</span> <span class="token class-name">ImageIconDemo</span> <span class="token keyword keyword-extends">extends</span> <span class="token class-name">StatelessWidget</span> <span class="token punctuation">{</span>
+  <span class="token class-name">Widget</span> <span class="token function">build</span><span class="token punctuation">(</span><span class="token class-name">BuildContext</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-return">return</span> <span class="token class-name">Column</span><span class="token punctuation">(</span>
+      children<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        <span class="token class-name">Icon</span><span class="token punctuation">(</span><span class="token class-name">Icons</span><span class="token punctuation">.</span>add<span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token class-name">IconButton</span><span class="token punctuation">(</span>onPressed<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> icon<span class="token punctuation">:</span> <span class="token class-name">Icon</span><span class="token punctuation">(</span><span class="token class-name">Icons</span><span class="token punctuation">.</span>home<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token class-name">Image</span><span class="token punctuation">.</span><span class="token function">network</span><span class="token punctuation">(</span>
+          <span class="token string">&quot;https://img1.baidu.com/it/u=3860954678,737616544&amp;fm=253&amp;fmt=auto&amp;app=120&amp;f=JPEG?w=632&amp;h=500&quot;</span><span class="token punctuation">,</span>
+          fit<span class="token punctuation">:</span> <span class="token class-name">BoxFit</span><span class="token punctuation">.</span>fill<span class="token punctuation">,</span>                 <span class="token comment">// &#x56FE;&#x7247;&#x7684;&#x586B;&#x5145;&#x6A21;&#x5F0F;&#xFF0C;fill: &#x5BBD;&#x9AD8;&#x4F1A;&#x968F;&#x7740;&#x7236;&#x5BB9;&#x5668;&#x586B;&#x5145;</span>
+        <span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token comment">// Image.file(file)                 // &#x672C;&#x5730;&#x56FE;&#x7247;</span>
+        <span class="token comment">// Image.assets(path)               // pubspec&#x6587;&#x4EF6;&#x91CC;&#x63CF;&#x8FF0;&#x4E86;asset&#x7684;&#x5730;&#x5740;&#xFF0C;&#x4F1A;&#x4ECE;&#x6839;&#x76EE;&#x5F55;&#x91CC;&#x5BFB;&#x627E;</span>
+      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</pre><h3 class="mume-header" id="%E5%BC%80%E5%85%B3%E5%A4%8D%E9%80%89%E6%A1%86">&#x5F00;&#x5173;&#x590D;&#x9009;&#x6846;</h3>
+
+<p>&#x5F00;&#x5173;&#x590D;&#x9009;&#x6846;&#x662F;&#x6709;&#x72B6;&#x6001;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x5FC5;&#x987B;StatefulWidget</p>
+<pre data-role="codeBlock" data-info="dart" class="language-dart"><span class="token keyword keyword-class">class</span> _CheckDemoState <span class="token keyword keyword-extends">extends</span> <span class="token class-name">State</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">CheckDemo</span><span class="token punctuation">&gt;</span></span> <span class="token punctuation">{</span>
+  bool _check <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  bool _switch <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+
+  <span class="token class-name">Widget</span> <span class="token function">build</span><span class="token punctuation">(</span><span class="token class-name">BuildContext</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-return">return</span> <span class="token class-name">Column</span><span class="token punctuation">(</span>
+      children<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        <span class="token class-name">Checkbox</span><span class="token punctuation">(</span>value<span class="token punctuation">:</span> _check<span class="token punctuation">,</span> onChanged<span class="token punctuation">:</span> <span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          _check <span class="token operator">=</span> v<span class="token operator">!</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token class-name">Switch</span><span class="token punctuation">(</span>value<span class="token punctuation">:</span> _switch<span class="token punctuation">,</span> onChanged<span class="token punctuation">:</span> <span class="token punctuation">(</span>v<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>                      <span class="token comment">// &#x5FC5;&#x987B;&#x7528;setState()&#x624D;&#x53EF;&#x4EE5;&#x4FEE;&#x6539;&#x72B6;&#x6001;</span>
+            _switch <span class="token operator">=</span> v<span class="token punctuation">;</span>
+          <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="%E8%BF%9B%E5%BA%A6%E6%8C%87%E7%A4%BA%E5%99%A8">&#x8FDB;&#x5EA6;&#x6307;&#x793A;&#x5668;</h3>
+
+<pre data-role="codeBlock" data-info="dart" class="language-dart"><span class="token keyword keyword-class">class</span> <span class="token class-name">ProgressDemo</span> <span class="token keyword keyword-extends">extends</span> <span class="token class-name">StatelessWidget</span> <span class="token punctuation">{</span>
+  <span class="token class-name">Widget</span> <span class="token function">build</span><span class="token punctuation">(</span><span class="token class-name">BuildContext</span> contex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-return">return</span> <span class="token class-name">Padding</span><span class="token punctuation">(</span>
+      padding<span class="token punctuation">:</span> <span class="token keyword keyword-const">const</span> <span class="token class-name">EdgeInsets</span><span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      child<span class="token punctuation">:</span> <span class="token class-name">Column</span><span class="token punctuation">(</span>
+        children<span class="token punctuation">:</span>  <span class="token punctuation">[</span>
+          <span class="token class-name">LinearProgressIndicator</span><span class="token punctuation">(</span>
+            value<span class="token punctuation">:</span> <span class="token number">0.5</span><span class="token punctuation">,</span>                   <span class="token comment">// &#x6CA1;&#x6709;value&#x5C31;&#x4F1A;&#x4E00;&#x76F4;&#x52A8;&#xFF0C;&#x8BBE;&#x7F6E;value&#x5219;&#x5230;&#x56FA;&#x5B9A;&#x7684;&#x4F4D;&#x7F6E;</span>
+            valueColor<span class="token punctuation">:</span> <span class="token class-name">AlwaysStoppedAnimation</span><span class="token punctuation">(</span><span class="token class-name">Colors</span><span class="token punctuation">.</span>yellow<span class="token punctuation">)</span><span class="token punctuation">,</span>    <span class="token comment">// &#x8BBE;&#x7F6E;&#x52A0;&#x8F7D;&#x597D;&#x7684;&#x989C;&#x8272;</span>
+          <span class="token punctuation">)</span><span class="token punctuation">,</span>
+          <span class="token class-name">SizedBox</span><span class="token punctuation">(</span>height<span class="token punctuation">:</span> <span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">,</span>           <span class="token comment">// &#x589E;&#x52A0;&#x4E00;&#x4E2A;&#x7A7A;&#x683C;&#x8DDD;&#x79BB;</span>
+          <span class="token class-name">CircularProgressIndicator</span><span class="token punctuation">(</span>
+            <span class="token comment">// value: 0-1,</span>
+            <span class="token comment">// valueColor: AlwaysStoppedAnimation(Colors.yellow)</span>
+          <span class="token punctuation">)</span><span class="token punctuation">,</span>
+          <span class="token class-name">Container</span><span class="token punctuation">(</span>
+            height<span class="token punctuation">:</span> <span class="token number">100</span><span class="token punctuation">,</span>
+            width<span class="token punctuation">:</span> <span class="token number">100</span><span class="token punctuation">,</span>
+            child<span class="token punctuation">:</span> <span class="token class-name">CircularProgressIndicator</span><span class="token punctuation">(</span>
+              <span class="token comment">// value: 0-1,</span>
+              <span class="token comment">// valueColor: AlwaysStoppedAnimation(Colors.yellow)</span>
+            <span class="token punctuation">)</span><span class="token punctuation">,</span>    <span class="token comment">// &#x5706;&#x5708;&#x65CB;&#x8F6C;&#x8FDB;&#x5EA6;&#x6761;</span>
+          <span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6">&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;</h3>
+
+<p>&#x5229;&#x7528;GestureDetector&#x5BB9;&#x5668;&#x5C06;&#x6CA1;&#x6709;&#x4E8B;&#x4EF6;&#x7684;widget&#x589E;&#x52A0;&#x4E8B;&#x4EF6;&#x3002;</p>
+<pre data-role="codeBlock" data-info="dart" class="language-dart"><span class="token keyword keyword-class">class</span> <span class="token class-name">ClickDemo</span> <span class="token keyword keyword-extends">extends</span> <span class="token class-name">StatelessWidget</span> <span class="token punctuation">{</span>
+  <span class="token class-name">Widget</span> <span class="token function">build</span><span class="token punctuation">(</span><span class="token class-name">BuildContext</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// // &#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x5BB9;&#x5668;&#xFF0C;&#x91CC;&#x9762;&#x5305;&#x542B;&#x4E86;&#x4E30;&#x5BCC;&#x7684;&#x4E8B;&#x4EF6;(&#x6CA1;&#x6709;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;&#x7684;widget&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;widget)</span>
+    <span class="token keyword keyword-return">return</span> <span class="token class-name">GestureDetector</span><span class="token punctuation">(</span>
+      child<span class="token punctuation">:</span> <span class="token class-name">Text</span><span class="token punctuation">(</span><span class="token string">&quot;data&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      onTap<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;tag&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+      onDoubleTap<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;double tag&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="%E8%BE%93%E5%85%A5%E6%A1%86">&#x8F93;&#x5165;&#x6846;</h3>
+
+<pre data-role="codeBlock" data-info="dart" class="language-dart"><span class="token keyword keyword-class">class</span> <span class="token class-name">InputDemo</span> <span class="token keyword keyword-extends">extends</span> <span class="token class-name">StatefulWidget</span> <span class="token punctuation">{</span>
+  _InputDemoState <span class="token function">createState</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token function">_InputDemoState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-class">class</span> _InputDemoState <span class="token keyword keyword-extends">extends</span> <span class="token class-name">State</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">InputDemo</span><span class="token punctuation">&gt;</span></span> <span class="token punctuation">{</span>
+  <span class="token class-name">GlobalKey</span> _key <span class="token operator">=</span> <span class="token class-name">GlobalKey</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">FormState</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token class-name">TextEditingController</span> _controller <span class="token operator">=</span> <span class="token class-name">TextEditingController</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token class-name">TextEditingController</span> user_controller <span class="token operator">=</span> <span class="token class-name">TextEditingController</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword keyword-void">void</span> <span class="token function">initState</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-super">super</span><span class="token punctuation">.</span><span class="token function">initState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword keyword-void">void</span> <span class="token function">dispose</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-super">super</span><span class="token punctuation">.</span><span class="token function">dispose</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    _controller<span class="token punctuation">.</span><span class="token function">dispose</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token class-name">Widget</span> <span class="token function">build</span><span class="token punctuation">(</span><span class="token class-name">BuildContext</span> context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-return">return</span> <span class="token class-name">Form</span><span class="token punctuation">(</span>
+      key<span class="token punctuation">:</span> _key<span class="token punctuation">,</span>
+      autovalidate<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      child<span class="token punctuation">:</span> <span class="token class-name">Column</span><span class="token punctuation">(</span>
+        children<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+          <span class="token class-name">TextField</span><span class="token punctuation">(</span>
+            autofocus<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>                        <span class="token comment">// &#x81EA;&#x52A8;&#x83B7;&#x5F97;&#x7126;&#x70B9;</span>
+            controller<span class="token punctuation">:</span> _controller<span class="token punctuation">,</span>
+            decoration<span class="token punctuation">:</span> <span class="token class-name">InputDecoration</span><span class="token punctuation">(</span>            <span class="token comment">// &#x88C5;&#x9970;</span>
+              prefixIcon<span class="token punctuation">:</span> <span class="token class-name">Icon</span><span class="token punctuation">(</span><span class="token class-name">Icons</span><span class="token punctuation">.</span>add<span class="token punctuation">)</span><span class="token punctuation">,</span>          <span class="token comment">// &#x524D;&#x5BFC;&#x56FE;&#x6807;</span>
+              labelText<span class="token punctuation">:</span> <span class="token string">&quot;label&quot;</span><span class="token punctuation">,</span>                    <span class="token comment">// &#x63D0;&#x793A;&#x6587;&#x5B57;</span>
+              hintText<span class="token punctuation">:</span> <span class="token string">&quot;text&quot;</span>                      <span class="token comment">// &#x9ED8;&#x8BA4;&#x6587;&#x5B57;</span>
+            <span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token comment">// obscureText: true,                      // &#x662F;&#x5426;&#x662F;&#x5BC6;&#x7801;&#x6846;</span>
+          <span class="token punctuation">)</span><span class="token punctuation">,</span>
+          <span class="token class-name">SizedBox</span><span class="token punctuation">(</span>height<span class="token punctuation">:</span> <span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+          <span class="token class-name">TextFormField</span><span class="token punctuation">(</span>
+            controller<span class="token punctuation">:</span> user_controller<span class="token punctuation">,</span>
+            decoration<span class="token punctuation">:</span> <span class="token class-name">InputDecoration</span><span class="token punctuation">(</span>
+              prefixIcon<span class="token punctuation">:</span> <span class="token class-name">Icon</span><span class="token punctuation">(</span><span class="token class-name">Icons</span><span class="token punctuation">.</span>add<span class="token punctuation">)</span><span class="token punctuation">,</span>
+              labelText<span class="token punctuation">:</span> <span class="token string">&quot;label&quot;</span><span class="token punctuation">,</span>
+              hintText<span class="token punctuation">:</span> <span class="token string">&quot;default&quot;</span><span class="token punctuation">,</span>
+            <span class="token punctuation">)</span><span class="token punctuation">,</span>
+            validator<span class="token punctuation">:</span> <span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">{</span>                       <span class="token comment">// &#x8868;&#x5355;&#x8F93;&#x5165;&#x6846;&#x53EF;&#x4EE5;&#x6821;&#x9A8C;</span>
+              <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>v <span class="token operator">==</span> <span class="token keyword keyword-null">null</span> <span class="token operator">||</span> v<span class="token punctuation">.</span>isEmpty<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword keyword-return">return</span> <span class="token string">&quot;&#x8D26;&#x53F7;&#x5FC5;&#x987B;&#x8F93;&#x5165;&quot;</span><span class="token punctuation">;</span>
+              <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            textInputAction<span class="token punctuation">:</span> <span class="token class-name">TextInputAction</span><span class="token punctuation">.</span>search<span class="token punctuation">,</span>      <span class="token comment">// &#x8F93;&#x5165;&#x6CD5;&#x53F3;&#x4E0B;&#x89D2;&#x7684;&#x6587;&#x5B57;&#x662F;&#x641C;&#x7D22;</span>
+            onFieldSubmitted<span class="token punctuation">:</span> <span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">{</span>                      <span class="token comment">// &#x6309;&#x56DE;&#x8F66;</span>
+              
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token punctuation">)</span><span class="token punctuation">,</span>
+          <span class="token class-name">RaisedButton</span><span class="token punctuation">(</span>
+            onPressed<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+              <span class="token function">print</span><span class="token punctuation">(</span>_controller<span class="token punctuation">.</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">(</span>_key<span class="token punctuation">.</span>currentState <span class="token operator">as</span> <span class="token class-name">FormState</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">validate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            child<span class="token punctuation">:</span> <span class="token class-name">Text</span><span class="token punctuation">(</span><span class="token string">&quot;&#x63D0;&#x4EA4;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span> color<span class="token punctuation">:</span> <span class="token class-name">Colors</span><span class="token punctuation">.</span>blue<span class="token punctuation">)</span>
+        <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre><h2 class="mume-header" id="2-%E8%B7%AF%E7%94%B1">2-&#x8DEF;&#x7531;</h2>
+
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>

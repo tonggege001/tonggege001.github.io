@@ -1,0 +1,470 @@
+<!DOCTYPE html><html><head>
+      <title>2021-06-05-Linux Bash&#x547D;&#x4EE4;</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      pre{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;padding:1em;margin:.5em 0;overflow:auto;line-height:1.5;tab-size:4;hyphens:none;color:#2b3f6a;background-color:#eee9dd !important;border:#ddd3bb;border-radius:3px}pre[class*="language-"]{padding:1em}code[class*="language-"] .token.comment,pre[class*="language-"] .token.comment,code[class*="language-"] .token.prolog,pre[class*="language-"] .token.prolog,code[class*="language-"] .token.doctype,pre[class*="language-"] .token.doctype,code[class*="language-"] .token.cdata,pre[class*="language-"] .token.cdata{color:#9ca3b0;font-style:italic}code[class*="language-"] .token.punctuation,pre[class*="language-"] .token.punctuation{color:#9ca3b0}code[class*="language-"] .namespace,pre[class*="language-"] .namespace{opacity:.7}code[class*="language-"] .token.constant,pre[class*="language-"] .token.constant{color:#c16161}code[class*="language-"] .token.boolean,pre[class*="language-"] .token.boolean,code[class*="language-"] .token.number,pre[class*="language-"] .token.number,code[class*="language-"] .token.function-name,pre[class*="language-"] .token.function-name{color:#c16161}code[class*="language-"] .token.tag,pre[class*="language-"] .token.tag{color:#ac4343}code[class*="language-"] .token.symbol,pre[class*="language-"] .token.symbol{color:#8f932b}code[class*="language-"] .token.selector,pre[class*="language-"] .token.selector{color:#d08e25}code[class*="language-"] .token.attr-name,pre[class*="language-"] .token.attr-name{color:#d08e25}code[class*="language-"] .token.string,pre[class*="language-"] .token.string{background-color:rgba(255,204,0,0.03);color:rgba(106,68,28,0.77)}code[class*="language-"] .token.char,pre[class*="language-"] .token.char{color:#8f932b}code[class*="language-"] .token.url,pre[class*="language-"] .token.url{color:#d08e25}code[class*="language-"] .token.atrule,pre[class*="language-"] .token.atrule,code[class*="language-"] .token.attr-value,pre[class*="language-"] .token.attr-value,code[class*="language-"] .token.keyword,pre[class*="language-"] .token.keyword{color:#8f932b}code[class*="language-"] .token.function,pre[class*="language-"] .token.function{color:#d08e25}code[class*="language-"] .token.class-name,pre[class*="language-"] .token.class-name{color:#2b3f6a}code[class*="language-"] .token.variable,pre[class*="language-"] .token.variable{color:#5e78e1}code[class*="language-"] .token.regex,pre[class*="language-"] .token.regex,code[class*="language-"] .token.important,pre[class*="language-"] .token.important{color:#379566}code[class*="language-"] .token.important,pre[class*="language-"] .token.important,code[class*="language-"] .token.bold,pre[class*="language-"] .token.bold{font-weight:bold}code[class*="language-"] .token.italic,pre[class*="language-"] .token.italic{font-style:italic}code[class*="language-"] .token.entity,pre[class*="language-"] .token.entity{cursor:help}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:rgba(153,122,102,0.08);background:linear-gradient(to right, rgba(153,122,102,0.1) 70%, rgba(153,122,102,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:rgba(153,122,102,0.4);color:#f5f2f0;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px white}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}body{font-size:16px;background-color:#f3f2ee;font-family:"PT Serif",'Times New Roman',Times;color:#1f0909;line-height:1.5em}body ol,body ul{list-style:none}body blockquote,body q{quotes:none}body blockquote:before,body blockquote:after,body q:before,body q:after{content:'';content:none}body table{border-collapse:collapse;border-spacing:0}body h1,body h2,body h3,body h4,body h5,body h6{font-weight:bold}body h1{font-size:1.875em;line-height:1.6em;margin-top:2em}body h2,body h3{font-size:1.3125em;line-height:1.15;margin-top:2.285714em;margin-bottom:1.15em}body h3{font-weight:normal}body h4{font-size:1.125em;margin-top:2.67em}body h5,body h6{font-size:1em}body h1{border-bottom:1px solid;margin-bottom:1.875em;padding-bottom:.8125em}body a{text-decoration:none;color:#065588}body a:hover,body a:active{text-decoration:underline}body p,body blockquote,body .md-fences{margin-bottom:1.5em}body h1,body h2,body h3,body h4,body h5,body h6{margin-bottom:1.5em}body blockquote{font-style:italic;border-left:5px solid;margin-left:2em;padding-left:1em}body ul,body ol{margin:0 0 1.5em 1.5em}body ol li{list-style-type:decimal;list-style-position:outside}body ul li{list-style-type:disc;list-style-position:outside}body li>p{margin-top:0;margin-bottom:0}body .md-meta,body .md-before,body .md-after{color:#999}body table{margin-bottom:1.5em;font-size:1em}body thead th,body tfoot th{padding:.25em .25em .25em .4em;text-transform:uppercase}body th{text-align:left}body td{vertical-align:top;padding:.25em .25em .25em .4em}body code,body .md-fences{color:inherit;background-color:#dadada;padding-left:1ch;padding-right:1ch}body pre code{background-color:inherit}body .md-fences{margin-left:2em;margin-bottom:3em}body .md-fences .CodeMirror.CodeMirror-wrap{top:-0.8em}body pre,body code,body tt{font-size:.875em;line-height:1.714285em}body h1{line-height:1.3em;font-weight:normal;margin-bottom:.5em}body p+ul,body p+ol{margin-top:-1em}body h3+ul,body h4+ul,body h5+ul,body h6+ul,body h3+ol,body h4+ol,body h5+ol,body h6+ol{margin-top:.5em}body li>ul,body li>ol{margin-top:inherit}body h2,body h3{margin-bottom:.75em}body hr{border-top:none;border-right:none;border-bottom:1px solid;border-left:none}body h1{border-color:#c5c5c5}body blockquote{border-color:#bababa;color:#656565;background-color:#e6e4dc}body thead.md-table-edit{background-color:transparent}body thead{background-color:#dadada}body tr:nth-child(even){background:#e8e7e7}body hr{border-color:#c5c5c5}body .task-list{padding-left:1rem}body .task-list-item{list-style-type:none;margin-left:-1.8em}body .task-list-item .task-list-item-checkbox{margin-right:.8em}body .task-list-item input:before{content:'\221A';display:inline-block;width:1.25rem;height:1.5rem;vertical-align:middle;text-align:center;color:#ddd;background-color:#F3F2EE}body .task-list-item input:checked:before,body .task-list-item input[checked]:before{color:inherit}body img{max-width:100%}body kbd{color:#1f0909}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h2 class="mume-header" id="sort">sort</h2>
+
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">sort</span> <span class="token punctuation">[</span>-fbMnrtuk<span class="token punctuation">]</span> <span class="token punctuation">[</span>file or srdin<span class="token punctuation">]</span>  
+-f: &#x5FFD;&#x7565;&#x5927;&#x5C0F;&#x5199;&#x5DEE;&#x5F02;   
+-b: &#x5FFD;&#x7565;&#x6700;&#x524D;&#x9762;&#x7684;&#x7A7A;&#x683C;&#x7B26;&#x90E8;&#x5206;  
+-M: &#x4EE5;&#x6708;&#x4EFD;&#x7684;&#x540D;&#x5B57;&#x6765;&#x6392;&#x5E8F;  
+-n: &#x4F7F;&#x7528;&#x7EAF;&#x6570;&#x5B57;&#x8FDB;&#x884C;&#x6392;&#x5E8F;  
+-r: &#x53CD;&#x5411;&#x6392;&#x5E8F;  
+-u: &#x76F8;&#x540C;&#x6570;&#x636E;&#x53EA;&#x51FA;&#x73B0;&#x4E00;&#x884C;&#x4EE3;&#x8868;  
+-t: &#x5206;&#x9694;&#x7B26;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;<span class="token punctuation">[</span>TAB<span class="token punctuation">]</span>&#x952E;&#x5206;&#x5272;  
+  
+eg: <span class="token function">cat</span> /etc/passed <span class="token operator">|</span> <span class="token function">sort</span>  
+</pre><h2 class="mume-header" id="wc">wc</h2>
+
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">wc</span> <span class="token punctuation">[</span>-lwm<span class="token punctuation">]</span>  
+-l: &#x4EC5;&#x5217;&#x51FA;&#x884C;  
+-w: &#x4EC5;&#x5217;&#x51FA;&#x591A;&#x5C11;&#x5B57;  
+-m: &#x591A;&#x5C11;&#x5B57;&#x7B26;  
+
+eg: <span class="token function">ls</span> -l <span class="token operator">|</span> <span class="token function">wc</span> -l
+</pre><h2 class="mume-header" id="tee">tee</h2>
+
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">tee</span> <span class="token punctuation">[</span>-a<span class="token punctuation">]</span> <span class="token function">file</span>  
+
+last <span class="token operator">|</span> <span class="token function">tee</span> last.list <span class="token operator">|</span> <span class="token function">cut</span> -d <span class="token string">&quot; &quot;</span> -f1  
+&#x529F;&#x80FD;&#xFF1A;&#x8BA9;&#x6807;&#x51C6;&#x8F93;&#x51FA;&#x8F6C;&#x5B58;&#x4E00;&#x4EFD;&#x5230;&#x6587;&#x4EF6;last.list&#x4E2D;
+</pre><h2 class="mume-header" id="tr">tr</h2>
+
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">tr</span> <span class="token punctuation">[</span>-ds<span class="token punctuation">]</span> SET1 <span class="token punctuation">..</span>.  
+-d: &#x5220;&#x9664;&#x4FE1;&#x606F;&#x5F53;&#x4E2D;&#x7684;SET1&#x8FD9;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;  
+-s: &#x66FF;&#x6362;&#x6389;&#x91CD;&#x590D;&#x7684;&#x5B57;&#x7B26;&#x4E32;  
+
+&#x5C06;&#x8F93;&#x51FA;&#x4E2D;&#x7684;&#x5C0F;&#x5199;&#x5B57;&#x6BCD;&#x8F6C;&#x6210;&#x5927;&#x5199;&#x5B57;&#x6BCD;  
+eg: last <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">&apos;[a-z]&apos;</span> &apos;<span class="token punctuation">[</span>A-Z<span class="token punctuation">]</span>  
+
+
+</pre><h2 class="mume-header" id="expand">expand</h2>
+
+<p>&#x5C06;[tab]&#x8F6C;&#x6362;&#x6210;&#x7A7A;&#x683C;</p>
+<h1 class="mume-header" id="shell-script">Shell Script</h1>
+
+<ol>
+<li>&#x4E00;&#x884C;&#x547D;&#x4EE4;&#x592A;&#x591A;&#xFF0C;&#x53EF;&#x4EE5;[Enter]&#x6269;&#x5C55;&#x547D;&#x4EE4;</li>
+<li># &#x662F;&#x6CE8;&#x91CA;</li>
+<li>&#x8BFB;&#x53D6;&#x5230;&#x4E00;&#x4E2A;[Enter]&#x5C31;&#x5F00;&#x59CB;&#x6267;&#x884C;&#x8BE5;&#x884C;</li>
+</ol>
+<h2 class="mume-header" id="%E6%A0%BC%E5%BC%8F">&#x683C;&#x5F0F;</h2>
+
+<ol>
+<li>&#x7B2C;&#x4E00;&#x884C;&#xFF1A; #!/bin/bash</li>
+<li>&#x6307;&#x660E;PATH&#x548C;LANG</li>
+<li>exit 0&#x662F;&#x9000;&#x51FA;&#x503C;</li>
+</ol>
+<h2 class="mume-header" id="%E4%BE%8B%E5%AD%90">&#x4F8B;&#x5B50;</h2>
+
+<ol>
+<li>&#x83B7;&#x53D6;&#x7528;&#x6237;&#x8F93;&#x5165;</li>
+</ol>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token builtin class-name">read</span> -p <span class="token string">&quot;Please input your first name: &quot;</span> firstname      <span class="token comment"># &#x63D0;&#x793A;&#x7528;&#x6237;&#x8F93;&#x5165;  </span>
+<span class="token builtin class-name">read</span> -p <span class="token string">&quot;Please input your last name: &quot;</span> lastname        <span class="token comment"># &#x63D0;&#x793A;&#x7528;&#x6237;&#x8F93;&#x5165;  </span>
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;<span class="token entity" title="\n">\n</span> Your full name is: <span class="token variable">$firstname</span> <span class="token variable">$lastname</span>&quot;</span>       <span class="token comment"># &#x7ED3;&#x679C;&#x7531;&#x5C4F;&#x5E55;&#x8F93;&#x51FA;  </span>
+<span class="token builtin class-name">exit</span> <span class="token number">0</span>  
+</pre><ol start="2">
+<li>&#x521B;&#x5EFA;&#x6309;&#x7167;&#x65E5;&#x671F;&#x7684;&#x6587;&#x4EF6;</li>
+</ol>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token shebang important">#!/bin/bash  </span>
+
+<span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span>/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin  
+<span class="token builtin class-name">export</span> <span class="token environment constant">PATH</span>  
+
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;I will use &apos;touch&apos; command to create 3 files.&quot;</span>  
+<span class="token builtin class-name">read</span> -p <span class="token string">&quot;Please input your filename: &quot;</span> fileuser  
+
+<span class="token assign-left variable">filename</span><span class="token operator">=</span><span class="token variable">${fileuser<span class="token operator">:-</span>&quot;filename&quot;}</span>        <span class="token comment"># &#x9E1F;&#x54E5;&#x4E66;P315&#x4E5F;&#xFF0C;&#x53D8;&#x91CF;&#x540D;&#x8BBE;&#x7F6E;&#xFF0C;&#x82E5;&#x53D8;&#x91CF;&#x540D;&#x4E3A;&#x7A7A;&#x5219;&#x8BBE;&#x7F6E;&#x6210;filename  </span>
+  
+<span class="token comment"># &#x5229;&#x7528;date&#x8BBE;&#x7F6E;&#x6587;&#x4EF6;&#x540D;  </span>
+
+<span class="token builtin class-name">echo</span> <span class="token variable">$filename</span>  
+
+<span class="token assign-left variable">date1</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> --date<span class="token operator">=</span><span class="token string">&apos;2 days ago&apos;</span> +%Y%m%d<span class="token variable">)</span></span>       <span class="token comment"># &#x524D;&#x4E24;&#x5929;&#x65E5;&#x671F; $(command) &#x662F;&#x7528;&#x6765;&#x53D6;&#x5F97;&#x8F93;&#x51FA;&#x4FE1;&#x606F;&#x7684;  </span>
+<span class="token assign-left variable">date2</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> --date<span class="token operator">=</span><span class="token string">&apos;1 days ago&apos;</span> +%Y%m%d<span class="token variable">)</span></span>       <span class="token comment"># &#x524D;&#x4E00;&#x5929;&#x65E5;&#x671F;  </span>
+<span class="token assign-left variable">date3</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> +%Y%m%d<span class="token variable">)</span></span>  
+
+<span class="token builtin class-name">echo</span> <span class="token variable">$date1</span>  
+
+<span class="token assign-left variable">file1</span><span class="token operator">=</span><span class="token variable">${filename}</span><span class="token variable">${date1}</span>  
+<span class="token assign-left variable">file2</span><span class="token operator">=</span><span class="token variable">${filename}</span><span class="token variable">${date2}</span>  
+<span class="token assign-left variable">file3</span><span class="token operator">=</span><span class="token variable">${filename}</span><span class="token variable">${date3}</span>  
+
+<span class="token function">touch</span> <span class="token string">&quot;<span class="token variable">$file1</span>&quot;</span>  
+<span class="token function">touch</span> <span class="token string">&quot;<span class="token variable">$file2</span>&quot;</span>  
+<span class="token function">touch</span> <span class="token string">&quot;<span class="token variable">$file3</span>&quot;</span>  
+<span class="token builtin class-name">exit</span> <span class="token number">0</span>  
+
+</pre><h2 class="mume-header" id="script-%E6%89%A7%E8%A1%8C%E6%96%B9%E5%BC%8F">script &#x6267;&#x884C;&#x65B9;&#x5F0F;</h2>
+
+<ol>
+<li>
+<p>&#x76F4;&#x63A5; sh <a href="http://xxx.sh">xxx.sh</a> &#x8FDB;&#x884C;&#x6267;&#x884C;&#xFF1A; script&#x90FD;&#x4F1A;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x65B0;&#x7684;bash&#x73AF;&#x5883;&#x6267;&#x884C;&#x811A;&#x672C;&#x5185;&#x7684;&#x5185;&#x5BB9;</p>
+</li>
+<li>
+<p>&#x5229;&#x7528;source &#x6216;&#x8005; . &#x6267;&#x884C;&#xFF1A; script&#x5728;&#x539F;&#x672C;&#x7684;bash&#x73AF;&#x5883;&#x5185;&#x6267;&#x884C;&#xFF0C;&#x90A3;&#x4E48;&#x5176;&#x4E2D;&#x58F0;&#x660E;&#x7684;&#x53D8;&#x91CF;&#x8FD8;&#x4F1A;&#x751F;&#x6548;&#xFF0C;</p>
+</li>
+</ol>
+<h2 class="mume-header" id="script-%E5%88%A4%E6%96%AD%E5%BC%8F">script &#x5224;&#x65AD;&#x5F0F;</h2>
+
+<h3 class="mume-header" id="1-test-%E5%91%BD%E4%BB%A4%E5%88%A4%E6%96%AD%E6%96%87%E4%BB%B6">1 test &#x547D;&#x4EE4;&#x5224;&#x65AD;&#x6587;&#x4EF6;</h3>
+
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token builtin class-name">test</span> -e /dmtsai <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">echo</span> <span class="token string">&quot;Exist&quot;</span> <span class="token operator">||</span> <span class="token builtin class-name">echo</span> <span class="token string">&quot;Not Exist&quot;</span>
+</pre><p>test &#x5176;&#x4ED6;&#x6D4B;&#x8BD5;&#x529F;&#x80FD;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">flag</th>
+<th style="text-align:left">&#x610F;&#x4E49;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">&#x6D4B;&#x8BD5;&#x6587;&#x4EF6;&#x540D;</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">-e</td>
+<td style="text-align:left">&#x8BE5;&#x6587;&#x4EF6;&#x540D;&#x662F;&#x5426;&#x5B58;&#x5728;,&#x5E38;&#x7528;</td>
+</tr>
+<tr>
+<td style="text-align:left">-f</td>
+<td style="text-align:left">&#x8BE5;&#x6587;&#x4EF6;&#x540D;&#x662F;&#x5426;&#x4E3A;&#x6587;&#x4EF6;(file),&#x5E38;&#x7528;</td>
+</tr>
+<tr>
+<td style="text-align:left">-d</td>
+<td style="text-align:left">&#x8BE5;&#x6587;&#x4EF6;&#x540D;&#x662F;&#x5426;&#x4E3A;&#x76EE;&#x5F55;(directory),&#x5E38;&#x7528;</td>
+</tr>
+<tr>
+<td style="text-align:left">-b</td>
+<td style="text-align:left">&#x8BE5;&#x6587;&#x4EF6;&#x540D;&#x662F;&#x5426;&#x662F;&#x4E2A;&#x5757;&#x8BBE;&#x5907;</td>
+</tr>
+<tr>
+<td style="text-align:left">-S</td>
+<td style="text-align:left">&#x8BE5;&#x6587;&#x4EF6;&#x540D;&#x662F;&#x5426;&#x662F;Socket&#x6587;&#x4EF6;</td>
+</tr>
+<tr>
+<td style="text-align:left">-L</td>
+<td style="text-align:left">&#x8BE5;&#x6587;&#x4EF6;&#x540D;&#x662F;&#x5426;&#x662F;&#x4E00;&#x4E2A;&#x8FDE;&#x63A5;&#x6587;&#x4EF6;</td>
+</tr>
+<tr>
+<td style="text-align:left">&#x6587;&#x4EF6;&#x6743;&#x9650;&#x68C0;&#x6D4B;</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">-r</td>
+<td style="text-align:left">&#x68C0;&#x6D4B;&#x6587;&#x4EF6;&#x540D;&#x662F;&#x5426;&#x5B58;&#x5728;&#x4E14;&#x5177;&#x6709;&#x53EF;&#x8BFB;&#x6743;&#x9650;</td>
+</tr>
+<tr>
+<td style="text-align:left">-w</td>
+<td style="text-align:left">&#x68C0;&#x6D4B;&#x6587;&#x4EF6;&#x540D;&#x662F;&#x5426;&#x5B58;&#x5728;&#x4E14;&#x5177;&#x6709;&#x53EF;&#x5199;&#x6743;&#x9650;</td>
+</tr>
+<tr>
+<td style="text-align:left">-x</td>
+<td style="text-align:left">&#x68C0;&#x6D4B;&#x6587;&#x4EF6;&#x540D;&#x662F;&#x5426;&#x5B58;&#x5728;&#x4E14;&#x5177;&#x6709;&#x53EF;&#x6267;&#x884C;&#x6743;&#x9650;</td>
+</tr>
+<tr>
+<td style="text-align:left">-u</td>
+<td style="text-align:left">&#x68C0;&#x6D4B;&#x6587;&#x4EF6;&#x540D;&#x662F;&#x5426;&#x5B58;&#x5728;&#x4E14;&#x5177;&#x6709;SUID&#x5C5E;&#x6027;</td>
+</tr>
+<tr>
+<td style="text-align:left">-g</td>
+<td style="text-align:left">&#x68C0;&#x6D4B;&#x6587;&#x4EF6;&#x540D;&#x662F;&#x5426;&#x5B58;&#x5728;&#x4E14;&#x5177;&#x6709;SGID&#x5C5E;&#x6027;</td>
+</tr>
+<tr>
+<td style="text-align:left">-k</td>
+<td style="text-align:left">&#x68C0;&#x6D4B;&#x6587;&#x4EF6;&#x540D;&#x662F;&#x5426;&#x5B58;&#x5728;&#x4E14;&#x5177;&#x6709;SBIT&#x5C5E;&#x6027;</td>
+</tr>
+<tr>
+<td style="text-align:left">-s</td>
+<td style="text-align:left">&#x68C0;&#x6D4B;&#x6587;&#x4EF6;&#x540D;&#x662F;&#x5426;&#x5B58;&#x5728;&#x4E14;&#x4E3A;&#x975E;&#x7A7A;&#x767D;&#x6587;&#x4EF6;</td>
+</tr>
+<tr>
+<td style="text-align:left">&#x4E24;&#x4E2A;&#x6587;&#x4EF6;&#x4E4B;&#x95F4;&#x7684;&#x6BD4;&#x8F83;</td>
+<td style="text-align:left">test file1 -nt file2</td>
+</tr>
+<tr>
+<td style="text-align:left">-nt</td>
+<td style="text-align:left">&#x5224;&#x65AD;file1&#x662F;&#x5426;&#x6BD4;file2&#x65B0;</td>
+</tr>
+<tr>
+<td style="text-align:left">-ot</td>
+<td style="text-align:left">&#x5224;&#x65AD;file1&#x662F;&#x5426;&#x6BD4;file2&#x65E7;</td>
+</tr>
+<tr>
+<td style="text-align:left">-ef</td>
+<td style="text-align:left">&#x5224;&#x65AD;file1&#x548C;file2&#x662F;&#x5426;&#x4E3A;&#x540C;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x4E3B;&#x8981;&#x5224;&#x65AD;hard link&#x7684;&#x5224;&#x5B9A;&#x3002;&#x5224;&#x65AD;&#x662F;&#x5426;&#x5747;&#x6307;&#x5411;&#x540C;&#x4E00;&#x4E2A;inode</td>
+</tr>
+<tr>
+<td style="text-align:left">&#x4E24;&#x4E2A;&#x6574;&#x6570;&#x7684;&#x5224;&#x5B9A;</td>
+<td style="text-align:left">test n1 -eq n2</td>
+</tr>
+<tr>
+<td style="text-align:left">-eq</td>
+<td style="text-align:left">&#x4E24;&#x6570;&#x503C;&#x76F8;&#x7B49;(equal)</td>
+</tr>
+<tr>
+<td style="text-align:left">-ne</td>
+<td style="text-align:left">&#x4E24;&#x6570;&#x503C;&#x4E0D;&#x7B49;(not equal)</td>
+</tr>
+<tr>
+<td style="text-align:left">-gt</td>
+<td style="text-align:left">n1 &gt; n2</td>
+</tr>
+<tr>
+<td style="text-align:left">-lt</td>
+<td style="text-align:left">n1 &lt; n2</td>
+</tr>
+<tr>
+<td style="text-align:left">-ge</td>
+<td style="text-align:left">n1 &gt;= n2</td>
+</tr>
+<tr>
+<td style="text-align:left">-le</td>
+<td style="text-align:left">n1 &lt;= n2</td>
+</tr>
+<tr>
+<td style="text-align:left">&#x5B57;&#x7B26;&#x4E32;&#x5224;&#x5B9A;</td>
+<td style="text-align:left">test -z string</td>
+</tr>
+<tr>
+<td style="text-align:left">test -z string</td>
+<td style="text-align:left">&#x5224;&#x65AD;&#x5B57;&#x7B26;&#x4E32;&#x662F;&#x5426;&#x4E3A;0&#xFF0C;&#x82E5;&#x4E3A;&#x7A7A;&#x5B57;&#x7B26;&#x4E32;&#x5219;&#x8FD4;&#x56DE;true</td>
+</tr>
+<tr>
+<td style="text-align:left">test -n string</td>
+<td style="text-align:left">&#x5224;&#x65AD;&#x5B57;&#x7B26;&#x4E32;&#x662F;&#x5426;&#x975E;0&#xFF0C;&#x82E5;&#x5B57;&#x7B26;&#x4E32;&#x4E0D;&#x4E3A;&#x7A7A;&#x5219;&#x8FD4;&#x56DE;true</td>
+</tr>
+<tr>
+<td style="text-align:left">test str1 = str2</td>
+<td style="text-align:left">&#x5224;&#x65AD;&#x4E24;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x662F;&#x5426;&#x76F8;&#x7B49;</td>
+</tr>
+<tr>
+<td style="text-align:left">test str1 != str2</td>
+<td style="text-align:left">&#x5224;&#x65AD;&#x4E24;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x662F;&#x5426;&#x4E0D;&#x76F8;&#x7B49;</td>
+</tr>
+<tr>
+<td style="text-align:left">&#x591A;&#x91CD;&#x6761;&#x4EF6;&#x5224;&#x5B9A;</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">-a</td>
+<td style="text-align:left">&#x4E24;&#x4E2A;&#x6761;&#x4EF6;&#x540C;&#x65F6;&#x6210;&#x7ACB;&#xFF01;&#x4F8B;&#x5982; test -r file -a -x file, &#x6587;&#x4EF6;&#x5FC5;&#x987B;&#x540C;&#x65F6;&#x5177;&#x6709;&#x53EF;&#x8BFB;&#x53EF;&#x6267;&#x884C;&#x6743;&#x9650;&#x624D;&#x4E3A;true</td>
+</tr>
+<tr>
+<td style="text-align:left">-o</td>
+<td style="text-align:left">&#x4EFB;&#x4F55;&#x4E00;&#x4E2A;&#x6761;&#x4EF6;&#x6210;&#x7ACB;&#x90FD;&#x8FD4;&#x56DE;true</td>
+</tr>
+<tr>
+<td style="text-align:left">!</td>
+<td style="text-align:left">&#x53CD;&#x5411;&#x72B6;&#x6001;&#xFF0C; &#x4F8B;&#x5982; test ! -x file , &#x5F53;file&#x4E0D;&#x5177;&#x6709;x&#x6743;&#x9650;&#x65F6;&#x8FD4;&#x56DE;</td>
+</tr>
+<tr>
+<td style="text-align:left">true</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h3 class="mume-header" id="%E5%88%A4%E6%96%AD">[] &#x5224;&#x65AD;</h3>
+
+<pre data-role="codeBlock" data-info="shell" class="language-shell">&#x4F8B;&#x5982;&#xFF1A; <span class="token punctuation">[</span> <span class="token string">&quot;<span class="token environment constant">$HOME</span>&quot;</span> <span class="token operator">==</span> <span class="token string">&quot;<span class="token variable">$MALL</span>&quot;</span> <span class="token punctuation">]</span>  <span class="token comment"># &#x8FD9;&#x91CC;[]&#x4E24;&#x8FB9;&#x5FC5;&#x52A0;&#x7A7A;&#x683C;&#xFF0C;&#x53D8;&#x91CF;&#x7528;&#x53CC;&#x5F15;&#x53F7;&#x62EC;&#x8D77;&#x6765;</span>
+</pre><p>&#x4E00;&#x4E2A;&#x8BA9;&#x7528;&#x6237;&#x9009;&#x62E9;Y/N&#x7684;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token builtin class-name">read</span> -p <span class="token string">&quot;Please input (Y/N) : &quot;</span> yn
+
+<span class="token punctuation">[</span> <span class="token string">&quot;<span class="token variable">$yn</span>&quot;</span> <span class="token operator">==</span> <span class="token string">&quot;Y&quot;</span> -o <span class="token string">&quot;<span class="token variable">$yn</span>&quot;</span> <span class="token operator">==</span> <span class="token string">&quot;y&quot;</span> <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">echo</span> <span class="token string">&quot;OK, continue&quot;</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">exit</span> <span class="token number">0</span>  
+<span class="token punctuation">[</span> <span class="token string">&quot;<span class="token variable">$yn</span>&quot;</span> <span class="token operator">==</span> <span class="token string">&quot;N&quot;</span> -o <span class="token string">&quot;<span class="token variable">$yn</span>&quot;</span> <span class="token operator">==</span> <span class="token string">&quot;n&quot;</span> <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">echo</span> <span class="token string">&quot;Oh, interrupt!&quot;</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">exit</span> <span class="token number">0</span>
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;I don&apos;t know what your choice is&quot;</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">exit</span> <span class="token number">0</span>
+
+</pre><h2 class="mume-header" id="linux-%E5%90%84%E7%B1%BB%E7%AC%A6%E5%8F%B7">Linux &#x5404;&#x7C7B;&#x7B26;&#x53F7;</h2>
+
+<ol>
+<li>
+<p>&#x7EAF;{}&#xFF1A;&#x6269;&#x5C55;&#x529F;&#x80FD;(&#x4F8B;&#x5982;&#xFF1A;ls {name1,name2}.sh &#xFF1B;touch {1..3}.sh)&#x3001;&#x4EE3;&#x7801;&#x7EC4;&#x7EC7;&#x529F;&#x80FD;({ cmd1;cmd2;cmd3 })</p>
+</li>
+<li>
+<p>${} &#xFF1A;&#x53D6;&#x53D8;&#x91CF;&#x7684;&#x503C;</p>
+</li>
+<li>
+<p>&#x5355;&#x4E2D;&#x62EC;&#x53F7;[]&#xFF1A;&#x7528;&#x4E8E;&#x6761;&#x4EF6;&#x6D4B;&#x8BD5;&#xFF0C;f&#xA0;&#xA0;[&#xA0;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mi>u</mi><mi>m</mi><mn>1</mn><mtext>&#xA0;</mtext><mo>&#x2212;</mo><mi>e</mi><mi>q</mi></mrow><annotation encoding="application/x-tex">num1&#xA0;-eq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">n</span><span class="mord mathnormal">u</span><span class="mord mathnormal">m</span><span class="mord">1&#xA0;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span></span></span></span>num2&#xA0;]&#xA0;;&#xA0;then&#xA0;&#x7B49;&#x4EF7;&#x4E8E;&#xA0;if&#xA0;&#xA0;/usr/bin/[&#xA0;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mi>u</mi><mi>m</mi><mn>1</mn><mtext>&#xA0;</mtext><mo>&#x2212;</mo><mi>e</mi><mi>q</mi></mrow><annotation encoding="application/x-tex">num1&#xA0;-eq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">n</span><span class="mord mathnormal">u</span><span class="mord mathnormal">m</span><span class="mord">1&#xA0;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span></span></span></span>num2&#xA0;]&#xA0;;&#xA0;then&#xA0;<br>
+&#x8FD8;&#x7B49;&#x4EF7;&#x4E8E;if&#xA0;&#xA0;test&#xA0;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mi>u</mi><mi>m</mi><mn>1</mn><mtext>&#xA0;</mtext><mo>&#x2212;</mo><mi>e</mi><mi>q</mi></mrow><annotation encoding="application/x-tex">num1&#xA0;-eq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">n</span><span class="mord mathnormal">u</span><span class="mord mathnormal">m</span><span class="mord">1&#xA0;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">&#x2212;</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span></span></span></span>num2&#xA0;;&#xA0;then<br>
+&#x5355;&#x4E2D;&#x62EC;&#x53F7;&#x7528;&#x4E8E;&#x6570;&#x7EC4;&#xFF1A;&#x4F8B;&#x5982;&#xFF1A;&#x8F93;&#x51FA;&#x6570;&#x7EC4;&#x5168;&#x90E8;&#x5143;&#x7D20;echo&#xA0;${array[@]}</p>
+</li>
+<li>
+<p>&#x53CC;&#x4E2D;&#x62EC;&#x53F7;&#xFF1A;&#x5355;&#x4E2D;&#x62EC;&#x53F7;&#x52A0;&#x5F3A;&#x7248;&#xA0;<a href=".md">&#x662F;&#xA0;bash&#xA0;&#x7A0B;&#x5E8F;&#x8BED;&#x8A00;&#x7684;&#x5173;&#x952E;&#x5B57;&#xFF0C;&#x5E76;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x547D;&#x4EE4;&#xFF0C;&#x5728;&#x5355;&#x62EC;&#x53F7;&#x4E2D;&#x662F;&#x4E0D;&#x53EF;&#x4EE5;&#x7528;</a></p>
+</li>
+<li>
+<p>&#x5C0F;&#x62EC;&#x53F7;()&#xFF1A;&#x6B64;&#x5904;&#x547D;&#x4EE4;&#x5757;&#x4F1A;&#x5728;<strong>&#x5B50;shell</strong>&#x4E2D;&#x8FD0;&#x884C;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;(cmd1;cmd2;cmd3) &#x8FD9;&#x4E09;&#x6761;&#x547D;&#x4EE4;&#x7684;&#x6267;&#x884C;&#x4E0D;&#x4F1A;&#x5F71;&#x54CD;&#x5F53;&#x524D;&#x7684;shell&#x73AF;&#x5883;&#x3002;&#x5355;&#x62EC;&#x53F7;&#x6570;&#x7EC4;&#x521D;&#x59CB;&#x5316;&#x529F;&#x80FD;&#xFF1A;&#x4F8B;&#x5982;&#xFF1A;array=(1 2 3 4 5)&#x53CC;&#x62EC;&#x53F7;&#x7B97;&#x672F;&#x8FD0;&#x7B97;&#x6BD4;&#x8F83;&#x529F;&#x80FD;&#xFF1A;&#x4F8B;&#x5982;&#xFF1A;for((i=0;i&lt;9;i++)) &#x5982;&#x679C;&#x4E0D;&#x91C7;&#x7528;&#x53CC;&#x62EC;&#x53F7;&#x53EF;&#x7528;for i in <code>seq 0 9</code>&#x6216;&#x8005;for i in {0..9}&#x4EE3;&#x66FF;&#x3002;  ((&#x8868;&#x8FBE;&#x5F0F;))&#x7528;&#x6765;&#x6269;&#x5C55;Shell&#x4E2D;&#x7684;&#x7B97;&#x672F;&#x8FD0;&#x7B97;,&#x4EE5;&#x53CA;&#x8D4B;&#x503C;&#x8FD0;&#x7B97;,&#x6269;&#x5C55;for,while,if&#x6761;&#x4EF6;&#x6D4B;&#x8BD5;&#x8FD0;&#x7B97;.</p>
+</li>
+</ol>
+<h2 class="mume-header" id="linux-bash-%E9%BB%98%E8%AE%A4%E5%8F%98%E9%87%8F">Linux bash &#x9ED8;&#x8BA4;&#x53D8;&#x91CF;</h2>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center">&#x7B26;&#x53F7;</th>
+<th style="text-align:center">&#x63CF;&#x8FF0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$0</td>
+<td style="text-align:center">&#x811A;&#x672C;&#x540D;&#x79F0;</td>
+</tr>
+<tr>
+<td style="text-align:center">$1</td>
+<td style="text-align:center">&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;</td>
+</tr>
+<tr>
+<td style="text-align:center">$2</td>
+<td style="text-align:center">&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;</td>
+</tr>
+<tr>
+<td style="text-align:center">$3</td>
+<td style="text-align:center">&#x7B2C;&#x4E09;&#x4E2A;&#x53C2;&#x6570;</td>
+</tr>
+<tr>
+<td style="text-align:center">$4</td>
+<td style="text-align:center">&#x7B2C;&#x56DB;&#x4E2A;&#x53C2;&#x6570;</td>
+</tr>
+<tr>
+<td style="text-align:center">$#</td>
+<td style="text-align:center">&#x540E;&#x9762;&#x63A5;&#x7684;&#x53C2;&#x6570;&#x4E2A;&#x6570;</td>
+</tr>
+<tr>
+<td style="text-align:center">$@</td>
+<td style="text-align:center">&#x4EE3;&#x8868;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mtext>&#xFF0C;</mtext></mrow><annotation encoding="application/x-tex">1&#xFF0C;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord cjk_fallback">&#xFF0C;</span></span></span></span>2&#xFF0C;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mtext>&#xFF0C;</mtext></mrow><annotation encoding="application/x-tex">3&#xFF0C;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord cjk_fallback">&#xFF0C;</span></span></span></span>4</td>
+</tr>
+<tr>
+<td style="text-align:center">$*</td>
+<td style="text-align:center">&#x4EE3;&#x8868;&quot;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>c</mi></mrow><annotation encoding="application/x-tex">1c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord mathnormal">c</span></span></span></span>2c<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi>c</mi></mrow><annotation encoding="application/x-tex">3c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord mathnormal">c</span></span></span></span>4&quot;&#xFF0C;&#x5176;&#x4E2D;c&#x4E3A;&#x5206;&#x9694;&#x7B26;&#xFF0C;&#x672C;&#x4F8B;&#x4E3A;:&quot;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>2 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span></span></span></span>4&quot;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x504F;&#x79FB;&#x547D;&#x4EE4;&#xFF1A;shift num&#xFF0C;&#x62FF;&#x6389;&#x524D;&#x9762;&#x51E0;&#x4E2A;&#x53C2;&#x6570;&#x4F7F;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mtext>&#xA0;</mtext></mrow><annotation encoding="application/x-tex">1~</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace nobreak">&#xA0;</span></span></span></span>4&#x7684;&#x5185;&#x5BB9;&#x6539;&#x53D8;</p>
+<h2 class="mume-header" id="bash-%E6%9D%A1%E4%BB%B6%E5%91%BD%E4%BB%A4">Bash &#x6761;&#x4EF6;&#x547D;&#x4EE4;</h2>
+
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token keyword keyword-if">if</span> <span class="token punctuation">[</span>&#x6761;&#x4EF6;&#x5224;&#x65AD;&#x5F0F;<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword keyword-then">then</span>
+    XXX 
+<span class="token keyword keyword-fi">fi</span>
+</pre><p>&#x591A;&#x4E2A;&#x6761;&#x4EF6;&#x7528;&#x591A;&#x4E2A;&#x4E2D;&#x62EC;&#x53F7;&#x8FDE;&#x63A5;&#xFF0C;&#x7136;&#x540E;&#x4E2D;&#x62EC;&#x53F7;&#x7528;&amp;&amp;&#x548C;||&#x8FDE;&#x63A5;  &#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token keyword keyword-if">if</span> <span class="token punctuation">[</span>&#x6761;&#x4EF6;&#x5224;&#x65AD;&#x5F0F;<span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token punctuation">[</span>&#x6761;&#x4EF6;&#x5224;&#x65AD;&#x5F0F;<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword keyword-then">then</span>  
+    <span class="token builtin class-name">echo</span> OK  
+<span class="token keyword keyword-fi">fi</span>
+</pre><p>&#x5176;&#x4ED6;&#x7ED3;&#x6784;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token keyword keyword-if">if</span> <span class="token punctuation">[</span>&#x6761;&#x4EF6;&#x5224;&#x65AD;&#x5F0F;<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword keyword-then">then</span>
+
+<span class="token keyword keyword-else">else</span>
+
+<span class="token keyword keyword-fi">fi</span>
+
+<span class="token keyword keyword-if">if</span> <span class="token punctuation">[</span>&#x6761;&#x4EF6;&#x5224;&#x65AD;&#x5F0F;<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword keyword-then">then</span>  
+    XXX
+<span class="token keyword keyword-elif">elif</span> <span class="token punctuation">[</span>&#x6761;&#x4EF6;&#x5224;&#x65AD;&#x5F0F;2<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword keyword-then">then</span>
+    XXX
+<span class="token keyword keyword-else">else</span>  
+    XXXX
+<span class="token keyword keyword-fi">fi</span>
+</pre><p>case&#x7684;&#x7528;&#x4F8B;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token keyword keyword-case">case</span> <span class="token variable">$1</span> <span class="token keyword keyword-in">in</span>  
+    <span class="token string">&quot;hello&quot;</span><span class="token punctuation">)</span>  
+    <span class="token builtin class-name">echo</span> <span class="token string">&quot;Hello, how are you?&quot;</span>  
+    <span class="token punctuation">;</span><span class="token punctuation">;</span>  
+    <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span>  
+    <span class="token builtin class-name">echo</span> <span class="token string">&quot;You MUST input parameter, ex&gt; {<span class="token variable">$0</span> someword}&quot;</span>  
+    <span class="token punctuation">;</span><span class="token punctuation">;</span>  
+    *<span class="token punctuation">)</span>          <span class="token comment"># &#x76F8;&#x5F53;&#x4E8E;&#x901A;&#x914D;&#x7B26;</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">&quot;Usage <span class="token variable">$0</span> {hello}&quot;</span>
+    <span class="token punctuation">;</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-esac">esac</span>
+</pre><h2 class="mume-header" id="bash-function-%E5%8A%9F%E8%83%BD">Bash function &#x529F;&#x80FD;</h2>
+
+<p>function&#x7684;&#x5B9A;&#x4E49;&#x4E00;&#x5B9A;&#x8981;&#x5728;&#x6700;&#x524D;&#x9762;&#xFF0C;&#x8FD9;&#x6837;&#x624D;&#x80FD;&#x591F;&#x5728;&#x88AB;&#x6267;&#x884C;&#x65F6;&#x627E;&#x5230;&#x53EF;&#x7528;&#x7684;&#x7A0B;&#x5E8F;&#x6BB5;&#x3002; &#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x4E5F;&#x7528;$0~$3&#x8868;&#x793A;&#x3002;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token keyword keyword-function">function</span> <span class="token function-name function">fname</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    &#x7A0B;&#x5E8F;&#x6BB5;
+<span class="token punctuation">}</span>
+</pre><p>&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token keyword keyword-function">function</span> <span class="token function-name function">printit</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">&quot;Your choice is <span class="token variable">$1</span>&quot;</span>  
+<span class="token punctuation">}</span>  
+
+printit <span class="token number">2</span>           <span class="token comment"># &#x53C2;&#x6570;&#x65F6;2  </span>
+</pre><h2 class="mume-header" id="bash-%E5%BE%AA%E7%8E%AF">Bash &#x5FAA;&#x73AF;</h2>
+
+<h3 class="mume-header" id="%E4%B8%8D%E5%AE%9A%E5%BE%AA%E7%8E%AF-while-do-done-until-do-down">&#x4E0D;&#x5B9A;&#x5FAA;&#x73AF; while do done, until do down</h3>
+
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token keyword keyword-while">while</span> <span class="token punctuation">[</span>condition<span class="token punctuation">]</span>
+<span class="token keyword keyword-do">do</span>
+    &#x7A0B;&#x5E8F;&#x6BB5;&#x843D;  
+<span class="token keyword keyword-done">done</span>
+
+</pre><pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token keyword keyword-until">until</span> <span class="token punctuation">[</span>condition<span class="token punctuation">]</span>       <span class="token comment"># &#x5F53;condition&#x6210;&#x7ACB;&#x65F6;&#x5C31;&#x7EC8;&#x6B62;&#x5FAA;&#x73AF;</span>
+<span class="token keyword keyword-do">do</span>  
+    &#x7A0B;&#x5E8F;&#x6BB5;&#x843D;  
+<span class="token keyword keyword-done">done</span>
+</pre><p>&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token assign-left variable">s</span><span class="token operator">=</span><span class="token number">0</span>  
+<span class="token assign-left variable">i</span><span class="token operator">=</span><span class="token number">0</span>  
+<span class="token keyword keyword-while">while</span> <span class="token punctuation">[</span> <span class="token string">&quot;<span class="token variable">$i</span>&quot;</span> <span class="token operator">!=</span> <span class="token string">&quot;100&quot;</span> <span class="token punctuation">]</span>
+<span class="token keyword keyword-do">do</span>  
+    <span class="token assign-left variable">i</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$((</span>$i<span class="token operator">+</span><span class="token number">1</span><span class="token variable">))</span></span>
+    <span class="token assign-left variable">s</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$((</span>$s<span class="token operator">+</span>$i<span class="token variable">))</span></span>
+<span class="token keyword keyword-done">done</span>
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;The result of &apos;1+2+...+100&apos; is ==&gt; <span class="token variable">$s</span>&quot;</span>
+</pre><h3 class="mume-header" id="%E5%9B%BA%E5%AE%9A%E5%BE%AA%E7%8E%AF">&#x56FA;&#x5B9A;&#x5FAA;&#x73AF;</h3>
+
+<p>&#x7B2C;&#x4E00;&#x6B21;&#x5FAA;&#x73AF;&#x65F6;&#xFF0C; $var&#x7684;&#x5185;&#x5BB9;&#x662F;con1&#xFF0C;&#x7B2C;&#x4E8C;&#x6B21;&#x662F;con2&#xFF0C;&#x7B2C;&#x4E09;&#x6B21;&#x662F;con3...</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token keyword keyword-for">for</span> <span class="token for-or-select variable">var</span> <span class="token keyword keyword-in">in</span> con1 con2 con3 <span class="token punctuation">..</span>.
+<span class="token keyword keyword-do">do</span>
+    &#x7A0B;&#x5E8F;&#x6BB5;  
+<span class="token keyword keyword-done">done</span>
+</pre><p>(seq 1 100)&#xFF1A;&#x4EA7;&#x751F;1~100&#x7684;&#x6574;&#x6570;&#x5E8F;&#x5217;</p>
+<p>&#x7B2C;&#x4E8C;&#x79CD;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token keyword keyword-for">for</span> <span class="token variable"><span class="token punctuation">((</span>&#x521D;&#x59CB;&#x503C;<span class="token punctuation">;</span> &#x9650;&#x5236;&#x503C;<span class="token punctuation">;</span> &#x6267;&#x884C;&#x6B65;&#x957F;<span class="token punctuation">))</span></span>  
+<span class="token keyword keyword-do">do</span>  
+    &#x7A0B;&#x5E8F;&#x6BB5;  
+<span class="token keyword keyword-done">done</span>
+</pre><p>&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token keyword keyword-for">for</span> <span class="token variable"><span class="token punctuation">((</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">&lt;=</span>$nu<span class="token punctuation">;</span> i<span class="token operator">=</span>i<span class="token operator">+</span><span class="token number">1</span>  <span class="token punctuation">))</span></span>
+<span class="token keyword keyword-do">do</span>
+    <span class="token assign-left variable">s</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$((</span>$s <span class="token operator">+</span> $i<span class="token variable">))</span></span>
+</pre><h2 class="mume-header" id="shell-script-%E7%9A%84%E8%BF%BD%E8%B8%AA%E4%B8%8E%E8%B0%83%E8%AF%95">shell script &#x7684;&#x8FFD;&#x8E2A;&#x4E0E;&#x8C03;&#x8BD5;</h2>
+
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">sh</span> <span class="token punctuation">[</span>-nvx<span class="token punctuation">]</span> script.sh  
+-n: &#x4E0D;&#x6267;&#x884C;script.sh&#xFF0C;&#x4EC5;&#x67E5;&#x8BE2;&#x8BED;&#x6CD5;&#x95EE;&#x9898;  
+-x&#xFF1A;&#x5C06;&#x4F7F;&#x7528;&#x5230;&#x7684;&#x5185;&#x5BB9;&#x663E;&#x793A;&#x5230;&#x5C4F;&#x5E55;&#x4E0A;
+
+</pre>
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
