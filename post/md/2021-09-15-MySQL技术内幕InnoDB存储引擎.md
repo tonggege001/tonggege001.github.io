@@ -3,7 +3,7 @@ layout: post
 title: 2021-09-15-MySQL技术内幕InnoDB存储引擎
 date: 2021-09-15
 categories: blog
-tags: [数据库,技术]
+tags: [数据库,技术,笔记]
 description: MySQL技术内幕InnoDB存储引擎，记录一下关键的笔记内容。
 ---  
 

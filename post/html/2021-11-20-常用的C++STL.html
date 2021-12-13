@@ -435,8 +435,12 @@ similar to deque  &#x3002;</p>
 
 <p>&#x4E00;&#x79CD;&#x4F18;&#x5148;&#x7EA7;&#x961F;&#x5217;&#xFF0C;&#x5176;&#x5141;&#x8BB8;&#x7528;&#x6237;&#x4EE5;&#x4EFB;&#x4F55;&#x6B21;&#x5E8F;&#x5C06;&#x5143;&#x7D20;&#x538B;&#x5165;&#x5BB9;&#x5668;&#x5185;&#xFF0C;&#x4E0E; queue &#x4E0D;&#x540C;&#x7684;&#x662F;&#xFF0C;&#x4ECE;&#x5176;&#x4E2D;&#x53D6;&#x51FA;&#x5143;&#x7D20;&#x65F6;&#x662F;&#x6839;&#x636E;&#x4F18;&#x5148;&#x7EA7;&#x987A;&#x5E8F;&#x7684;&#x3002;&#x5E95;&#x5C42;&#x662F;heap&#xFF08;&#x9ED8;&#x8BA4;&#x662F;&#x5927;&#x9876;&#x5806;&#xFF09;&#x3002;<br>
 priority_queueq&#x5E95;&#x5C42;&#x662F;&#x4F7F;&#x7528;vector&#x5B9E;&#x73B0;&#x7684;&#x3002;<br>
-&#x5982;&#x679C;&#x8981;&#x5C0F;&#x9876;&#x5806;&#x5219;&#x9700;&#x8981;&#x4F20;&#x5165;&#x4E00;&#x4E2A;&#x4EFF;&#x51FD;&#x6570;<code>less&lt;int, int&gt;</code>.<br>
-&#x7528;&#x6CD5;&#xFF1A;</p>
+&#x5982;&#x679C;&#x8981;&#x5C0F;&#x9876;&#x5806;&#x5219;&#x9700;&#x8981;&#x4F20;&#x5165;&#x4E00;&#x4E2A;&#x4EFF;&#x51FD;&#x6570;<code>greater&lt;int&gt;</code>.<br>
+&#x4F8B;&#x5982;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="C++" class="language-cpp"><span class="token comment">// &#x4E2D;&#x95F4;&#x7684;&#x9700;&#x8981;&#x4F20;&#x5165;&#x5E95;&#x5C42;&#x5BB9;&#x5668;</span>
+priority_queue<span class="token operator">&lt;</span><span class="token keyword keyword-int">int</span><span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword keyword-int">int</span><span class="token operator">&gt;</span><span class="token punctuation">,</span> greater<span class="token operator">&lt;</span><span class="token keyword keyword-int">int</span><span class="token operator">&gt;</span> <span class="token operator">&gt;</span> q<span class="token punctuation">;</span>
+
+</pre><p>&#x7528;&#x6CD5;&#xFF1A;</p>
 <table>
 <thead>
 <tr>
@@ -498,6 +502,57 @@ lst.sort(comp);</p>
 <p>lst.unique();<br>
 lst.unique(pred);       // &#x4F7F;&#x7528;&#x4E8C;&#x5143;&#x8C13;&#x8BCD;&#x5224;&#x65AD;==</p>
 <p>&#x6CE8;&#x610F;&#xFF0C;&#x4E0E;&#x5E93;&#x51FD;&#x6570;algorithm&#x4E0D;&#x540C;&#x7684;&#x662F;&#xFF0C;remove&#x3001;merge&#x3001;unique&#x5747;&#x4F1A;&#x5220;&#x9664;&#x53C2;&#x6570;&#x548C;&#x591A;&#x4F59;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x800C;&#x5E93;&#x51FD;&#x6570;&#x4E0D;&#x4F1A;&#xFF08;&#x6BD4;&#x5982;unique&#x4E0D;&#x4F1A;&#x5220;&#x9664;&#xFF0C;len&#x4E0D;&#x6539;&#x53D8;&#xFF09;&#x3002;</p>
+<h1 class="mume-header" id="9-bitset%E7%B1%BB%E5%9E%8B">9. bitset&#x7C7B;&#x578B;</h1>
+
+<p>&#x5B9A;&#x4E49;bitset&#x9700;&#x8981;&#x58F0;&#x660E;&#x5305;&#x542B;&#x591A;&#x5C11;&#x4E8C;&#x8FDB;&#x5236;&#x4F4D;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="C++" class="language-cpp">bitset<span class="token operator">&lt;</span><span class="token number">32</span><span class="token operator">&gt;</span> <span class="token function">bitvec</span><span class="token punctuation">(</span><span class="token number">1U</span><span class="token punctuation">)</span><span class="token punctuation">;</span>          <span class="token comment">// 32&#x4F4D;&#xFF1B;&#x4F4E;&#x4F4D;&#x4E3A;1&#xFF0C;&#x5176;&#x4ED6;&#x4F4D;&#x4E3A;0</span>
+bitset<span class="token operator">&lt;</span><span class="token number">32</span><span class="token operator">&gt;</span> <span class="token function">vitvec4</span><span class="token punctuation">(</span><span class="token string">&quot;1100&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// &#x4F4E;&#x4F4D;&#x4E3A;0&#xFF0C;&#x9AD8;&#x4F4D;&#x4E3A;1</span>
+</pre><img src="../images/20211120/3.jpeg">  
+<h1 class="mume-header" id="10-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F">10. &#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;</h1>
+
+<p><strong>regex</strong>: &#x8868;&#x793A;&#x6709;&#x4E00;&#x4E2A;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x7C7B;&#x3002;<br>
+<strong>regex_match</strong>: &#x5C06;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x5E8F;&#x5217;&#x4E0E;&#x4E00;&#x4E2A;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x5339;&#x914D;&#x3002;<br>
+<strong>regex_search</strong>: &#x5BFB;&#x627E;&#x7B2C;&#x4E00;&#x4E2A;&#x4E0E;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x5339;&#x914D;&#x7684;&#x5B50;&#x5E8F;&#x5217;&#x3002;<br>
+<strong>regex_replace</strong>: &#x4F7F;&#x7528;&#x7ED9;&#x5B9A;&#x683C;&#x5F0F;&#x66FF;&#x6362;&#x4E00;&#x4E2A;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x3002;<br>
+<strong>sregex_iterator</strong>: &#x8FED;&#x4EE3;&#x9002;&#x914D;&#x5668;&#xFF0C;&#x8C03;&#x7528;regex_search&#x6765;&#x904D;&#x5386;&#x4E00;&#x4E2A;string&#x4E2D;&#x6240;&#x6709;&#x5339;&#x914D;&#x7684;&#x5B50;&#x4E32;&#x3002;<br>
+<strong>smatch</strong>: &#x5BB9;&#x5668;&#x7C7B;&#xFF0C;&#x4FDD;&#x5B58;&#x5728;string&#x4E2D;&#x641C;&#x7D22;&#x7684;&#x7ED3;&#x679C;&#x3002;<br>
+<strong>ssub_match</strong>: string&#x5339;&#x914D;&#x7684;&#x5B50;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x7ED3;&#x679C;&#x3002;</p>
+<p>&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="C++" class="language-cpp">string <span class="token function">pattern</span><span class="token punctuation">(</span><span class="token string">&quot;[^c]ei&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+pattern <span class="token operator">=</span> <span class="token string">&quot;[[:alpha:]]*&quot;</span> <span class="token operator">+</span> pattern <span class="token operator">+</span> <span class="token string">&quot;[[:alpha:]]*&quot;</span><span class="token punctuation">;</span>
+
+regex <span class="token function">r</span><span class="token punctuation">(</span>pattern<span class="token punctuation">)</span><span class="token punctuation">;</span>
+smatch results<span class="token punctuation">;</span>
+
+string test_str <span class="token operator">=</span> <span class="token string">&quot;receipt friend theif receive&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-if">if</span><span class="token punctuation">(</span><span class="token function">regex_search</span><span class="token punctuation">(</span>test_str<span class="token punctuation">,</span> results<span class="token punctuation">,</span> r<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    cout<span class="token operator">&lt;&lt;</span>results<span class="token punctuation">.</span><span class="token function">str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+
+<span class="token comment">// &#x8F93;&#x51FA;&#xFF1A;friend</span>
+</pre><p>&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="C++" class="language-cpp">string <span class="token function">pattern</span><span class="token punctuation">(</span><span class="token string">&quot;[^c]ei&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+pattern <span class="token operator">=</span> <span class="token string">&quot;[[:alpha:]]*&quot;</span> <span class="token operator">+</span> pattern <span class="token operator">+</span> <span class="token string">&quot;[[:alpha:]]*&quot;</span><span class="token punctuation">;</span>
+string test_str <span class="token operator">=</span> <span class="token string">&quot;receipt friend theif receive&quot;</span><span class="token punctuation">;</span>
+
+regex <span class="token function">r</span><span class="token punctuation">(</span>pattern<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-for">for</span><span class="token punctuation">(</span>sregex_iterator <span class="token function">it</span><span class="token punctuation">(</span>test_str<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> test_str<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> r<span class="token punctuation">)</span><span class="token punctuation">,</span> end_it<span class="token punctuation">;</span> it<span class="token operator">!=</span>end_it<span class="token punctuation">;</span> <span class="token operator">++</span>it<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    cout<span class="token operator">&lt;&lt;</span>it<span class="token operator">-&gt;</span><span class="token function">str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>      <span class="token comment">// &#x5339;&#x914D;&#x7684;&#x5355;&#x8BCD;</span>
+<span class="token punctuation">}</span>
+</pre><p>&#x5339;&#x914D;&#x65F6;&#x8BBE;&#x7F6E;&#x6807;&#x5FD7;&#xFF1A;<code>(seq, m, r, mft);</code>mft&#x662F;&#x5339;&#x914D;&#x65F6;&#x7684;&#x6807;&#x5FD7;&#xFF0C;&#x5176;&#x4E2D;&#xFF1A;<br>
+icase: &#x5FFD;&#x7565;&#x5927;&#x5C0F;&#x5199;,<br>
+nosubs: &#x4E0D;&#x4FDD;&#x5B58;&#x5339;&#x914D;&#x7684;&#x5B50;&#x8868;&#x8FBE;&#x5F0F;,<br>
+optimize: &#x6267;&#x884C;&#x901F;&#x5EA6;&#x4F18;&#x5148;&#x4E8E;&#x6784;&#x9020;&#x901F;&#x5EA6;,<br>
+ECMAScript: &#x4F7F;&#x7528;ECMA-262&#x6307;&#x5B9A;&#x7684;&#x8BED;&#x6CD5;,<br>
+basic: &#x4F7F;&#x7528;POSIX&#x57FA;&#x672C;&#x7684;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x8BED;&#x6CD5;,<br>
+extended: &#x4F7F;&#x7528;POSIX&#x6269;&#x5C55;&#x7684;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x8BED;&#x6CD5;,<br>
+awk: &#x4F7F;&#x7528;POSIX&#x7248;&#x672C;&#x7684;awk&#x8BED;&#x8A00;&#x7684;&#x8BED;&#x6CD5;,<br>
+grep: &#x4F7F;&#x7528;POSIX&#x7248;&#x672C;&#x7684;grep&#x8BED;&#x6CD5;,<br>
+eprep: &#x4F7F;&#x7528;POSIX&#x7684;egrep&#x7684;&#x8BED;&#x6CD5;,</p>
+<p>&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x4F1A;&#x51FA;&#x73B0;&#x8BED;&#x6CD5;&#x9519;&#x8BEF;&#x65F6;&#xFF0C;&#x629B;&#x51FA;<strong>regex_error</strong>&#x5F02;&#x5E38;&#xFF0C;&#x56E0;&#x6B64;&#x9700;&#x8981;try_catch&#x6355;&#x83B7;&#x3002;</p>
+<blockquote>
+<p>&#x907F;&#x514D;&#x521B;&#x5EFA;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x56E0;&#x4E3A;&#x6574;&#x4E2A;&#x8868;&#x8FBE;&#x5F0F;&#x662F;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x7F16;&#x8BD1;&#x7684;&#xFF0C;&#x7F16;&#x8BD1;&#x901F;&#x5EA6;&#x975E;&#x5E38;&#x6162;&#xFF0C;&#x56E0;&#x6B64;&#x5C3D;&#x91CF;&#x907F;&#x514D;&#x4F7F;&#x7528;&#xFF0C;&#x5982;&#x679C;&#x4F7F;&#x7528;&#x5219;&#x907F;&#x514D;&#x5728;&#x5FAA;&#x73AF;&#x5185;&#x521B;&#x5EFA;&#x3002;</p>
+</blockquote>
 
       </div>
       
