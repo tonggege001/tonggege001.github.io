@@ -1,0 +1,109 @@
+<!DOCTYPE html><html><head>
+      <title>2022-01-02-Makefile&#x7F16;&#x5199;&#x5E38;&#x7528;&#x603B;&#x7ED3;</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      pre{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;padding:1em;margin:.5em 0;overflow:auto;line-height:1.5;tab-size:4;hyphens:none;color:#2b3f6a;background-color:#eee9dd !important;border:#ddd3bb;border-radius:3px}pre[class*="language-"]{padding:1em}code[class*="language-"] .token.comment,pre[class*="language-"] .token.comment,code[class*="language-"] .token.prolog,pre[class*="language-"] .token.prolog,code[class*="language-"] .token.doctype,pre[class*="language-"] .token.doctype,code[class*="language-"] .token.cdata,pre[class*="language-"] .token.cdata{color:#9ca3b0;font-style:italic}code[class*="language-"] .token.punctuation,pre[class*="language-"] .token.punctuation{color:#9ca3b0}code[class*="language-"] .namespace,pre[class*="language-"] .namespace{opacity:.7}code[class*="language-"] .token.constant,pre[class*="language-"] .token.constant{color:#c16161}code[class*="language-"] .token.boolean,pre[class*="language-"] .token.boolean,code[class*="language-"] .token.number,pre[class*="language-"] .token.number,code[class*="language-"] .token.function-name,pre[class*="language-"] .token.function-name{color:#c16161}code[class*="language-"] .token.tag,pre[class*="language-"] .token.tag{color:#ac4343}code[class*="language-"] .token.symbol,pre[class*="language-"] .token.symbol{color:#8f932b}code[class*="language-"] .token.selector,pre[class*="language-"] .token.selector{color:#d08e25}code[class*="language-"] .token.attr-name,pre[class*="language-"] .token.attr-name{color:#d08e25}code[class*="language-"] .token.string,pre[class*="language-"] .token.string{background-color:rgba(255,204,0,0.03);color:rgba(106,68,28,0.77)}code[class*="language-"] .token.char,pre[class*="language-"] .token.char{color:#8f932b}code[class*="language-"] .token.url,pre[class*="language-"] .token.url{color:#d08e25}code[class*="language-"] .token.atrule,pre[class*="language-"] .token.atrule,code[class*="language-"] .token.attr-value,pre[class*="language-"] .token.attr-value,code[class*="language-"] .token.keyword,pre[class*="language-"] .token.keyword{color:#8f932b}code[class*="language-"] .token.function,pre[class*="language-"] .token.function{color:#d08e25}code[class*="language-"] .token.class-name,pre[class*="language-"] .token.class-name{color:#2b3f6a}code[class*="language-"] .token.variable,pre[class*="language-"] .token.variable{color:#5e78e1}code[class*="language-"] .token.regex,pre[class*="language-"] .token.regex,code[class*="language-"] .token.important,pre[class*="language-"] .token.important{color:#379566}code[class*="language-"] .token.important,pre[class*="language-"] .token.important,code[class*="language-"] .token.bold,pre[class*="language-"] .token.bold{font-weight:bold}code[class*="language-"] .token.italic,pre[class*="language-"] .token.italic{font-style:italic}code[class*="language-"] .token.entity,pre[class*="language-"] .token.entity{cursor:help}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:rgba(153,122,102,0.08);background:linear-gradient(to right, rgba(153,122,102,0.1) 70%, rgba(153,122,102,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:rgba(153,122,102,0.4);color:#f5f2f0;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px white}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}body{font-size:16px;background-color:#f3f2ee;font-family:"PT Serif",'Times New Roman',Times;color:#1f0909;line-height:1.5em}body ol,body ul{list-style:none}body blockquote,body q{quotes:none}body blockquote:before,body blockquote:after,body q:before,body q:after{content:'';content:none}body table{border-collapse:collapse;border-spacing:0}body h1,body h2,body h3,body h4,body h5,body h6{font-weight:bold}body h1{font-size:1.875em;line-height:1.6em;margin-top:2em}body h2,body h3{font-size:1.3125em;line-height:1.15;margin-top:2.285714em;margin-bottom:1.15em}body h3{font-weight:normal}body h4{font-size:1.125em;margin-top:2.67em}body h5,body h6{font-size:1em}body h1{border-bottom:1px solid;margin-bottom:1.875em;padding-bottom:.8125em}body a{text-decoration:none;color:#065588}body a:hover,body a:active{text-decoration:underline}body p,body blockquote,body .md-fences{margin-bottom:1.5em}body h1,body h2,body h3,body h4,body h5,body h6{margin-bottom:1.5em}body blockquote{font-style:italic;border-left:5px solid;margin-left:2em;padding-left:1em}body ul,body ol{margin:0 0 1.5em 1.5em}body ol li{list-style-type:decimal;list-style-position:outside}body ul li{list-style-type:disc;list-style-position:outside}body li>p{margin-top:0;margin-bottom:0}body .md-meta,body .md-before,body .md-after{color:#999}body table{margin-bottom:1.5em;font-size:1em}body thead th,body tfoot th{padding:.25em .25em .25em .4em;text-transform:uppercase}body th{text-align:left}body td{vertical-align:top;padding:.25em .25em .25em .4em}body code,body .md-fences{color:inherit;background-color:#dadada;padding-left:1ch;padding-right:1ch}body pre code{background-color:inherit}body .md-fences{margin-left:2em;margin-bottom:3em}body .md-fences .CodeMirror.CodeMirror-wrap{top:-0.8em}body pre,body code,body tt{font-size:.875em;line-height:1.714285em}body h1{line-height:1.3em;font-weight:normal;margin-bottom:.5em}body p+ul,body p+ol{margin-top:-1em}body h3+ul,body h4+ul,body h5+ul,body h6+ul,body h3+ol,body h4+ol,body h5+ol,body h6+ol{margin-top:.5em}body li>ul,body li>ol{margin-top:inherit}body h2,body h3{margin-bottom:.75em}body hr{border-top:none;border-right:none;border-bottom:1px solid;border-left:none}body h1{border-color:#c5c5c5}body blockquote{border-color:#bababa;color:#656565;background-color:#e6e4dc}body thead.md-table-edit{background-color:transparent}body thead{background-color:#dadada}body tr:nth-child(even){background:#e8e7e7}body hr{border-color:#c5c5c5}body .task-list{padding-left:1rem}body .task-list-item{list-style-type:none;margin-left:-1.8em}body .task-list-item .task-list-item-checkbox{margin-right:.8em}body .task-list-item input:before{content:'\221A';display:inline-block;width:1.25rem;height:1.5rem;vertical-align:middle;text-align:center;color:#ddd;background-color:#F3F2EE}body .task-list-item input:checked:before,body .task-list-item input[checked]:before{color:inherit}body img{max-width:100%}body kbd{color:#1f0909}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h2 class="mume-header" id="makefile-%E5%9F%BA%E6%9C%AC">makefile &#x57FA;&#x672C;</h2>
+
+<p>Makefile&#x7684;&#x7F16;&#x5199;&#x89C4;&#x5219;&#x662F;&#xFF1A;<br>
+A: B<br>
+(tab)command<br>
+(tab)command<br>
+&#x4E5F;&#x5C31;&#x662F;&#x76EE;&#x6807;&#x662F;A&#xFF0C;&#x8981;&#x6C42;&#x5B58;&#x5728;/&#x5B8C;&#x6210; B</p>
+<p>&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell">helloworld: file1.o file2.o
+    g++ file1.o file2.o -o helloworld
+
+file2.o:file2.cpp
+    g++ -c file2.cpp -o file2.o
+
+file1.o:file1.cpp file1.h
+    g++ -c file1.cpp -o file1.o
+
+clean:
+    <span class="token function">rm</span> -rf *.o helloworld
+</pre><h2 class="mume-header" id="makefile%E4%BD%BF%E7%94%A8%E5%8F%98%E9%87%8F">Makefile&#x4F7F;&#x7528;&#x53D8;&#x91CF;</h2>
+
+<pre data-role="codeBlock" data-info="shell" class="language-shell">OBJS <span class="token operator">=</span> file1.o file2.o          <span class="token comment"># &#x5B9A;&#x4E49;&#x76EE;&#x6807;&#x6587;&#x4EF6;</span>
+XX <span class="token operator">=</span> g++                        <span class="token comment"># &#x5B9A;&#x4E49;&#x7F16;&#x8BD1;&#x5668;</span>
+CFLAGS <span class="token operator">=</span> -Wall -O -g            <span class="token comment"># &#x5B9A;&#x4E49;&#x7F16;&#x8BD1;&#x9009;&#x9879;</span>
+
+helloworld: <span class="token variable"><span class="token variable">$(</span>OBJS<span class="token variable">)</span></span>
+    <span class="token variable"><span class="token variable">$(</span>XX<span class="token variable">)</span></span> <span class="token variable"><span class="token variable">$(</span>OBJS<span class="token variable">)</span></span> -o helloworld
+
+file2.o: file2.cpp file1.h
+    <span class="token variable"><span class="token variable">$(</span>XX<span class="token variable">)</span></span> <span class="token variable"><span class="token variable">$(</span>CFLAGS<span class="token variable">)</span></span> -c file2.cpp -o file2.o
+
+file1.o: file1.cpp file1.h
+    <span class="token variable"><span class="token variable">$(</span>XX<span class="token variable">)</span></span> <span class="token variable"><span class="token variable">$(</span>CFLAGS<span class="token variable">)</span></span> -c file1.cpp -o file1.o
+
+clean: <span class="token function">rm</span> -rf *.o
+</pre><p>&#x6267;&#x884C;make&#x547D;&#x4EE4;&#x540E;&#x7B49;&#x4EF7;&#x4E8E;&#xFF1A;<br>
+g++ -Wall -O -g -c file1.cpp -o file1.o<br>
+g++ -Wall -O -g -c file2.cpp -o file2.o<br>
+g++ file1.o file2.o -o helloworld</p>
+<h2 class="mume-header" id="makefile%E9%87%8C%E4%BD%BF%E7%94%A8%E5%87%BD%E6%95%B0">Makefile&#x91CC;&#x4F7F;&#x7528;&#x51FD;&#x6570;</h2>
+
+<p>make&#x901A;&#x914D;&#x7B26;&#xFF1A;%&#xFF0C;&#x8868;&#x793A;&#x4EFB;&#x610F;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x90A3;&#x4E48;%.o&#x8868;&#x793A;&#x6240;&#x6709;&#x7684;.o&#x6587;&#x4EF6;&#x540D;&#xFF0C;%.c&#x8868;&#x793A;&#x6240;&#x6709;&#x7684;.c&#x6587;&#x4EF6;&#x96C6;&#x5408;&#x3002;</p>
+<ul>
+<li>$@: &#x6269;&#x5C55;&#x6210;&#x5F53;&#x524D;&#x89C4;&#x5219;&#x7684;&#x76EE;&#x7684;&#x6587;&#x4EF6;&#x540D;</li>
+<li>$&lt;: &#x6269;&#x5C55;&#x6210;&#x4F9D;&#x8D56;&#x5217;&#x8868;&#x4E2D;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x4F9D;&#x8D56;&#x6587;&#x4EF6;</li>
+<li>$^: &#x6269;&#x5C55;&#x6210;&#x6574;&#x4E2A;&#x4EE5;&#x6765;&#x5217;&#x8868;&#x5E76;&#x53BB;&#x91CD;</li>
+</ul>
+<p>Makefile&#x53D8;&#x91CF;&#x5B9A;&#x4E49;&#x548C;&#x51FD;&#x6570;&#x5F15;&#x7528;&#x65F6;&#xFF0C;&#x901A;&#x914D;&#x7B26;&#x4E0D;&#x4F1A;&#x88AB;&#x5C55;&#x5F00;&#x3002;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x51FD;&#x6570;.</p>
+<ul>
+<li><strong>$(wildcard PATTERN)</strong>: &#x529F;&#x80FD;&#x662F;&#x5C55;&#x5F00;&#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#x7684;&#x3001;&#x4F7F;&#x7528;&#x7A7A;&#x683C;&#x5206;&#x5F00;&#x7684;&#x3001;&#x5339;&#x914D;&#x6A21;&#x5F0F;&#x7684;&#x6240;&#x6709;&#x6587;&#x4EF6;&#x5217;&#x8868;&#x3002;&#x5982;&#x679C;&#x4E0D;&#x5B58;&#x5728;&#x5219;&#x8FD4;&#x56DE;&#x7A7A;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;SOURCES = $(wildcard *.c *.cpp)</li>
+<li><strong>$(patsubst &#x539F;&#x59CB;&#x6837;&#x5F0F;, &#x5339;&#x914D;&#x76EE;&#x6807;&#x6837;&#x5F0F;, &#x9700;&#x8981;&#x88AB;&#x5904;&#x7406;&#x7684;&#x5217;&#x8868;)</strong>&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;OBJS = $(patsubst %.c, %.o, $(SOURCES))</li>
+</ul>
+<p>&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell">CC <span class="token operator">=</span> gcc
+XX <span class="token operator">=</span> g++
+CFLAGS <span class="token operator">=</span> -Wall -O -g
+TARGET <span class="token operator">=</span> hellworld
+
+%.o: %.c
+    <span class="token variable"><span class="token variable">$(</span>CC<span class="token variable">)</span></span> <span class="token variable"><span class="token variable">$(</span>CFLAGS<span class="token variable">)</span></span> -c $<span class="token operator">&lt;</span> -o <span class="token variable">$@</span>
+%.o: %.cpp
+    <span class="token variable"><span class="token variable">$(</span>CC<span class="token variable">)</span></span> <span class="token variable"><span class="token variable">$(</span>CFLAGS<span class="token variable">)</span></span> -c $<span class="token operator">&lt;</span> -o <span class="token variable">$@</span>
+
+SOURCES <span class="token operator">=</span> <span class="token variable"><span class="token variable">$(</span>wildcard *.c *.cpp<span class="token variable">)</span></span>
+OBJS <span class="token operator">=</span> <span class="token variable"><span class="token variable">$(</span>patsubst %.c,%.o, <span class="token punctuation">$(</span>patsubst %.cpp, %.o, <span class="token punctuation">$(</span>SOURCES<span class="token punctuation">)</span><span class="token variable">)</span></span><span class="token punctuation">)</span>
+
+<span class="token variable"><span class="token variable">$(</span>TARGET<span class="token variable">)</span></span> <span class="token builtin class-name">:</span> <span class="token variable"><span class="token variable">$(</span>OBJS<span class="token variable">)</span></span>
+    <span class="token variable"><span class="token variable">$(</span>XX<span class="token variable">)</span></span> <span class="token variable"><span class="token variable">$(</span>OBJS<span class="token variable">)</span></span> -o <span class="token variable"><span class="token variable">$(</span>TARGET<span class="token variable">)</span></span>
+
+clean:
+    <span class="token function">rm</span> -rf *.o
+</pre>
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
