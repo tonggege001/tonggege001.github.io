@@ -592,11 +592,155 @@ public:
         shared_ptr<PMImpl> pNew(new PMImpl(*pImpl));
         pNew->bgImage.reset(new Image(imgSrc));
         ++pNew->imageChanges;
-        seap(pImpl, pNew);
+        swap(pImpl, pNew);
     }
 };
 
 ```
+
+# 30. inline 功能
+1. 免除函数调用成本，直接进行代码替换，但是会造成代码膨胀。
+2. 浓缩不含函数调用的代码，对其进行优化。
+
+inline 只是对编译器的一个申请，不是强制命令。inline是在编译期被替换的。inline这项申请可以隐式提出也可以明确提出，**隐式提出**的方法是将函数定义在类内。**显示提出**是在定义式前增加inline声明。
+
+隐式：  
+```C++
+class Person {
+public:
+    int age() const {return theAge;}    
+}
+```
+显式：  
+```C++
+template<typename T>
+inline const T & std::max(const T & a, const T & b){
+    return a < b ? b : a;
+}
+```
+函数带有virtual或者带有循环和递归的inline申请，都不会被满足。
+
+inline缺点：
+1. 会导致代码膨胀
+2. 代码升级不方便，所有使用过inline的代码都需要重新编译。而不使用inline的代码只需要重新链接即可。
+3. inline函数的debug不方便，难以找到break point。
+
+所以inline一般只用于小型、被频繁调用的函数上。
+
+# 32. 降低文件间的编译依存关系
+
+能使用object reference或者object pointer，就不用object。
+尽量以class声明式替换class定义式。
+
+接口继承的实现方法：  
+```C++
+class Person {
+public:
+    static std::tr1::shared_ptr<Person> create(const std::string & name,
+        const Date & birthday, const Address & addr);
+}
+
+class RealPerson: public Person {
+public:
+    RealPerson(const std::string & name,
+        const Date & birthday, const Address & addr){
+            // init RealPerson
+        }
+    virtual ~RealPerson(){}
+}
+
+// 为接口函数提供具体实现
+std::tr1::shared_ptr<Person> Person::create(const std::string & name, 
+    const Date & birthday, const Address & addr){
+        return std::tr1::shared_ptr<Person>(new RealPerson(name, birthday, addr));
+    }
+```
+
+# 32. Public继承是is-a关系
+父类具有的功能，子类必须具有。  
+例如鸟和企鹅，鸟能飞，企鹅不能飞，所以鸟和企鹅不是is-a的关系。
+
+# 33. 避免遮掩继承而来的名称
+下面代码没法使用基类的被覆盖的函数：  
+```C++
+class A {
+public:
+    void mf3(){
+        cout<<"A::mf3()"<<endl;
+    };
+
+    void mf3(double x){
+        cout<<"A::mf3("<<x<<")"<<endl;
+    }
+};
+
+class B: public A {
+public:
+    void mf3(){
+        cout<<"B::mf3()"<<endl;
+    }
+};
+
+int main(){
+    B b;
+    b.mf3(1.0);         // error, 基类的mf3被覆盖
+}
+```
+正确做法需要使用using重新将被覆盖的函数显示出来：
+```C++
+
+class A {
+public:
+    void mf3(){
+        cout<<"A::mf3()"<<endl;
+    };
+
+    void mf3(double x){
+        cout<<"A::mf3("<<x<<")"<<endl;
+    }
+};
+
+class B: public A {
+public:
+    using A::mf3;
+    void mf3(){
+        cout<<"B::mf3()"<<endl;
+    }
+};
+
+int main(){
+    A a;
+    B b;
+    a.mf3();
+    a.mf3(1.0);
+
+    b.mf3();
+    b.mf3(1.0);
+}
+```
+
+当不想继承基类的一些函数或成员时，可以考虑使用**private继承**，然后要么使用using 重新声明作用于，要么使用隐式内联，如下：
+```C++
+class Derived: private Base {
+public: 
+    virtual void mf3(){
+        Base::mf3();            // 暗自成为inline，条款30
+    }
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
