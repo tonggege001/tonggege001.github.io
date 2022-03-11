@@ -729,18 +729,441 @@ public:
 }
 ```
 
+# 34. 接口继承和实现继承
+
+## 34.1 成员函数的接口总是会被继承的。
+public继承意味着 **is-a** 的关系，对base class 做的所有为真的事情一定对derived class也为真。
+
+## 34.2 声明一个纯虚函数的目的是为了让派生类只继承函数接口
+
+## 34.3 声明非纯虚函数的目的是为了让派生类继承函数的接口和缺省实现
+
+## 34.4 使用普通成员函数的目的是为了使派生类继承函数的接口及一份强制性实现。（基类不变性和凌驾特异性）
+非虚函数一般代表的意义是不变性和凌驾特异性，所以它**绝不该在派生类中被重新定义**。
+
+非虚析构函数会带来非常大的问题，比如资源泄露。
+
+当然，如果这个类不被设计为基类，那么不声明虚函数也是没问题的。
+
+## 34.5 非虚函数实现Template Method 设计模式
+
+虚函数继承为private，然后暴露给外部的是非虚函数，非虚函数调用继承来的虚函数。暴露给外部的是一个wrapper，该函数可以初始化、清理现场、参数检查等等。
+
+Strategy 模式与Template Method模式不同，它有一个成员变量的指针函数指向特异化的计算方法。例如：计算一个游戏人物的hp值，不同人物有不同的计算方法，并且还有缺省方法：  
+```C++
+class GameCharacter;            // 前置声明
+int defaultHealthCalc(const GameCharacter & gc);    // 缺省方法
+
+class GameCharacter {
+public:
+    typedef int (*HealthCalc)(const GameCharacter & gc);
+    explicit GameCharacter(HealthCalcFunc hcf = defaultHealthCalc):headlFunc(hcf){}
+
+    int headlthValue() const {
+        return healFunc(*this);
+    }
+
+private: 
+    HealthCalcFunc healthFunc;      // 实际上是一个函数指针
+}
+```
+
+另一个方法是使用std::function对象代替函数指针。
+std::function 传入一个函数指针、可调用对象、lambda等等，生成一个被包装好的可调用对象。
+
+# 36. 绝不重新定义继承来的non-virtual函数
+也就是不覆盖任何基类的函数。
+
+# 37. 绝不重新定义继承而来的缺省参数值
+因为non-virtual函数不被覆盖，所以实际上本条款是针对virtual的。
+
+函数缺省值是静态绑定的，但是virtual函数是动态绑定的，所以实际上的缺省值是基类的而非派生类的。
+
+# 38. 通过复合实现 has-a 关系 和 “根据某物实现出”的关系
+
+has-a关系：一个类拥有另一个类的xxx
+
+is-implemented-in-terms-of: 通过某个类实现出另一个新类。
+例如：通过list实现set，这不是一种继承 is-a的关系，因为基类list可以重复，派生类set不可以重复。所以list是set的一个成员。
+
+# 39. 私有继承
+1. 如果类间的继承关系是私有继承，那么编译器不会自动将一个派生类对象转换成基类对象。并且基类的所有public、protected成员全部变成私有的。
+
+private继承实际上是一种 implemented-in-terms-of 的实现方法。
+
+一般用复合关系实现 implemented-in-terms-of ，除非因为空间或者protected成员或/和 virtual 函数牵扯进来时，才用private继承。
+
+# 40. 多重继承和虚继承
+多重继承如果时菱形继承，则可能出现对同一对象的多重内存占用，所以在合适的时候需要使用虚继承。  
+
+虚继承内存模型：[链接](https://yqlab.me/archives/51.html)
 
 
+虚继承会增加内存的开销（虚类表指针），同时其初始化责任由继承体系中的最低层 class 负责，这意味着派生自 virtual 基类而需要初始化的类，必须首先判断它所有的virtual bases，先初始化它们。
+
+所以对于virtual 基类，非必要不使用。如果使用，则尽量不要在其中放置数据（类比Java Interface不允许声明成员变量一样）。
 
 
+# C++ 模版和泛型变成
+C++ template机制自身是一部完整的图灵机：他可以被用来计算任何可计算的值，于是导出了模版元编程，创造出“在C++编译器内执行并于编译完成时停止执行”的程序。
+
+# 41. 隐式接口和编译期多态
+
+运行时多态：由virtual 函数实现。
+编译期多态：由函数重载 或 模版template实现。
+
+举个例子：
+```C++
+// 根据T的不同做不同的事儿
+template<typename T>
+void doProcess(T & w){
+    // do ...
+    return T.size();        // 只要T支持size成员函数，那么这样调用都没问题
+}
+
+template<>
+void doProcess<Base>(Base & a){
+    // do ...
+    // 专门支持Base类的doPrzocess函数
+}
+```
+
+# 42. 模板中 typename 与class 的区别
+1. 模板中的嵌套类型需要增加typename 关键字，比如：  
+```C++
+// 错误，嵌套类型 const_iterator可能会被当作一个变量，而不是类型
+template<typename C>
+void print2nd(const C & container){
+    if(container.size() >= 2){
+        C::const_iterator iter(container.begin());
+        iter++;
+        ...
+    }
+}
+
+// 正确，C::const_iterator被正确当成一个类型
+template<typename C>
+void print2nd(const C & container){
+    if(container.size() >= 2){
+        typename C::const_iterator iter(container.begin());
+        iter++;
+        ...
+    }
+}
+```
+
+另一个例子：  
+只有嵌套类型需要增加 typename，container前面不需要增加。
+```C++
+template<typename C>
+void func(const C & container, typename C::iterator iter);
+```
+
+typename声明类型时，不能在继承列表和初始化列表中增加。  
+```C++
+template<typename T>
+class Derived: public Base<T>::Nested{      // Nested不加 typename
+public:
+    // 初始化列表不加typename
+    explicit Derived(int x): Base<T>::Nested(x){
+        typename Base<T>::Nested temp;      // 需要增加
+    }
+
+}
+```
+
+# 44. 将参数无关的代码抽离templates
+将参数无关代码抽离成一个非模板的函数，然后才模板代码中调用它。因为模板会为每个类都生成一个代码版本。  
+
+具有代码膨胀问题的版本：
+```C++
+// 大小信息作为参数传递
+template<typename T, std::size_t n>
+class SquareMatrix {
+public:
+    ...
+    void invert();              // 求逆矩阵
+};
+
+// 下面的调用会生成两份参数不同的代码
+SquareMatrix<double, 5>sm1;
+sm1.invert();
+SquareMatrix<double, 5>sm2;
+sm2.invert();
+```
+
+可改进的方法，将参数无关的代码抽离，让模板参数n变为函数调用参数:  
+```C++
+template<typename T>
+class SquareMatrixBase{
+protected:
+    SquareMatrixBase(std::size_t n, T * pMem):size(n), pData(pMem){}
+    void setDataPtr(T * ptr){pData = ptr;}
+    ...
+private:
+    std::size_t size;
+    T * pData;
+}
+
+template<typename T, std::size_t n>
+class SquareMatrix: private SquareMatrixBase<T> {
+public:
+    SquareMatrix():SquareMatrixBase<T>(n, data){}
+private:
+    T data[n*n];
+}
+```
+
+另一方面，所有指针类型都有相同的二进制表述，因此凡是template持有指针者（例如list<int*>, list<SquareMatrix<long, 3> *），往往应该对每一个成员函数使用唯一一份底层实现，也就是如果你实现某些成员函数而它们操作强型指针(int *, long *)，你应该令它们调用另一个操作无类型指针(void *)的函数，由后者完成实际工作。
+
+# 45. 泛化构造函数和泛化成员函数  
+```C++
+template<typename T>
+class SmartPtr{
+public:
+    template<typename U>
+    SmartPtr(const SmartPtr<U> & other);    // 生成泛化的拷贝构造函数
+}
+```
+
+# 46. template 类型推导时不会考虑隐式类型转换
+所以在需要类型转换的函数中最好将其声明为非成员函数或者友元函数。
+
+# 47. traits classes 表现类型信息  
+trait calss 的功能就是**允许你在编译期间取得某些类型信息**。它不是一个关键字，而是一种技术或者需要遵守的协议。
+
+例如编译期间判断一个对象的类型是否是void：  
+```C++
+template<typename T>
+struct is_void{
+    static const bool value = false;
+}
+
+template<>          // 特例化模板
+struct is_void<void> {
+    static const bool value = true;
+}
+
+// 在使用时，用下面方法能够在编译期就获得类型：
+is_void<false>::value;
+is_void<int>::value;
+```
+**一个迭代器使用 traits 的例子：**
+迭代器种类：
+* input 迭代器, istream_iterator: 只能向前移动，一次一步，客户只能读取它所指的东西，只能读取一次。
+* output 迭代器, ostream_iterator: 只能向前移动，一次一步，客户只能写它们所指的东西，只能写一次。
+* forward 迭代器, 可以做多次读写，可以向前移动。
+* bidirectional 迭代器, 可以向前向后移动(++运算符和--运算符),可以多次读写。
+* random access 迭代器, 可以在常量时间内向前或向后移动任意距离
+
+上述五种分类，C++标准程序库分别提供专属的卷标结构(tag struct) 加以识别和确认：
+```C++
+struct input_iterator_tag {};
+struct output_iterator_tag {};
+struct forward_iterator_tag: public input_iterator_tag{};
+struct bidirectional_iterator_tag: public forward_iterator_tag{};
+struct random_access_iterator_tag: public bidirectional_iterator_tag{};
+```
+
+现在我们想实现一个 `advance` 函数，给定一个迭代器，使其移动一个固定的距离 d。那么如果是随机访问迭代器可以直接 iter + d，但是如果时其他迭代器则需要通过++和--方法来实现。这就出现了需要根据iter的类型来判断具体选择的方法。
+
+运行时的解决方法: 
+```C++
+template<typename IterT, typename DistT>
+void advance(IterT & iter, DistT & d){
+    if(iter is a random access iterator){
+        iter += d;
+    }
+    else {
+        if(d >= 0){while(d--) ++iter;}
+        else{while(d++) --iter;}
+    }
+}
+```
+
+但是实际上我们可以在编译期间就将其确定下来，因为编译时是知道iter的类型的。解决方法是额外声明一个模板 iterator_traits（标准库也有），针对每一个类型IterT，在`struct iterator_traits<IterT>` 内一定声明某个名为iterator_category。这个typedef 用来确认IterT的迭代器分类
+
+所以对于任意一个容器的迭代器class内，必须首先声明一个 xxx_iterator_tag 的类为iterator_category，然后再将标准库的iterator_traits进行偏特化，然后内部包含相关信息。
+
+**编译时做if判断的方法**：利用重载来实现编译时判断，因为重载会在编译期间自动选择调用哪个函数。
+
+例如：
+```C++
+template<...>
+class deque {
+public:
+    class iterator {
+    public:
+        typedef random_access_iterator_tag iterator_category;
+        ...
+    };
+};
+
+// 偏特化iterator_traits;
+template<typename IterT>
+struct iterator_traits {
+    typedef random_access_iterator_tag iterator_category;
+    ...
+};
+
+// 现在有了iterator_traits 后，可以实现编译期间的advance了：
+template<typename IterT, typename DistT>
+void doAdvance(IterT & iter, DistT d, std::random_access_iterator_tag){
+    iter += d;
+}
+
+template<typename IterT, typename DistT>
+void doAdvance(IterT & iter, DistT d, std::bidirectional_iterator_tag){
+    if(d >= 0){while(d--) ++iter;}
+    else{while(d++) --iter;}
+}
+
+template<typename IterT, typename Dist>
+void doAdvance(IterT & iter, DistT d, std::input_iterator_tag){
+    if(d < 0){
+        throw std::out_of_range("Native distance");
+    }
+    while(d--) ++iter;
+}
+
+// 总的函数
+template<typename IterT, typename DistT>
+void advance(IterT & iter, DistT d){
+    doAdvance(iter, d, typename std::iterator_traits<IterT>::iterator_category());
+}
+```
+
+Traits 广泛用于标准程序库，除了iterator_traits 提供的iterator_category外，还提供了其他信息如value_type。此外还有char_traits用来保存字符类型的相关信息、numeric_limits用来保存数值类型的相关信息，比如某数值类型的可表达的最大值和最小值。
+
+TR1还刀入了许多新的traits classes用以提供类型信息，包括`is_fundamental<T>`判断是否是内置类型，`is_array<T>`（判断T是否为数组类型), 以及`is_base_of<T1, T2>`判断T1和T2是否相同或者T1是T2的基类。
+
+# 48 模板元编程 (Template MetaProgramming)
+
+1.模板元编程是编写template-based C++程序并执行于编译期间的过程。
+2.模板元编程是于1990年初期被发现的，而不是被发明出来的，它是一个图灵完备的计算，能够解决任何可计算问题。
+3.它能够让计算工作从运行期转移到编译期，这样某些错误可以在编译期被找出来。
+4.部分情况下，它能有较小的可执行文件、较短的运行期、较少的内存需求。但是它却增加了编译时间。
+5.模板元编程实际上是一种函数式编程。
+
+前面提到，重载能够实现 if-else 逻辑，而循环则依靠递归来实现，因为其是函数式编程。
+
+下面是一个斐波那契数列的例子：
+```C++
+template<unsigned n>
+struct Factorial {
+    // 用 enum hack方法声明静态常量，见条款2
+    // enum 实际上是一个类，所以这其实是静态常量
+    enum{value = n * Factorial<n-1>::value};        
+};
+
+template<>
+struct Factorial<0> {
+    enum {value = 1};
+};
+
+int main(){
+    std::cout<<Factorial<5>::value;
+    std::cout<<Factorial<10>::value;
+}
+```
+
+另外，还有表达式template，它能够实现typename是表达式的模板类。
+
+# 49 了解new-handler行为
+注意：STL管理的对象是由allocator 管理，而不是new/delete管理。
+
+new_handler是在 `operator new`无法继续分配内存抛出异常时调用的一个函数，它的函数签名是：
+```C++
+namespace std{
+    typedef void (*new_handler)();
+    new_handler set_new_handler(new_handler p) throw(); // C98式的不抛出异常
+}
+
+// 示例
+int main(){
+    std::set_new_handler(func);
+    int * big_data = new int[100000000000LL];
+}
+```
+当new引发异常时，如果new_handler不为none时，bad_alloc不会被抛出，只有new_handler为null时才会抛出，new 引发异常时无限循环分配-调用new_handler-分配-调用new_handler……，直到在new_handler里通过某种方法退出（安装另一个new_handler，卸载nwe_handler，清理内存使其足够可被使用，抛出bad_alloc）。
+
+一个设计良好的new_handler必须完成以下事情：
+1. 让更多内存可以被使用，也就是在这里释放一些内存。
+2. 安装另一个new_handler，当目前的new_handler不能处理时，调用set_new_handler安装另一个，那么下一次再调用new时，将会调用其他的new_handler。
+3. 卸载new_handler，设置为null指针即可
+4. 抛出bad_alloc的异常，这样的异常不会被operator new捕获，会传导到代码调用处。
+5. 不返回，调用abort或者exit。
+
+# 50. 替换 new 和 delete  
+重载的new和delete的原因如下：
+1.**用来检测运用上的错误**，例如多次delete、new完delete失败内存泄漏、定制化内存比如在分配对象内存的前几个字节放上签名。
+2.**定制自己的内存管理**，因为有些小内存频繁被申请和释放，可以自己用桶或者内存池来管理，用来增加分配内存和归还内存的速度，例如Boost的Pool库。也就是说operator new / operator delete 如果自己管理好的话，性能会提升很多。
+3.**收集使用上的统计数据**，分配区块大小分布如何，寿命分布如何，运用形态是否随时间变化，最大动态分配量最高点是多少等等这些都需要定制化new收集。
+4.**能够将相关对象集中**，分配一个大的heap，这样就能让对象尽可能在一页上，减少内存缺页错误，提升效率。
+
+写自己的内存池需要注意字节对齐，比如double是8字节，那么double的地址必须是8的倍数，同理int是4字节，那么int的地址必须是4的倍数。这是因为逻辑上内存存取是按照字节来存的，但是底层可能是一次取四个字节，也就是说存储单元最小是四字节。这样假设double不是8的倍数，很可能会出现跨字节存取，前4字节取一半，后4字节取一半，极大地降低了存储效率。甚至有些机器上还会引发异常。
 
 
+## operator new 的成员函数可能会被派生类继承
+这样会导致Base class 的operator new 会被调用来分配Derived 对象。
+解决方法：给出申请量错误：
+```C++
+void * Base::operator new(std::size_t size) throw(std::bad_alloc) {
+    if(size != sizeof(Base))
+        return ::operator new(size);    // 交给标准operator new处理
+    ...
+}
+```
+基类的delete同理也会被派生类调用，用同样的方法判断size是否一样，不一样就交给标准operator delete处理。
 
+下列输出结果是:
+hello A  
+A constructor  
+```C++
+class A {
+public:
+    A(){
+        cout<<"A constructor"<<endl;
+    }
 
+    void * operator new(size_t size) {
+        cout<<"hello A"<<endl;
+        return malloc(sizeof(size));
+    }
+};
 
+int main(){
+    A * a = new A();
+}
+```
 
+# 52. 写了placement new 也要写 placement delete
+如果operator new接受的参数除了一定会有的size_t之外，还有其他的参数，那么就是placement new，一般而言，其他的参数就是一分配好空间的地址，在这个地址上进行初始化。例如：
 
+```C++
+void operator new(size_t size, ostream & logStream);
+void operator new(size_t size, Object * obj);
 
+// 调用时：
+Widget * pw = new (std::cerr)Widget;
+Widget * pw = new (&addr)Widget;
+```
 
+如果内存分配成功，但是调用构造函数出现异常，则运行期系统有责任取消operator new的分配并恢复原样。然而运行期调用的delete必须寻找**参数个数和类型**都与operator new 相同的那个delete。所以当提供了placement new时必须也要提供对应的placement delete。
 
+注意，运行期的delete是自动调用的，当分配异常后会自动调用。所以一半有placement new时，要提供placement delete和正常版本的delete。
 
+另外，成员函数会覆盖其外围作用于中相同的名称，也就是说会覆盖正常函数，也就是说当只有唯一的一个placement new时，正常的new函数就被覆盖了，所以要么将placement 声明为global版本而不是成员函数版本，要么使用using 防止其被屏蔽。
+
+# 53. 请不要忽视编译期警告
+```C++
+class B {
+public:
+    virtual void f() const;
+};
+class D: public B{
+public:
+    virtual void f();
+}
+```
+上面会给出D覆盖了B的f函数的警告，而没有达到运行时多态的效果。
