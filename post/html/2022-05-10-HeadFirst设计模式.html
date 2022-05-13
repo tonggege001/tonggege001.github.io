@@ -1,0 +1,437 @@
+<!DOCTYPE html><html><head>
+      <title>2022-05-10-HeadFirst&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css">
+      
+      
+      
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js"></script>
+      
+      
+      
+      
+      
+      <style>
+      pre{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;padding:1em;margin:.5em 0;overflow:auto;line-height:1.5;tab-size:4;hyphens:none;color:#2b3f6a;background-color:#eee9dd !important;border:#ddd3bb;border-radius:3px}pre[class*="language-"]{padding:1em}code[class*="language-"] .token.comment,pre[class*="language-"] .token.comment,code[class*="language-"] .token.prolog,pre[class*="language-"] .token.prolog,code[class*="language-"] .token.doctype,pre[class*="language-"] .token.doctype,code[class*="language-"] .token.cdata,pre[class*="language-"] .token.cdata{color:#9ca3b0;font-style:italic}code[class*="language-"] .token.punctuation,pre[class*="language-"] .token.punctuation{color:#9ca3b0}code[class*="language-"] .namespace,pre[class*="language-"] .namespace{opacity:.7}code[class*="language-"] .token.constant,pre[class*="language-"] .token.constant{color:#c16161}code[class*="language-"] .token.boolean,pre[class*="language-"] .token.boolean,code[class*="language-"] .token.number,pre[class*="language-"] .token.number,code[class*="language-"] .token.function-name,pre[class*="language-"] .token.function-name{color:#c16161}code[class*="language-"] .token.tag,pre[class*="language-"] .token.tag{color:#ac4343}code[class*="language-"] .token.symbol,pre[class*="language-"] .token.symbol{color:#8f932b}code[class*="language-"] .token.selector,pre[class*="language-"] .token.selector{color:#d08e25}code[class*="language-"] .token.attr-name,pre[class*="language-"] .token.attr-name{color:#d08e25}code[class*="language-"] .token.string,pre[class*="language-"] .token.string{background-color:rgba(255,204,0,0.03);color:rgba(106,68,28,0.77)}code[class*="language-"] .token.char,pre[class*="language-"] .token.char{color:#8f932b}code[class*="language-"] .token.url,pre[class*="language-"] .token.url{color:#d08e25}code[class*="language-"] .token.atrule,pre[class*="language-"] .token.atrule,code[class*="language-"] .token.attr-value,pre[class*="language-"] .token.attr-value,code[class*="language-"] .token.keyword,pre[class*="language-"] .token.keyword{color:#8f932b}code[class*="language-"] .token.function,pre[class*="language-"] .token.function{color:#d08e25}code[class*="language-"] .token.class-name,pre[class*="language-"] .token.class-name{color:#2b3f6a}code[class*="language-"] .token.variable,pre[class*="language-"] .token.variable{color:#5e78e1}code[class*="language-"] .token.regex,pre[class*="language-"] .token.regex,code[class*="language-"] .token.important,pre[class*="language-"] .token.important{color:#379566}code[class*="language-"] .token.important,pre[class*="language-"] .token.important,code[class*="language-"] .token.bold,pre[class*="language-"] .token.bold{font-weight:bold}code[class*="language-"] .token.italic,pre[class*="language-"] .token.italic{font-style:italic}code[class*="language-"] .token.entity,pre[class*="language-"] .token.entity{cursor:help}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:rgba(153,122,102,0.08);background:linear-gradient(to right, rgba(153,122,102,0.1) 70%, rgba(153,122,102,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:rgba(153,122,102,0.4);color:#f5f2f0;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px white}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}body{font-size:16px;background-color:#f3f2ee;font-family:"PT Serif",'Times New Roman',Times;color:#1f0909;line-height:1.5em}body ol,body ul{list-style:none}body blockquote,body q{quotes:none}body blockquote:before,body blockquote:after,body q:before,body q:after{content:'';content:none}body table{border-collapse:collapse;border-spacing:0}body h1,body h2,body h3,body h4,body h5,body h6{font-weight:bold}body h1{font-size:1.875em;line-height:1.6em;margin-top:2em}body h2,body h3{font-size:1.3125em;line-height:1.15;margin-top:2.285714em;margin-bottom:1.15em}body h3{font-weight:normal}body h4{font-size:1.125em;margin-top:2.67em}body h5,body h6{font-size:1em}body h1{border-bottom:1px solid;margin-bottom:1.875em;padding-bottom:.8125em}body a{text-decoration:none;color:#065588}body a:hover,body a:active{text-decoration:underline}body p,body blockquote,body .md-fences{margin-bottom:1.5em}body h1,body h2,body h3,body h4,body h5,body h6{margin-bottom:1.5em}body blockquote{font-style:italic;border-left:5px solid;margin-left:2em;padding-left:1em}body ul,body ol{margin:0 0 1.5em 1.5em}body ol li{list-style-type:decimal;list-style-position:outside}body ul li{list-style-type:disc;list-style-position:outside}body li>p{margin-top:0;margin-bottom:0}body .md-meta,body .md-before,body .md-after{color:#999}body table{margin-bottom:1.5em;font-size:1em}body thead th,body tfoot th{padding:.25em .25em .25em .4em;text-transform:uppercase}body th{text-align:left}body td{vertical-align:top;padding:.25em .25em .25em .4em}body code,body .md-fences{color:inherit;background-color:#dadada;padding-left:1ch;padding-right:1ch}body pre code{background-color:inherit}body .md-fences{margin-left:2em;margin-bottom:3em}body .md-fences .CodeMirror.CodeMirror-wrap{top:-0.8em}body pre,body code,body tt{font-size:.875em;line-height:1.714285em}body h1{line-height:1.3em;font-weight:normal;margin-bottom:.5em}body p+ul,body p+ol{margin-top:-1em}body h3+ul,body h4+ul,body h5+ul,body h6+ul,body h3+ol,body h4+ol,body h5+ol,body h6+ol{margin-top:.5em}body li>ul,body li>ol{margin-top:inherit}body h2,body h3{margin-bottom:.75em}body hr{border-top:none;border-right:none;border-bottom:1px solid;border-left:none}body h1{border-color:#c5c5c5}body blockquote{border-color:#bababa;color:#656565;background-color:#e6e4dc}body thead.md-table-edit{background-color:transparent}body thead{background-color:#dadada}body tr:nth-child(even){background:#e8e7e7}body hr{border-color:#c5c5c5}body .task-list{padding-left:1rem}body .task-list-item{list-style-type:none;margin-left:-1.8em}body .task-list-item .task-list-item-checkbox{margin-right:.8em}body .task-list-item input:before{content:'\221A';display:inline-block;width:1.25rem;height:1.5rem;vertical-align:middle;text-align:center;color:#ddd;background-color:#F3F2EE}body .task-list-item input:checked:before,body .task-list-item input[checked]:before{color:inherit}body img{max-width:100%}body kbd{color:#1f0909}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="%E9%9B%B6-%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99">&#x96F6;&#x3001;&#x8BBE;&#x8BA1;&#x539F;&#x5219;</h1>
+
+<p><strong>1. &#x627E;&#x51FA;&#x5E94;&#x7528;&#x4E2D;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x53D8;&#x5316;&#x4E4B;&#x5904;&#xFF0C;&#x628A;&#x5B83;&#x4EEC;&#x72EC;&#x7ACB;&#x51FA;&#x6765;&#xFF0C;&#x4E0D;&#x8981;&#x548C;&#x90A3;&#x4E9B;&#x4E0D;&#x9700;&#x8981;&#x53D8;&#x5316;&#x7684;&#x4EE3;&#x7801;&#x6DF7;&#x5728;&#x4E00;&#x8D77;&#x3002;</strong></p>
+<p><strong>2. &#x9488;&#x5BF9;&#x63A5;&#x53E3;&#x7F16;&#x7A0B;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x9488;&#x5BF9;&#x5B9E;&#x73B0;&#x7F16;&#x7A0B;&#x3002;</strong><br>
+&#x5176;&#x5B9E;&#x201C;&#x9488;&#x5BF9;&#x63A5;&#x53E3;&#x7F16;&#x7A0B;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x9488;&#x5BF9;&#x5B9E;&#x73B0;&#x7F16;&#x7A0B;&#x201D;&#x8FD9;&#x53E5;&#x8BDD;&#x6B63;&#x662F;&#x5229;&#x7528;&#x4E86;Java&#x8BED;&#x8A00;&#x4E2D;&#x7684;&#x591A;&#x6001;&#x3002;&#x7F16;&#x7A0B;&#x65F6;&#x9488;&#x5BF9;&#x8D85;&#x7C7B;&#x578B;&#xFF08;&#x7236;&#x7C7B;&#xFF09;&#x8FDB;&#x884C;&#x7F16;&#x7A0B;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x53D8;&#x91CF;&#x7684;&#x58F0;&#x660E;&#x7C7B;&#x578B;&#xFF08;&#x6216;&#x65B9;&#x6CD5;&#x7684;&#x8FD4;&#x56DE;&#x7C7B;&#x578B;&#xFF09;&#x662F;&#x8D85;&#x7C7B;&#x578B;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5177;&#x4F53;&#x7684;&#x67D0;&#x4E2A;&#x5B50;&#x7C7B;&#x3002;&#x8D85;&#x7C7B;&#x578B;&#x4E2D;&#x7684;&#x5404;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x4E0D;&#x5728;&#x8D85;&#x7C7B;&#x578B;&#x4E2D;&#xFF0C;&#x800C;&#x662F;&#x5728;&#x5404;&#x4E2A;&#x5B50;&#x7C7B;&#x4E2D;&#x3002;&#x8FD9;&#x6837;&#x5728;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x65F6;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x5B9E;&#x9645;&#x72B6;&#x51B5;&#x6267;&#x884C;&#x5230;&#x771F;&#x6B63;&#x7684;&#xFF08;&#x67D0;&#x4E2A;&#x5B50;&#x7C7B;&#xFF09;&#x884C;&#x4E3A;&#x3002;&#x8FD9;&#x6837;&#x5E26;&#x6765;&#x7684;&#x597D;&#x5904;&#x662F;&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x58F0;&#x660E;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x65F6;&#x65E0;&#x9700;&#x5173;&#x5FC3;&#x4EE5;&#x540E;&#x6267;&#x884C;&#x65F6;&#x7684;&#x771F;&#x6B63;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x662F;&#x54EA;&#x79CD;&#xFF08;&#x67D0;&#x4E2A;&#x5B50;&#x7C7B;&#x7C7B;&#x578B;&#xFF09;&#xFF0C;&#x8FD9;&#x662F;&#x79CD;&#x89E3;&#x8026;&#x5408;&#xFF08;&#x677E;&#x8026;&#x5408;&#xFF09;&#x7684;&#x601D;&#x60F3;&#x3002;&#x6211;&#x4EEC;&#x4E4B;&#x540E;&#x7EF4;&#x62A4;&#x7684;&#x65F6;&#x5019;&#x53EF;&#x4EE5;&#x968F;&#x65F6;&#x5C06;&#x58F0;&#x660E;&#x7684;&#x53D8;&#x91CF;&#x66FF;&#x6362;&#x4E3A;&#x771F;&#x6B63;&#x9700;&#x8981;&#x8981;&#x6267;&#x884C;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x5177;&#x6709;&#x5F88;&#x9AD8;&#x7684;&#x53EF;&#x7EF4;&#x62A4;&#x6027;&#x548C;&#x53EF;&#x6269;&#x5C55;&#x6027;&#x3002;&#x6240;&#x4EE5;&#x5176;&#x5B9E;&#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5;&#x6362;&#x4E2A;&#x8BF4;&#x6CD5;&#xFF1A;&#x201C;&#x9488;&#x5BF9;&#x8D85;&#x7C7B;&#x578B;&#x7F16;&#x7A0B;&#x201D;&#xFF0C;&#x8D85;&#x7C7B;&#x578B;&#x5219;&#x901A;&#x5E38;&#x662F;&#x63A5;&#x53E3;&#x6216;&#x662F;&#x4E00;&#x4E2A;&#x62BD;&#x8C61;&#x7C7B;&#x3002;</p>
+<p><strong>3. &#x7C7B;&#x5E94;&#x8BE5;&#x5BF9;&#x6269;&#x5C55;&#x5F00;&#x653E;&#xFF0C;&#x5BF9;&#x4FEE;&#x6539;&#x5173;&#x95ED;</strong></p>
+<h1 class="mume-header" id="%E4%B8%80-%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F-strategy-pattern">&#x4E00;&#x3001;&#x7B56;&#x7565;&#x6A21;&#x5F0F; (Strategy Pattern)</h1>
+
+<p><strong>&#x7B56;&#x7565;&#x6A21;&#x5F0F;</strong>&#x5B9A;&#x4E49;&#x4E86;&#x7B97;&#x6CD5;&#x65CF;&#xFF0C;&#x5206;&#x522B;&#x5C01;&#x88C5;&#x8D77;&#x6765;&#xFF0C;&#x8BA9;&#x5B83;&#x4EEC;&#x4E4B;&#x95F4;&#x53EF;&#x4EE5;&#x4E92;&#x76F8;&#x66FF;&#x6362;&#xFF0C;&#x6B64;&#x6A21;&#x5F0F;&#x8BA9;&#x7B97;&#x6CD5;&#x7684;&#x53D8;&#x5316;&#x72EC;&#x7ACB;&#x4E8E;&#x4F7F;&#x7528;&#x7B97;&#x6CD5;&#x7684;&#x5BA2;&#x6237;&#x3002;</p>
+<p>&#x610F;&#x56FE;&#xFF1A;&#x5B9A;&#x4E49;&#x4E00;&#x7CFB;&#x5217;&#x7684;&#x7B97;&#x6CD5;,&#x628A;&#x5B83;&#x4EEC;&#x4E00;&#x4E2A;&#x4E2A;&#x5C01;&#x88C5;&#x8D77;&#x6765;, &#x5E76;&#x4E14;&#x4F7F;&#x5B83;&#x4EEC;&#x53EF;&#x76F8;&#x4E92;&#x66FF;&#x6362;&#x3002;<br>
+&#x4F55;&#x65F6;&#x4F7F;&#x7528;&#xFF1A;&#x4E00;&#x4E2A;&#x7CFB;&#x7EDF;&#x6709;&#x8BB8;&#x591A;&#x8BB8;&#x591A;&#x7C7B;&#xFF0C;&#x800C;&#x533A;&#x5206;&#x5B83;&#x4EEC;&#x7684;&#x53EA;&#x662F;&#x4ED6;&#x4EEC;&#x76F4;&#x63A5;&#x7684;&#x884C;&#x4E3A;&#x3002;<br>
+&#x5982;&#x4F55;&#x89E3;&#x51B3;&#xFF1A;&#x5C06;&#x8FD9;&#x4E9B;&#x7B97;&#x6CD5;&#x5C01;&#x88C5;&#x6210;&#x4E00;&#x4E2A;&#x4E00;&#x4E2A;&#x7684;&#x7C7B;&#xFF0C;&#x4EFB;&#x610F;&#x5730;&#x66FF;&#x6362;&#x3002;</p>
+<p><strong>&#x4F18;&#x70B9;</strong>&#xFF1A; 1&#x3001;&#x7B97;&#x6CD5;&#x53EF;&#x4EE5;&#x81EA;&#x7531;&#x5207;&#x6362;&#x3002; 2&#x3001;&#x907F;&#x514D;&#x4F7F;&#x7528;&#x591A;&#x91CD;&#x6761;&#x4EF6;&#x5224;&#x65AD;&#x3002; 3&#x3001;&#x6269;&#x5C55;&#x6027;&#x826F;&#x597D;&#x3002;<br>
+<strong>&#x7F3A;&#x70B9;</strong>&#xFF1A; 1&#x3001;&#x7B56;&#x7565;&#x7C7B;&#x4F1A;&#x589E;&#x591A;&#x3002; 2&#x3001;&#x6240;&#x6709;&#x7B56;&#x7565;&#x7C7B;&#x90FD;&#x9700;&#x8981;&#x5BF9;&#x5916;&#x66B4;&#x9732;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF1A;&#x4E00;&#x4E2A;Duck&#x4F1A;quack(), swim(), display()&#xFF0C;&#x5982;&#x679C;&#x6309;&#x7167;&#x4F20;&#x7EDF;&#x6A21;&#x5F0F;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="Java" class="language-java"><span class="token keyword keyword-class">class</span> <span class="token class-name">Duck</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">quack</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">swim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">display</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><p>&#x6B64;&#x65F6;&#x5982;&#x679C;&#x8BA9;&#x67D0;&#x4E9B;&#x9E2D;&#x5B50;&#x65B0;&#x589E;&#x4E00;&#x4E2A;&#x52A8;&#x4F5C;fly()&#x3002;&#x5982;&#x679C;fly()&#x653E;&#x5230;Duck&#x4E2D;&#xFF0C;&#x5219;&#x4E0D;&#x80FD;fly()&#x7684;&#x9E2D;&#x5B50;&#x4F1A;&#x51FA;&#x73B0;&#x9519;&#x8BEF;&#x3002;&#x5982;&#x679C;&#x653E;&#x5230;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#x4E2D;&#xFF0C;&#x5219;&#x4EE3;&#x7801;&#x4E0D;&#x80FD;&#x590D;&#x7528;&#xFF0C;&#x4E0D;&#x540C;&#x9E2D;&#x5B50;&#x7684;&#x76F8;&#x540C;fly()&#x65B9;&#x6CD5;&#x4F1A;&#x51FA;&#x73B0;&#x91CD;&#x590D;&#x3002;</p>
+<p>&#x7B56;&#x7565;&#x6A21;&#x5F0F;&#x5C06;&#x6613;&#x53D8;&#x884C;&#x4E3A;&#x548C;&#x4E0D;&#x5E38;&#x53D8;&#x5316;&#x7684;&#x884C;&#x4E3A;&#x5206;&#x5F00;&#xFF0C;&#x5B83;&#x5B9A;&#x4E49;&#x4E00;&#x7CFB;&#x5217;&#x7B97;&#x6CD5;&#xFF0C;&#x5C06;&#x6BCF;&#x4E00;&#x4E2A;&#x7B97;&#x6CD5;&#x5C01;&#x88C5;&#x8D77;&#x6765;&#xFF0C;&#x5E76;&#x8BA9;&#x5B83;&#x4EEC;&#x53EF;&#x4EE5;&#x76F8;&#x4E92;&#x66FF;&#x6362;&#x3002;&#x7B56;&#x7565;&#x6A21;&#x5F0F;&#x8BA9;&#x7B97;&#x6CD5;&#x72EC;&#x7ACB;&#x4E8E;&#x4F7F;&#x7528;&#x5B83;&#x7684;&#x5BA2;&#x6237;&#x800C;&#x53D8;&#x5316;&#x3002;</p>
+<p>&#x7B56;&#x7565;&#x6A21;&#x5F0F;&#x7684;Duck&#x7684;fly&#x548C;quack&#x5B9E;&#x73B0;:</p>
+<pre data-role="codeBlock" data-info="Java" class="language-java"><span class="token comment">/* &#x98DE;&#x884C;&#x7684;&#x7B97;&#x6CD5;&#x65CF; */</span>
+<span class="token keyword keyword-interface">interface</span> <span class="token class-name">FlyBehavior</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-void">void</span> <span class="token function">fly</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword keyword-class">class</span> <span class="token class-name">FlyWithWings</span> <span class="token keyword keyword-implements">implements</span> <span class="token class-name">FlyBehavior</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">fly</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment">/* fly with wings */</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword keyword-class">class</span> <span class="token class-name">FlyNoWay</span> <span class="token keyword keyword-implements">implements</span> <span class="token class-name">FlyBehavior</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">fly</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment">/* cannot fly */</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* &#x53EB;&#x7684;&#x7B97;&#x6CD5;&#x65CF; */</span>
+<span class="token keyword keyword-interface">interface</span> <span class="token class-name">QuackBehavior</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-void">void</span> <span class="token function">quack</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword keyword-class">class</span> <span class="token class-name">Quack</span> <span class="token keyword keyword-implements">implements</span> <span class="token class-name">QuackBehavior</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">quack</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment">/* quack */</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword keyword-class">class</span> <span class="token class-name">Squeak</span> <span class="token keyword keyword-implements">implements</span> <span class="token class-name">QuackBehavior</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">quack</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment">/* &#x6A61;&#x76AE;&#x9E2D;&#x5431;&#x5431;&#x53EB; */</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword keyword-class">class</span> <span class="token class-name">MuteQuack</span> <span class="token keyword keyword-implements">implements</span> <span class="token class-name">QuackBehavior</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">quack</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment">/* cannot quack */</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* &#x9E2D;&#x5B50;&#x5177;&#x4F53;&#x7684;&#x5B9E;&#x73B0;&#x7C7B;&#xFF0C;&#x5C06;&#x5404;&#x4E2A;&#x7B97;&#x6CD5;&#x65CF;&#x5C01;&#x88C5; */</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">Duck</span> <span class="token punctuation">{</span>
+    <span class="token class-name">FlyBehavior</span> flyBehavior <span class="token operator">=</span> <span class="token keyword keyword-null">null</span><span class="token punctuation">;</span>
+    <span class="token class-name">QuackBehavior</span> quackBehavior <span class="token operator">=</span> <span class="token keyword keyword-null">null</span><span class="token punctuation">;</span>
+    
+    <span class="token keyword keyword-public">public</span> <span class="token class-name">Duck</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">// &#x9ED8;&#x8BA4;&#x884C;&#x4E3A;</span>
+        <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>flyBehavior <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">FlyWithWings</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>quackBehavior <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Quack</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">swim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">display</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+    
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">performFly</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>       
+        flyBehavior<span class="token punctuation">.</span><span class="token function">fly</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">performQuack</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        quackBehavior<span class="token punctuation">.</span><span class="token function">quack</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* &#x9E2D;&#x5B50;&#x7684;&#x7EE7;&#x627F;&#x7C7B;&#x578B; */</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">MallardDuck</span> <span class="token keyword keyword-extends">extends</span> <span class="token class-name">Duck</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-public">public</span> <span class="token class-name">MallardDuck</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword keyword-super">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// &#x4F1A;&#x5431;&#x5431;&#x53EB;</span>
+        <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>quackBehavior <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Squeak</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// &#x4E0D;&#x4F1A;&#x98DE;</span>
+        <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>flyBehavior <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">FlyNoWay</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre><h1 class="mume-header" id="%E4%BA%8C-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F">&#x4E8C;&#x3001;&#x89C2;&#x5BDF;&#x8005;&#x6A21;&#x5F0F;</h1>
+
+<p><strong>&#x89C2;&#x5BDF;&#x8005;&#x6A21;&#x5F0F;</strong>&#x5B9A;&#x4E49;&#x4E86;&#x5BF9;&#x8C61;&#x4E4B;&#x95F4;&#x7684;&#x4E00;&#x5BF9;&#x591A;&#x4F9D;&#x8D56;&#xFF0C;&#x8FD9;&#x6837;&#x4E00;&#x6765;&#xFF0C;&#x5F53;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x6539;&#x53D8;&#x72B6;&#x6001;&#x65F6;&#xFF0C;&#x5B83;&#x7684;&#x6240;&#x6709;&#x4F9D;&#x8D56;&#x8005;&#x90FD;&#x4F1A;&#x6536;&#x5230;&#x901A;&#x77E5;&#x5E76;&#x81EA;&#x52A8;&#x66F4;&#x65B0;&#x3002;</p>
+<p>&#x89C2;&#x5BDF;&#x8005;&#x6A21;&#x5F0F;&#x53EF;&#x4EE5;&#x770B;&#x6210;&#x8BA2;&#x9605;+&#x53D1;&#x5E03;&#x6A21;&#x578B;&#x3002;&#x4E3B;&#x9898;&#x662F;&#x771F;&#x6B63;&#x62E5;&#x6709;&#x6570;&#x636E;&#x7684;&#x4EBA;&#xFF0C;&#x89C2;&#x5BDF;&#x8005;&#x662F;&#x4E3B;&#x9898;&#x7684;&#x4F9D;&#x8D56;&#x8005;&#xFF0C;&#x5728;&#x6570;&#x636E;&#x53D8;&#x5316;&#x65F6;&#x66F4;&#x65B0;&#xFF0C;&#x8FD9;&#x6837;&#x6BD4;&#x8D77;&#x8BB8;&#x591A;&#x5BF9;&#x8C61;&#x63A7;&#x5236;&#x540C;&#x4E00;&#x4EFD;&#x6570;&#x636E;&#x6765;&#xFF0C;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x66F4;&#x5E72;&#x51C0;&#x7684;OO&#x8BBE;&#x8BA1;&#x3002;</p>
+<div class="mermaid">classDiagram
+    class Subject {
+        &lt;&lt;interface&gt;&gt;
+        registerObserver()
+        removeObserver()
+        notifyObserver()
+        getState()
+        setState()
+    }
+
+    class Observer1 {
+        &lt;&lt;interface&gt;&gt;
+        update()
+    }
+    class Observer2 {
+        &lt;&lt;interface&gt;&gt;
+        update()
+    }
+    class Observer3 {
+        &lt;&lt;interface&gt;&gt;
+        update()
+    }
+    Subject &lt;|.. Observer1
+    Subject &lt;|.. Observer2
+    Subject &lt;|.. Observer3
+</div><p><strong>&#x4E3B;&#x8981;&#x89E3;&#x51B3;</strong>&#xFF1A;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x72B6;&#x6001;&#x6539;&#x53D8;&#x7ED9;&#x5176;&#x4ED6;&#x5BF9;&#x8C61;&#x901A;&#x77E5;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x800C;&#x4E14;&#x8981;&#x8003;&#x8651;&#x5230;&#x6613;&#x7528;&#x548C;&#x4F4E;&#x8026;&#x5408;&#xFF0C;&#x4FDD;&#x8BC1;&#x9AD8;&#x5EA6;&#x7684;&#x534F;&#x4F5C;&#x3002;</p>
+<p><strong>&#x4F55;&#x65F6;&#x4F7F;&#x7528;</strong>&#xFF1A;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#xFF08;&#x76EE;&#x6807;&#x5BF9;&#x8C61;&#xFF09;&#x7684;&#x72B6;&#x6001;&#x53D1;&#x751F;&#x6539;&#x53D8;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x4F9D;&#x8D56;&#x5BF9;&#x8C61;&#xFF08;&#x89C2;&#x5BDF;&#x8005;&#x5BF9;&#x8C61;&#xFF09;&#x90FD;&#x5C06;&#x5F97;&#x5230;&#x901A;&#x77E5;&#xFF0C;&#x8FDB;&#x884C;&#x5E7F;&#x64AD;&#x901A;&#x77E5;&#x3002;</p>
+<p>&#x5B9E;&#x73B0;&#x65B9;&#x6CD5;&#xFF1A;&#x5728;&#x62BD;&#x8C61;&#x7C7B;&#x91CC;&#x6709;&#x4E00;&#x4E2A; ArrayList &#x5B58;&#x653E;&#x89C2;&#x5BDF;&#x8005;&#x4EEC;</p>
+<p><strong>&#x4F18;&#x70B9;</strong>&#xFF1A; 1&#x3001;&#x89C2;&#x5BDF;&#x8005;&#x548C;&#x88AB;&#x89C2;&#x5BDF;&#x8005;&#x662F;&#x62BD;&#x8C61;&#x8026;&#x5408;&#x7684;&#x3002; 2&#x3001;&#x5EFA;&#x7ACB;&#x4E00;&#x5957;&#x89E6;&#x53D1;&#x673A;&#x5236;&#x3002;</p>
+<p><strong>&#x7F3A;&#x70B9;</strong>&#xFF1A; 1&#x3001;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x88AB;&#x89C2;&#x5BDF;&#x8005;&#x5BF9;&#x8C61;&#x6709;&#x5F88;&#x591A;&#x7684;&#x76F4;&#x63A5;&#x548C;&#x95F4;&#x63A5;&#x7684;&#x89C2;&#x5BDF;&#x8005;&#x7684;&#x8BDD;&#xFF0C;&#x5C06;&#x6240;&#x6709;&#x7684;&#x89C2;&#x5BDF;&#x8005;&#x90FD;&#x901A;&#x77E5;&#x5230;&#x4F1A;&#x82B1;&#x8D39;&#x5F88;&#x591A;&#x65F6;&#x95F4;&#x3002; 2&#x3001;&#x5982;&#x679C;&#x5728;&#x89C2;&#x5BDF;&#x8005;&#x548C;&#x89C2;&#x5BDF;&#x76EE;&#x6807;&#x4E4B;&#x95F4;&#x6709;&#x5FAA;&#x73AF;&#x4F9D;&#x8D56;&#x7684;&#x8BDD;&#xFF0C;&#x89C2;&#x5BDF;&#x76EE;&#x6807;&#x4F1A;&#x89E6;&#x53D1;&#x5B83;&#x4EEC;&#x4E4B;&#x95F4;&#x8FDB;&#x884C;&#x5FAA;&#x73AF;&#x8C03;&#x7528;&#xFF0C;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x7CFB;&#x7EDF;&#x5D29;&#x6E83;&#x3002; 3&#x3001;&#x89C2;&#x5BDF;&#x8005;&#x6A21;&#x5F0F;&#x6CA1;&#x6709;&#x76F8;&#x5E94;&#x7684;&#x673A;&#x5236;&#x8BA9;&#x89C2;&#x5BDF;&#x8005;&#x77E5;&#x9053;&#x6240;&#x89C2;&#x5BDF;&#x7684;&#x76EE;&#x6807;&#x5BF9;&#x8C61;&#x662F;&#x600E;&#x4E48;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x7684;&#xFF0C;&#x800C;&#x4EC5;&#x4EC5;&#x53EA;&#x662F;&#x77E5;&#x9053;&#x89C2;&#x5BDF;&#x76EE;&#x6807;&#x53D1;&#x751F;&#x4E86;&#x53D8;&#x5316;&#x3002;</p>
+<p>&#x89C2;&#x5BDF;&#x8005;&#x6A21;&#x5F0F;&#xFF0C;&#x6C14;&#x8C61;&#x7AD9;&#x5C06;&#x6C14;&#x8C61;&#x6570;&#x636E;&#x5E7F;&#x64AD;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="java" class="language-java"><span class="token comment">// &#x58F0;&#x660E;&#x4E3B;&#x9898;&#x63A5;&#x53E3;</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-interface">interface</span> <span class="token class-name">Subject</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">registerObserver</span><span class="token punctuation">(</span><span class="token class-name">Observer</span> o<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">removeObserver</span><span class="token punctuation">(</span><span class="token class-name">Observer</span> o<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">notifyObservers</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// &#x58F0;&#x660E;&#x89C2;&#x5BDF;&#x8005;&#x63A5;&#x53E3;</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-interface">interface</span> <span class="token class-name">Observer</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">update</span><span class="token punctuation">(</span><span class="token keyword keyword-float">float</span> temp<span class="token punctuation">,</span> <span class="token keyword keyword-float">float</span> humidity<span class="token punctuation">,</span> <span class="token keyword keyword-float">float</span> pressure<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-interface">interface</span> <span class="token class-name">DisplayElement</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">display</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// &#x58F0;&#x660E;&#x4E3B;&#x9898;&#x7684;&#x5B9E;&#x73B0;&#x7C7B;</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">WeatherData</span> <span class="token keyword keyword-implements">implements</span> <span class="token class-name">Subject</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-private">private</span> <span class="token class-name">ArrayList</span> observers<span class="token punctuation">;</span>
+    <span class="token keyword keyword-private">private</span> <span class="token keyword keyword-float">float</span> temperature<span class="token punctuation">;</span>
+    <span class="token keyword keyword-private">private</span> <span class="token keyword keyword-float">float</span> humidity<span class="token punctuation">;</span>
+    <span class="token keyword keyword-private">private</span> <span class="token keyword keyword-float">float</span> pressure<span class="token punctuation">;</span>
+
+    <span class="token keyword keyword-public">public</span> <span class="token class-name">WeatherData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        observers <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">ArrayList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">registerObserver</span><span class="token punctuation">(</span><span class="token class-name">Observer</span> o<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        observer<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>o<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">removeObserver</span><span class="token punctuation">(</span><span class="token class-name">Oberver</span> o<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword keyword-int">int</span> i <span class="token operator">=</span> observers<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>o<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword keyword-if">if</span><span class="token punctuation">(</span>i <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            observers<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">notifyObservers</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword keyword-for">for</span><span class="token punctuation">(</span><span class="token keyword keyword-int">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>observers<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token class-name">Observer</span> observer <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Observer</span><span class="token punctuation">)</span>observers<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            observer<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span>temperature<span class="token punctuation">,</span> humidity<span class="token punctuation">,</span> pressure<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">measurementsChanged</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token function">notifyObservers</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">setMesurements</span><span class="token punctuation">(</span><span class="token keyword keyword-float">float</span> tempurature<span class="token punctuation">,</span> <span class="token keyword keyword-float">float</span> humidity<span class="token punctuation">,</span> <span class="token keyword keyword-float">float</span> pressure<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>temperature <span class="token operator">=</span> temperature<span class="token punctuation">;</span>
+        <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>humidity <span class="token operator">=</span> humidity<span class="token punctuation">;</span>
+        <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>pressure <span class="token operator">=</span> pressure<span class="token punctuation">;</span>
+        <span class="token function">measurementsChanged</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// &#x89C2;&#x5BDF;&#x8005;&#x5B9E;&#x73B0;&#x7C7B;</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">CurrentConditionsDisplay</span> <span class="token keyword keyword-implements">implements</span> <span class="token class-name">Observer</span><span class="token punctuation">,</span> <span class="token class-name">DisplayElement</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-private">private</span> <span class="token keyword keyword-float">float</span> temperature<span class="token punctuation">;</span>
+    <span class="token keyword keyword-private">private</span> <span class="token keyword keyword-float">float</span> humidity<span class="token punctuation">;</span>
+    <span class="token keyword keyword-private">private</span> <span class="token keyword keyword-float">float</span> pressure<span class="token punctuation">;</span>
+
+    <span class="token keyword keyword-private">private</span> <span class="token class-name">Subject</span> weatherData<span class="token punctuation">;</span>
+
+    <span class="token keyword keyword-public">public</span> <span class="token class-name">CurrentConditionsDisplay</span> <span class="token punctuation">(</span><span class="token class-name">Subject</span> weatherData<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>weatherData <span class="token operator">=</span> weatherData<span class="token punctuation">;</span>
+        weatherData<span class="token punctuation">.</span><span class="token function">registerObserver</span><span class="token punctuation">(</span><span class="token keyword keyword-this">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">update</span><span class="token punctuation">(</span><span class="token keyword keyword-float">float</span> tempurature<span class="token punctuation">,</span> <span class="token keyword keyword-float">float</span> humidity<span class="token punctuation">,</span> <span class="token keyword keyword-float">float</span> pressure<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>temperature <span class="token operator">=</span> temperature<span class="token punctuation">;</span>
+        <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>humidity <span class="token operator">=</span> humidity<span class="token punctuation">;</span>
+        <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>pressure <span class="token operator">=</span> pressure<span class="token punctuation">;</span>
+        <span class="token function">display</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-void">void</span> <span class="token function">display</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;Current conditions: &quot;</span><span class="token operator">+</span>temperature <span class="token operator">+</span> <span class="token string">&quot;F degrees and &quot;</span> <span class="token operator">+</span> humidity <span class="token operator">+</span> <span class="token string">&quot;% humidity&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre><p>Java &#x5185;&#x7F6E;&#x4E86;java.util.Observer&#x548C;java.util.Observable&#xFF0C;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x7EE7;&#x627F;&#x5FEB;&#x901F;&#x5B9E;&#x73B0;&#x89C2;&#x5BDF;&#x8005;&#x6A21;&#x5F0F;&#x3002;</p>
+<h1 class="mume-header" id="%E4%B8%89-%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F">&#x4E09;&#x3001;&#x88C5;&#x9970;&#x5668;&#x6A21;&#x5F0F;</h1>
+
+<p><strong>&#x88C5;&#x9970;&#x5668;&#x6A21;&#x5F0F;</strong>&#x52A8;&#x6001;&#x5730;&#x5C06;&#x8D23;&#x4EFB;&#x9644;&#x52A0;&#x5230;&#x5BF9;&#x8C61;&#x4E0A;&#x3002;&#x82E5;&#x8981;&#x6269;&#x5C55;&#x529F;&#x80FD;&#xFF0C;&#x88C5;&#x9970;&#x5668;&#x63D0;&#x4F9B;&#x4E86;&#x6BD4;&#x7EE7;&#x627F;&#x66F4;&#x6709;&#x5F39;&#x6027;&#x7684;&#x66FF;&#x4EE3;&#x65B9;&#x6848;&#x3002;</p>
+<p>&#x4E00;&#x822C;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x4E3A;&#x4E86;&#x6269;&#x5C55;&#x4E00;&#x4E2A;&#x7C7B;&#x7ECF;&#x5E38;&#x4F7F;&#x7528;&#x7EE7;&#x627F;&#x65B9;&#x5F0F;&#x5B9E;&#x73B0;&#xFF0C;&#x7531;&#x4E8E;&#x7EE7;&#x627F;&#x4E3A;&#x7C7B;&#x5F15;&#x5165;&#x9759;&#x6001;&#x7279;&#x5F81;&#xFF0C;&#x5E76;&#x4E14;&#x968F;&#x7740;&#x6269;&#x5C55;&#x529F;&#x80FD;&#x7684;&#x589E;&#x591A;&#xFF0C;&#x5B50;&#x7C7B;&#x4F1A;&#x5F88;&#x81A8;&#x80C0;&#x3002;&#x4E3A;&#x4E86;<strong>&#x4E0D;&#x60F3;&#x589E;&#x52A0;&#x5F88;&#x591A;&#x5B50;&#x7C7B;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x6269;&#x5C55;&#x7C7B;</strong>&#xFF0C;&#x5C06;&#x5177;&#x4F53;&#x529F;&#x80FD;&#x804C;&#x8D23;&#x5212;&#x5206;&#xFF0C;&#x540C;&#x65F6;&#x7EE7;&#x627F;&#x88C5;&#x9970;&#x8005;&#x6A21;&#x5F0F;&#x3002;</p>
+<p><strong>&#x5173;&#x952E;&#x4EE3;&#x7801;</strong>: 1&#x3001;Component &#x7C7B;&#x5145;&#x5F53;&#x62BD;&#x8C61;&#x89D2;&#x8272;&#xFF0C;&#x4E0D;&#x5E94;&#x8BE5;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x3002; 2&#x3001;&#x4FEE;&#x9970;&#x7C7B;&#x5F15;&#x7528;&#x548C;&#x7EE7;&#x627F; Component &#x7C7B;&#xFF0C;&#x5177;&#x4F53;&#x6269;&#x5C55;&#x7C7B;&#x91CD;&#x5199;&#x7236;&#x7C7B;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x4F18;&#x70B9;&#xFF1A;&#x88C5;&#x9970;&#x7C7B;&#x548C;&#x88AB;&#x88C5;&#x9970;&#x7C7B;&#x53EF;&#x4EE5;&#x72EC;&#x7ACB;&#x53D1;&#x5C55;&#xFF0C;&#x4E0D;&#x4F1A;&#x76F8;&#x4E92;&#x8026;&#x5408;&#xFF0C;&#x88C5;&#x9970;&#x6A21;&#x5F0F;&#x662F;&#x7EE7;&#x627F;&#x7684;&#x4E00;&#x4E2A;&#x66FF;&#x4EE3;&#x6A21;&#x5F0F;&#xFF0C;&#x88C5;&#x9970;&#x6A21;&#x5F0F;&#x53EF;&#x4EE5;&#x52A8;&#x6001;&#x6269;&#x5C55;&#x4E00;&#x4E2A;&#x5B9E;&#x73B0;&#x7C7B;&#x7684;&#x529F;&#x80FD;&#x3002;</p>
+<p>&#x7F3A;&#x70B9;&#xFF1A;&#x4F1A;&#x589E;&#x52A0;&#x5F88;&#x591A;&#x88C5;&#x9970;&#x5668;&#x5C0F;&#x7C7B;&#xFF0C;&#x96BE;&#x4EE5;&#x53D1;&#x73B0;&#x771F;&#x6B63;&#x7684;&#x7EC4;&#x4EF6;&#x672C;&#x4F53;&#x3002;</p>
+<p>&#x5E94;&#x7528;&#x573A;&#x666F;&#xFF1A;&#x661F;&#x5DF4;&#x514B;&#x91CC;&#x6709;&#x5496;&#x5561;&#x3001;&#x8336;&#x3001;&#x725B;&#x5976;&#x3002;&#x5728;&#x5496;&#x5561;&#x3001;&#x8336;&#x3001;&#x725B;&#x5976;&#x4E2D;&#x53EF;&#x4EE5;&#x6DFB;&#x52A0;&#x6469;&#x5361;(Mocha)&#x3001;&#x5976;&#x76D6;&#x3001;&#x767D;&#x7CD6;&#x3001;&#x67E0;&#x6AAC;&#x7B49;&#x7B49;&#x3002;&#x6240;&#x4EE5;&#x4E00;&#x5171;&#x6709;3 * 4 = 12 &#x79CD;&#x7C7B;&#x3002;&#x800C;&#x914D;&#x6599;&#x7684;&#x4EF7;&#x683C;cost&#x7684;&#x4EF7;&#x683C;&#x90FD;&#x662F;&#x56FA;&#x5B9A;&#x7684;&#x3002;&#x4E3A;&#x4E86;&#x4E0D;&#x7528;&#x6BCF;&#x4E00;&#x7C7B;&#x90FD;&#x58F0;&#x660E;&#xFF0C;&#x5E76;&#x4E14;&#x51CF;&#x5C11;&#x7C7B;&#x7684;&#x6570;&#x76EE;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x88C5;&#x9970;&#x5668;&#x6A21;&#x5F0F;&#x3002;&#x5B83;&#x7684;&#x529F;&#x80FD;&#x662F;&#x589E;&#x5F3A;&#x5496;&#x5561;&#x3001;&#x8336;&#x3001;&#x725B;&#x5976;&#x3002;</p>
+<pre data-role="codeBlock" data-info="java" class="language-java"><span class="token comment">// &#x996E;&#x6599;&#x57FA;&#x7C7B;</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-abstract">abstract</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">Beverage</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-public">public</span> <span class="token class-name">String</span> description <span class="token operator">=</span> <span class="token string">&quot;Unkonown Beverage&quot;</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-abstract">abstract</span> <span class="token keyword keyword-int">int</span> <span class="token function">cost</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword keyword-public">public</span> <span class="token class-name">String</span> <span class="token class-name">Descirption</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword keyword-return">return</span> description<span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// &#x5B9E;&#x9645;&#x7684;&#x996E;&#x6599;&#x603B;&#x7C7B;</span>
+<span class="token keyword keyword-class">class</span> coffee <span class="token keyword keyword-extends">extends</span> <span class="token class-name">Beverage</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-double">double</span> <span class="token function">cost</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment">/* ... */</span><span class="token punctuation">}</span>
+    <span class="token keyword keyword-public">public</span> <span class="token class-name">String</span> <span class="token class-name">Description</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment">/* ... */</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-class">class</span> tea <span class="token keyword keyword-extends">extends</span> <span class="token class-name">Beverage</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-double">double</span> <span class="token function">cost</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment">/* ... */</span><span class="token punctuation">}</span>
+    <span class="token keyword keyword-public">public</span> <span class="token class-name">String</span> <span class="token class-name">Description</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment">/* ... */</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-class">class</span> milk <span class="token keyword keyword-extends">extends</span> <span class="token class-name">Beverage</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-double">double</span> <span class="token function">cost</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment">/* ... */</span><span class="token punctuation">}</span>
+    <span class="token keyword keyword-public">public</span> <span class="token class-name">String</span> <span class="token class-name">Description</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment">/* ... */</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// &#x62BD;&#x8C61;&#x88C5;&#x9970;&#x5668;&#x7C7B;</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-abstract">abstract</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">Decorator</span> <span class="token keyword keyword-extends">extends</span> <span class="token class-name">Beverage</span><span class="token punctuation">{</span> <span class="token comment">// &#x88C5;&#x9970;&#x5668;&#x7C7B;&#x5FC5;&#x987B;&#x4E5F;&#x662F;Beverage</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-abstract">abstract</span> <span class="token class-name">String</span> <span class="token class-name">Description</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// &#x5177;&#x4F53;&#x7684;&#x88C5;&#x9970;&#x5668;&#x5B9E;&#x73B0;&#xFF0C;&#x5305;&#x62EC;&#x6469;&#x5361;&#x548C;&#x67E0;&#x6AAC;&#x7B49;</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">Mocha</span> <span class="token keyword keyword-extends">extends</span> <span class="token class-name">Decorator</span> <span class="token punctuation">{</span>
+    <span class="token class-name">Beverage</span> beverage<span class="token punctuation">;</span>
+    <span class="token keyword keyword-public">public</span> <span class="token class-name">Mocha</span><span class="token punctuation">(</span><span class="token class-name">Beverage</span> beverage<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>beverage <span class="token operator">=</span> beverage<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword keyword-public">public</span> <span class="token class-name">String</span> <span class="token class-name">Description</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword keyword-return">return</span> <span class="token class-name"><span class="token namespace">beverage<span class="token punctuation">.</span></span>Description</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot;, Mocha&quot;</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-double">double</span> <span class="token function">cost</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword keyword-return">return</span> <span class="token number">0.20</span> <span class="token operator">+</span> beverage<span class="token punctuation">.</span><span class="token function">cost</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">Lemon</span> <span class="token keyword keyword-extends">extends</span> <span class="token class-name">Decorator</span> <span class="token punctuation">{</span>
+    <span class="token class-name">Beverage</span> beverage<span class="token punctuation">;</span>
+    <span class="token keyword keyword-public">public</span> <span class="token class-name">Lemon</span><span class="token punctuation">(</span><span class="token class-name">Beverage</span> beverage<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword keyword-this">this</span><span class="token punctuation">.</span>beverage <span class="token operator">=</span> beverage<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword keyword-public">public</span> <span class="token class-name">String</span> <span class="token class-name">Description</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword keyword-return">return</span> <span class="token class-name"><span class="token namespace">beverage<span class="token punctuation">.</span></span>Description</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot;, Lemon&quot;</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-double">double</span> <span class="token function">cost</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword keyword-return">return</span> <span class="token number">0.50</span> <span class="token operator">+</span> beverage<span class="token punctuation">.</span><span class="token function">cost</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// &#x4F7F;&#x7528;&#x88C5;&#x9970;&#x5668;</span>
+<span class="token keyword keyword-class">class</span> <span class="token class-name">Main</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-static">static</span> <span class="token keyword keyword-void">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">Beverage</span> beverage <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token function">coffee</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment">// &#x4E00;&#x676F;&#x5496;&#x5561;</span>
+        beverage <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Mocha</span><span class="token punctuation">(</span>beverage<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">// &#x6469;&#x5361;&#x5496;&#x5561;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;Description: &quot;</span><span class="token operator">+</span><span class="token class-name"><span class="token namespace">beverage<span class="token punctuation">.</span></span>Description</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">&quot;, cost: &quot;</span><span class="token operator">+</span> beverage<span class="token punctuation">.</span><span class="token function">cost</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">Beverage</span> beverage2 <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token function">milk</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment">// &#x4E00;&#x676F;&#x5496;&#x5561;</span>
+        beverage2 <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Lemon</span><span class="token punctuation">(</span>beverage2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        beverage2 <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Lemon</span><span class="token punctuation">(</span>beverage2<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">// &#x52A0;&#x4E24;&#x4EFD;&#x67E0;&#x6AAC;</span>
+        beverage2 <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Mocha</span><span class="token punctuation">(</span>beverage2<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">// &#x6469;&#x5361;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;Description: &quot;</span><span class="token operator">+</span><span class="token class-name"><span class="token namespace">beverage2<span class="token punctuation">.</span></span>Description</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">&quot;, cost: &quot;</span><span class="token operator">+</span> beverage2<span class="token punctuation">.</span><span class="token function">cost</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre><p><strong>Java I/O &#x4E2D;&#x7684;&#x88C5;&#x9970;&#x5668;</strong></p>
+<p>&#x62BD;&#x8C61;&#x7EC4;&#x4EF6;&#xFF1A;InputStream<br>
+&#x5177;&#x4F53;&#x7EC4;&#x4EF6;&#xFF1A;FileInputStream&#x3001;StringBufferInputStream&#x3001;ByteArrayInputStream<br>
+&#x88C5;&#x9970;&#x5668;&#x62BD;&#x8C61;&#x7EC4;&#x4EF6;&#xFF1A;FilterInputStream<br>
+&#x88C5;&#x9970;&#x5668;&#x5177;&#x4F53;&#x7EC4;&#x4EF6;&#xFF1A;PushbackInputStream&#x3001;BufferedInputStream&#x3001;DataInputStream&#x3001;LineNumberInputStream</p>
+<p>&#x5177;&#x4F53;&#x7EC4;&#x4EF6;&#x53EF;&#x4EE5;&#x88AB;&#x88C5;&#x9970;&#x5668;&#x7EC4;&#x4EF6;&#x4FEE;&#x9970;&#x3002;</p>
+<h1 class="mume-header" id="%E5%9B%9B-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F">&#x56DB;&#x3001;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;</h1>
+
+<p><strong>&#x5DE5;&#x5382;&#x6A21;&#x5F0F;</strong>&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x521B;&#x5EFA;&#x5BF9;&#x8C61;&#x7684;&#x63A5;&#x53E3;&#xFF0C;&#x8BA9;&#x5176;&#x5B50;&#x7C7B;&#x81EA;&#x5DF1;&#x51B3;&#x5B9A;&#x5B9E;&#x4F8B;&#x5316;&#x54EA;&#x4E00;&#x4E2A;&#x5DE5;&#x5382;&#x7C7B;&#xFF0C;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;&#x4F7F;&#x5176;&#x521B;&#x5EFA;&#x8FC7;&#x7A0B;&#x5EF6;&#x8FDF;&#x5230;&#x5B50;&#x7C7B;&#x8FDB;&#x884C;&#x3002;</p>
+<p><strong>&#x4E3B;&#x8981;&#x89E3;&#x51B3;</strong>&#xFF1A;&#x4E3B;&#x8981;&#x89E3;&#x51B3;&#x63A5;&#x53E3;&#x9009;&#x62E9;&#x7684;&#x95EE;&#x9898;&#x3002;</p>
+<p><strong>&#x4F55;&#x65F6;&#x4F7F;&#x7528;</strong>&#xFF1A;&#x6211;&#x4EEC;&#x660E;&#x786E;&#x5730;&#x8BA1;&#x5212;&#x4E0D;&#x540C;&#x6761;&#x4EF6;&#x4E0B;&#x521B;&#x5EFA;&#x4E0D;&#x540C;&#x5B9E;&#x4F8B;&#x65F6;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF1A;Hibernate &#x6362;&#x6570;&#x636E;&#x5E93;&#x53EA;&#x9700;&#x6362;&#x65B9;&#x8A00;&#x548C;&#x9A71;&#x52A8;&#x5C31;&#x53EF;&#x4EE5;&#x3002;</p>
+<p><strong>&#x4F18;&#x70B9;</strong>&#xFF1A; 1&#x3001;&#x4E00;&#x4E2A;&#x8C03;&#x7528;&#x8005;&#x60F3;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x53EA;&#x8981;&#x77E5;&#x9053;&#x5176;&#x540D;&#x79F0;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x3002; 2&#x3001;&#x6269;&#x5C55;&#x6027;&#x9AD8;&#xFF0C;&#x5982;&#x679C;&#x60F3;&#x589E;&#x52A0;&#x4E00;&#x4E2A;&#x4EA7;&#x54C1;&#xFF0C;&#x53EA;&#x8981;&#x6269;&#x5C55;&#x4E00;&#x4E2A;&#x5DE5;&#x5382;&#x7C7B;&#x5C31;&#x53EF;&#x4EE5;&#x3002; 3&#x3001;&#x5C4F;&#x853D;&#x4EA7;&#x54C1;&#x7684;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#xFF0C;&#x8C03;&#x7528;&#x8005;&#x53EA;&#x5173;&#x5FC3;&#x4EA7;&#x54C1;&#x7684;&#x63A5;&#x53E3;&#x3002;</p>
+<p><strong>&#x7F3A;&#x70B9;</strong>&#xFF1A;&#x6BCF;&#x6B21;&#x589E;&#x52A0;&#x4E00;&#x4E2A;&#x4EA7;&#x54C1;&#x65F6;&#xFF0C;&#x90FD;&#x9700;&#x8981;&#x589E;&#x52A0;&#x4E00;&#x4E2A;&#x5177;&#x4F53;&#x7C7B;&#x548C;&#x5BF9;&#x8C61;&#x5B9E;&#x73B0;&#x5DE5;&#x5382;&#xFF0C;&#x4F7F;&#x5F97;&#x7CFB;&#x7EDF;&#x4E2D;&#x7C7B;&#x7684;&#x4E2A;&#x6570;&#x6210;&#x500D;&#x589E;&#x52A0;&#xFF0C;&#x5728;&#x4E00;&#x5B9A;&#x7A0B;&#x5EA6;&#x4E0A;&#x589E;&#x52A0;&#x4E86;&#x7CFB;&#x7EDF;&#x7684;&#x590D;&#x6742;&#x5EA6;&#xFF0C;&#x540C;&#x65F6;&#x4E5F;&#x589E;&#x52A0;&#x4E86;&#x7CFB;&#x7EDF;&#x5177;&#x4F53;&#x7C7B;&#x7684;&#x4F9D;&#x8D56;&#x3002;&#x8FD9;&#x5E76;&#x4E0D;&#x662F;&#x4EC0;&#x4E48;&#x597D;&#x4E8B;&#x3002;</p>
+<p>&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;&#x6709;&#x5F88;&#x591A;Pizza&#x5546;&#x5E97;&#xFF0C;&#x6BCF;&#x4E2A;Pizza&#x5546;&#x5E97;&#x6709;&#x4E0D;&#x540C;&#x7C7B;&#x578B;&#x7684;Pizza&#x3002;Pizza&#x5546;&#x5E97;&#x4E2D;&#x7684;&#x5236;&#x4F5C;&#x6D41;&#x7A0B;&#x90FD;&#x662F;&#x786E;&#x5B9A;&#x7684;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;&#x6765;&#x5E94;&#x5BF9;&#x4E0D;&#x540C;Pizza&#x5546;&#x5E97;&#x7684;&#x4E0D;&#x540C;Pizza&#x7684;&#x540C;&#x4E00;&#x4E2A;&#x5236;&#x4F5C;&#x6D41;&#x7A0B;&#x3002;</p>
+<pre data-role="codeBlock" data-info="Java" class="language-java"><span class="token comment">// &#x62BD;&#x8C61;&#x7684;&#x5DE5;&#x5382;&#x7C7B;</span>
+<span class="token keyword keyword-abstract">abstract</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">PizzaStore</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-public">public</span> <span class="token class-name">Pizza</span> <span class="token function">orderPizza</span><span class="token punctuation">(</span><span class="token class-name">String</span> type<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token class-name">Pizza</span> pizza <span class="token operator">=</span> <span class="token function">createPizza</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// &#x521B;&#x5EFA;Pizza&#x7684;&#x8FC7;&#x7A0B;&#x7531;&#x6D3E;&#x751F;&#x7C7B;&#x5B9E;&#x73B0;&#xFF0C;&#x8BA2;&#x5355;&#x8FC7;&#x7A0B;&#x7531;&#x57FA;&#x7C7B;&#x5B9E;&#x73B0;</span>
+
+        pizza<span class="token punctuation">.</span><span class="token function">prepare</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        pizza<span class="token punctuation">.</span><span class="token function">bake</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        pizza<span class="token punctuation">.</span><span class="token function">cut</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        pizza<span class="token punctuation">.</span><span class="token function">box</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-abstract">abstract</span> <span class="token class-name">Pizza</span> <span class="token function">createPizza</span><span class="token punctuation">(</span><span class="token class-name">String</span> type<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// &#x5B50;&#x7C7B;&#x5B9E;&#x73B0;&#x4E0D;&#x540C;&#x7684;&#x521B;&#x5EFA;&#x65B9;&#x6CD5;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// &#x5B9E;&#x73B0;&#x5177;&#x4F53;&#x7684;&#x5DE5;&#x5382;&#x7C7B;</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">NYPizzaStore</span> <span class="token keyword keyword-extends">extends</span> <span class="token class-name">PizzaStore</span> <span class="token punctuation">{</span>
+    <span class="token class-name">Pizza</span> <span class="token function">createPizza</span><span class="token punctuation">(</span><span class="token class-name">String</span> type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword keyword-if">if</span><span class="token punctuation">(</span>type<span class="token punctuation">.</span><span class="token function">euqals</span><span class="token punctuation">(</span><span class="token string">&quot;cheese&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword keyword-return">return</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">NYStyleCheezePizza</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword keyword-else">else</span> <span class="token keyword keyword-if">if</span><span class="token punctuation">(</span>type<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">&quot;veggie&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword keyword-return">return</span> <span class="token class-name">NYStyleVeggiePizze</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment">/* ... */</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">ChicagoStore</span> <span class="token keyword keyword-extends">extends</span> <span class="token class-name">PizzaStore</span> <span class="token punctuation">{</span>
+    <span class="token class-name">Pizza</span> <span class="token function">createPizza</span><span class="token punctuation">(</span><span class="token class-name">String</span> type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword keyword-if">if</span><span class="token punctuation">(</span>type<span class="token punctuation">.</span><span class="token function">euqals</span><span class="token punctuation">(</span><span class="token string">&quot;cheese&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword keyword-return">return</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">ChicagoCheezePizza</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword keyword-else">else</span> <span class="token keyword keyword-if">if</span><span class="token punctuation">(</span>type<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">&quot;veggie&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword keyword-return">return</span> <span class="token class-name">ChicagoWhitePizze</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment">/* ... */</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// &#x5B9E;&#x73B0;&#x62BD;&#x8C61;&#x7684;Pizza</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-abstract">abstract</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">Pizza</span> <span class="token punctuation">{</span>
+    <span class="token class-name">String</span> name<span class="token punctuation">;</span>
+    <span class="token class-name">String</span> dough<span class="token punctuation">;</span>
+    <span class="token class-name">String</span> sauce<span class="token punctuation">;</span>
+    <span class="token class-name">ArrayList</span> toppings <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">ArrayList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword keyword-void">void</span> <span class="token class-name">Prepare</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment">/* ... */</span><span class="token punctuation">}</span>
+    <span class="token keyword keyword-void">void</span> <span class="token function">bake</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment">/* ... */</span><span class="token punctuation">}</span>
+    <span class="token keyword keyword-void">void</span> <span class="token function">cut</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment">/* ... */</span><span class="token punctuation">}</span>
+    <span class="token keyword keyword-void">void</span> <span class="token function">box</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment">/* ... */</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// &#x5B9E;&#x73B0;&#x5177;&#x4F53;&#x7684;Pizza</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">NYStyleCheezePizza</span> <span class="token keyword keyword-extends">extends</span> <span class="token class-name">Pizza</span> <span class="token punctuation">{</span>
+    <span class="token comment">/* ... */</span>
+<span class="token punctuation">}</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">NYStyleVeggiePizze</span> <span class="token keyword keyword-extends">extends</span> <span class="token class-name">Pizza</span> <span class="token punctuation">{</span>
+    <span class="token comment">/* ... */</span>
+<span class="token punctuation">}</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">ChicagoCheezePizza</span> <span class="token keyword keyword-extends">extends</span> <span class="token class-name">Pizza</span> <span class="token punctuation">{</span>
+    <span class="token comment">/* ... */</span>
+<span class="token punctuation">}</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">ChicagoWhitePizze</span> <span class="token keyword keyword-extends">extends</span> <span class="token class-name">Pizza</span> <span class="token punctuation">{</span>
+    <span class="token comment">/* ... */</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">Test</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-static">static</span> <span class="token keyword keyword-void">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">PizzaStore</span> store1 <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">NYPizzaStore</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">PizzaStore</span> store2 <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">ChicagoStore</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">Pizza</span> p1 <span class="token operator">=</span> store1<span class="token punctuation">.</span><span class="token function">orderPizza</span><span class="token punctuation">(</span><span class="token string">&quot;cheese&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Pizza</span> p2 <span class="token operator">=</span> store2<span class="token punctuation">.</span><span class="token function">orderPizza</span><span class="token punctuation">(</span><span class="token string">&quot;cheese&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+      </div>
+      
+      
+    
+    
+    <script>
+// config mermaid init call
+// http://knsv.github.io/mermaid/#configuration
+//
+// You can edit the 'MERMAID_CONFIG' variable below.
+MERMAID_CONFIG = {
+  startOnLoad: false
+}
+
+if (window['MERMAID_CONFIG']) {
+  window['MERMAID_CONFIG'].startOnLoad = false
+  window['MERMAID_CONFIG'].cloneCssStyles = false
+  window['MERMAID_CONFIG'].theme = "default"
+}
+mermaid.initialize(window['MERMAID_CONFIG'] || {})
+if (typeof(window['Reveal']) !== 'undefined') {
+  function mermaidRevealHelper(event) {
+    var currentSlide = event.currentSlide
+    var diagrams = currentSlide.querySelectorAll('.mermaid')
+    for (var i = 0; i < diagrams.length; i++) {
+      var diagram = diagrams[i]
+      if (!diagram.hasAttribute('data-processed')) {
+        mermaid.init(null, diagram, ()=> {
+          Reveal.slide(event.indexh, event.indexv)
+        })
+      }
+    }
+  }
+  Reveal.addEventListener('slidechanged', mermaidRevealHelper)
+  Reveal.addEventListener('ready', mermaidRevealHelper)
+} else {
+  mermaid.init(null, document.getElementsByClassName('mermaid'))
+}
+</script>
+    
+    
+    
+    
+    
+  
+    </body></html>
